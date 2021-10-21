@@ -1,0 +1,293 @@
+/*Layout*/
+/*Base*/
+* a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+body {
+  font-family: "Lato";
+  margin: 0;
+  background-color: white;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  /* Remove padding */
+  margin: 0;
+  /* Remove margins */
+}
+li {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Lato";
+}
+
+h3 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 22px;
+}
+
+p {
+  font-family: "Lato";
+  margin: 0%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* SEARCH BAR */
+
+.search-every {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 5%;
+}
+
+.search-all {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #e7e7e7;
+  border: none;
+  border-radius: 5px;
+  height: 69px;
+}
+
+.fa-search {
+  position: absolute;
+  right: 3rem;
+  top: 1.5rem;
+  font-size: 1.5rem;
+  color: #000000;
+  cursor: pointer;
+}
+input::placeholder {
+  color: #000000;
+  opacity: 0.25;
+  padding: 10px;
+}
+
+/* Buttons */
+.buttons-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  margin: 5%;
+}
+
+
+
+
+/* appareil button */
+
+.appliance-list {
+  display: flex;
+  cursor: pointer;
+}
+.appareil {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 30px;
+  overflow: hidden;
+  background: #68d9a4;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.appareil-hide {
+  display: none;
+}
+.appareil:hover + .appareil-hide {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: #68d9a4;
+  color: white;
+  width: 300px;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  z-index:1;
+  position: absolute;
+}
+
+/* ustensiles button */
+
+.ustensiles-list {
+  display: flex;
+  cursor: pointer;
+}
+.ustensiles {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 30px;
+  overflow: hidden;
+  background: #ed6454;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.ustensiles-hide {
+  display: none;
+}
+.ustensiles:hover + .ustensiles-hide {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: #ed6454;
+  color: white;
+  width: 300px;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  z-index:1;
+  position: absolute;
+}
+
+/* ingredient button */
+
+.ingredient-list {
+  display: flex;
+  cursor: pointer;
+}
+.ingredient {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 30px;
+  overflow: hidden;
+  background: #3282f7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.ingredient-hide {
+  display: none;
+}
+.ingredient:hover + .ingredient-hide {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: #3282f7;
+  color: white;
+  width: 300px;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  z-index:1;
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+/* RECEPIES BOX */
+
+.recepies-main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
+  margin: 10px;
+}
+.recepiesBox {
+  width: 380px;
+  height: 364px;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+
+  margin: 20px;
+}
+
+.recepiesimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  background: #c7bebe;
+  border-radius: 5px 5px 0 0;
+}
+.recepiesinfo {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  padding: 20px;
+}
+
+.nameTime {
+  display: flex;
+  flex-direction: row;
+}
+
+.name {
+  width: 50%;
+  height: fit-content;
+  font-size: 1em;
+}
+
+.time {
+  display: flex;
+  width: 50%;
+  height: fit-content;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+}
+.fa-clock {
+  padding-right: 10px;
+}
+
+.ingDes {
+  display: flex;
+  flex-direction: row;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50px;
+  overflow: hidden;
+  font-size: 0.8em;
+  padding-right: 10px;
+}
+.description {
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  width: 50%;
+  height: 50px;
+  font-size: 0.8em;
+  margin: 0;
+}
+
+

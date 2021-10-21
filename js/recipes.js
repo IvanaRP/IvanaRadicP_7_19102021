@@ -1,4 +1,4 @@
-const recipes = [
+export const recipes = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -97,8 +97,8 @@ const recipes = [
             },
             {
                 "ingredient": "Huile d'olive"
-                "quantity": 1,
-               "unit": "cuillères à soupe"
+                // "quantity": 1,
+            //    "unit": "cuillères à soupe"
             }
         ],
         "time": 80,

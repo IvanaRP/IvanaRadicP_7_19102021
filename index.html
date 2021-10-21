@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://kit.fontawesome.com/f9349f7e63.js" crossorigin="anonymous" ></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+
+    <title>Les Petits Plats</title>
+  </head>
+
+  <body>
+    <!--Header-->
+    <header class="header__info">
+      <div class="header">
+        <a href="index.html"
+          ><img class="header__logo" src="./img/Logo.svg" alt="Les Petits Plats"
+        /></a>
+      </div>
+    </header>
+
+    <!--MAIN-->
+    <main>
+
+      <div class="search">
+        <div class="search-every">
+          <input class="search-all" id="search-all" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"/>
+          <i class="fas fa-search"></i>
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="buttons-select">
+
+          
+
+          <div class="ingredient"><p>Ingredient <i class="fas fa-angle-down"></i></p></div>
+          <div class="ingredient-hide" id="ingredient-hide"></div>
+         
+          <div class="appareil"><p>Appareil <i class="fas fa-angle-down"></i></p></div>
+          <div class="appareil-hide" id="appareil-hide"></div>
+
+          <div class="ustensiles"><p>Ustensiles <i class="fas fa-angle-down"></i></p></div>
+          <div class="ustensiles-hide" id="ustensiles-hide"></div>
+
+         
+         
+        
+        </div>
+
+        <!-- RECEPIES -->
+        <div class="recepies-main" id="recepies"> 
+        </div>
+        <div class="ing" id="ing"> 
+        </div>
+
+      <!--JAVASCRIPT -->
+      <script type="module" src="./js/main.js"></script>
+      <script type="module" src="./js/index.js"></script>
+    </main>
+  </body>
+
 </html>
