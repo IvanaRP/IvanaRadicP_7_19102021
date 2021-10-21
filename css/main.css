@@ -120,8 +120,9 @@ input::placeholder {
   flex-wrap: wrap;
   background: #68d9a4;
   color: white;
-  width: 300px;
-  height: fit-content;
+  width:300px;
+  height: 250px;
+  overflow: scroll;
   border-radius: 5px;
   padding: 10px;
   z-index:1;
@@ -155,8 +156,9 @@ input::placeholder {
   flex-wrap: wrap;
   background: #ed6454;
   color: white;
-  width: 300px;
-  height: fit-content;
+  width:300px;
+  height: 250px;
+  overflow: scroll;
   border-radius: 5px;
   padding: 10px;
   z-index:1;
@@ -190,8 +192,9 @@ input::placeholder {
   flex-wrap: wrap;
   background: #3282f7;
   color: white;
-  width: 300px;
-  height: fit-content;
+  width:300px;
+  height: 250px;
+  overflow: scroll;
   border-radius: 5px;
   padding: 10px;
   z-index:1;
