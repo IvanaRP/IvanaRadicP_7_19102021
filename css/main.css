@@ -57,7 +57,7 @@ p {
   margin: 5%;
 }
 
-.search-all {
+.searchBar {
   display: flex;
   justify-content: center;
   width: 100%;
