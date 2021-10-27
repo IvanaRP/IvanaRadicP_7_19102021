@@ -223,6 +223,7 @@ input::placeholder {
   margin: 10px;
 }
 .recepiesBox {
+  display: block;
   width: 380px;
   height: 364px;
   border-radius: 5px;
