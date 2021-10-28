@@ -42,6 +42,8 @@ p {
   margin: 0%;
 }
 
+
+
 .header {
   display: flex;
   justify-content: center;
@@ -102,19 +104,37 @@ input::placeholder {
 .appareil {
   display: flex;
   flex-direction: row;
+  align-content: center;
+  align-items: center;
   width: 100px;
-  height: 30px;
+  height: 50px;
   overflow: hidden;
   background: #68d9a4;
   color: white;
   border-radius: 5px;
   padding: 10px;
   margin-right: 10px;
+  position: relative;
+  border-style: none;
 }
 .appareil-hide {
   display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: #68d9a4;
+  color: white;
+  width:40%;
+  height: 250px;
+  overflow:hidden;
+  border-radius: 5px;
+  padding: 10px;
+  z-index:1;
+  position: absolute;
+  top:50px;
+  left:263px;
+  cursor: pointer;
 }
-.appareil:hover + .appareil-hide {
+/* .appareil:hover + .appareil-hide {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -127,7 +147,7 @@ input::placeholder {
   padding: 10px;
   z-index:1;
   position: absolute;
-}
+} */
 
 /* ustensiles button */
 
@@ -138,19 +158,37 @@ input::placeholder {
 .ustensiles {
   display: flex;
   flex-direction: row;
+  align-content: center;
+  align-items: center;
   width: 100px;
-  height: 30px;
+  height: 50px;
   overflow: hidden;
-  background: #ed6454;
+  background:  #ed6454;
   color: white;
   border-radius: 5px;
   padding: 10px;
   margin-right: 10px;
+  position: relative;
+  border-style: none;
 }
 .ustensiles-hide {
   display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background:  #ed6454;
+  color: white;
+  width:40%;
+  height: 250px;
+  overflow:hidden;
+  border-radius: 5px;
+  padding: 10px;
+  z-index:1;
+  position: absolute;
+  top:50px;
+  left:373px;
+  cursor: pointer;
 }
-.ustensiles:hover + .ustensiles-hide {
+/* .ustensiles:hover + .ustensiles-hide {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -163,7 +201,7 @@ input::placeholder {
   padding: 10px;
   z-index:1;
   position: absolute;
-}
+} */
 
 /* ingredient button */
 
@@ -174,32 +212,52 @@ input::placeholder {
 .ingredient {
   display: flex;
   flex-direction: row;
+  align-content: center;
+  align-items: center;
   width: 100px;
-  height: 30px;
+  height: 50px;
   overflow: hidden;
   background: #3282f7;
   color: white;
   border-radius: 5px;
   padding: 10px;
   margin-right: 10px;
+  position: relative;
+  border-style: none;
 }
 .ingredient-hide {
   display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background: #3282f7;
+  color: white;
+  width:40%;
+  height: 250px;
+  overflow:hidden;
+  border-radius: 5px;
+  padding: 10px;
+  z-index:1;
+  position: absolute;
+  top:50px;
+  left:150px;
+  cursor: pointer;
+ 
 }
-.ingredient:hover + .ingredient-hide {
+/* .ingredient:hover + .ingredient-hide {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   background: #3282f7;
   color: white;
-  width:300px;
-  height: 250px;
-  overflow: scroll;
+  width:30%;
+  /* height: 250px; */
+  /* overflow: scroll;
   border-radius: 5px;
   padding: 10px;
   z-index:1;
   position: absolute;
-}
+
+} */ 
 
 
 
@@ -295,3 +353,62 @@ input::placeholder {
 }
 
 
+/* new BTN */
+
+.newBtn{
+  position: relative;
+}
+
+.ingredientplaceholder{
+  transition-property: width;
+}
+
+.absolute{
+  position: absolute;
+  left: 0;
+}
+
+.ulList{
+  display: none;
+  z-index: 10;
+  height: auto;
+  width: 100%;
+  overflow: hidden
+}
+
+
+.ingredientlist{
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 30px;
+  overflow: hidden;
+  background: #3282f7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+
+
+
+
+/* show hide btn */
+
+.clickbtn{
+  display: flex;
+  width: 200px;
+  height: 40px;
+  background: #3282f7;
+  color: white;
+  cursor: pointer;
+}
+
+.showbtn{
+  display: none;
+  width: 200px;
+  height: 40px;
+  background: #f7328e;
+  color: white;
+}

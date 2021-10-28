@@ -8,64 +8,59 @@ let ingredients;
 let appareil;
 // let ustensiles;
 
-// // Search Input 
+// // Search Input
 let inputSearch = document.getElementById("searchBar");
-  console.log(inputSearch);
+console.log(inputSearch);
 
-  // Search Input  by input
-  inputSearch.addEventListener("keyup", function(e){
-    //   console.log(e.target.value);
-        let searchItem = e.target.value.toLowerCase();
-        let items = document.querySelectorAll(".recipeinput");
-        console.log(items);
-        // select whole div
+// Search Input  by input
+inputSearch.addEventListener("keyup", function (e) {
+  //   console.log(e.target.value);
+  let searchItem = e.target.value.toLowerCase();
+  let items = document.querySelectorAll(".recipeinput");
+  console.log(items);
+  // select whole div
 
-        // let recepiescar = document.getElementById("recepiesBox");;
-        // console.log(recepiescar);
+  // let recepiescar = document.getElementById("recepiesBox");;
+  // console.log(recepiescar);
 
-        items.forEach(function(item){
-            console.log(item.textContent);
-            if(item.textContent.toLowerCase().indexOf(searchItem) != -1){
-                item.closest("li").style.display = "block";
-                console.log(item.closest("li"));
-            }
-            else {
-                item.closest("li").style.display = "none";
-            }
-        })
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.toLowerCase().indexOf(searchItem) != -1) {
+      item.closest("li").style.display = "block";
+      console.log(item.closest("li"));
+    } else {
+      item.closest("li").style.display = "none";
+    }
+  });
 
-        console.log(searchItem);
-  })
-
-
+  console.log(searchItem);
+});
 
 // recepiesCards
 let recepiesCard = document.getElementById("recepies");
 console.log(recepiesCard);
 
-
 //display all Ustensiles
 function ustensilesFun(ustensils) {
-    return `<ul class="ustensils-list"> ${ustensils
-      .map((ustensil) => {
-        return `
+  return `<ul class="ustensils-list"> ${ustensils
+    .map((ustensil) => {
+      return `
                <li>${ustensil}</li>
                `;
-      })
-      .join("")}
+    })
+    .join("")}
               </ul>
         `;
-  }
-
+}
 
 //display all Ingredents
 function ingredientsFun(ingredients) {
   return `<ul class="ingredients-list"> ${ingredients
     .map((ingredient) => {
       return `
-             <li>${ingredient.ingredient ? ingredient.ingredient : ''}
-             ${ingredient.quantity ? ingredient.quantity : ''}
-             ${ingredient.unit ? ingredient.unit : ''}</li>
+             <li>${ingredient.ingredient ? ingredient.ingredient : ""}
+             ${ingredient.quantity ? ingredient.quantity : ""}
+             ${ingredient.unit ? ingredient.unit : ""}</li>
           
              `;
     })
@@ -82,7 +77,9 @@ function recipiesBox(recipe) {
                     <div class="recepiesinfo">
                       <div class="nameTime">
                         <h3 class="name" id="name">${recipe.name}</h3>
-                        <h3 class="time"><i class="far fa-clock"></i>${recipe.time} min</h3>
+                        <h3 class="time"><i class="far fa-clock"></i>${
+                          recipe.time
+                        } min</h3>
                       </div>
 
                    
@@ -100,17 +97,27 @@ function recipiesBox(recipe) {
 }
 recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
+// <div class="ingredient-hide" id="ingredient-hide"></div>
 //BUTTONS
 function buttonsSelect() {
   return `
+ 
+  <div class="searchIg">
+      <input class="searchBarIng" id="searchBarIng" type="text" placeholder="ingredient"/>
+  </div>
   
-      <div class="ingredient"><p>Ingredient <i class="fas fa-angle-down"></i></p></div>
-      <div class="ingredient-hide" id="ingredient-hide"></div>
-    
-      <div class="appareil"><p>Appareil <i class="fas fa-angle-down"></i></p></div>
+
+
+
+
+      <button class="ingredient" id="ingredientbtn"><p>Ingredient <i class="fas fa-angle-down"></i></p></button>
+      <div class="ingredient-hide" id="ingredient-hide">
+      </div>
+
+      <button class="appareil" id="appareilbtn"><p>Appareil <i class="fas fa-angle-down"></i></p></button>
       <div class="appareil-hide" id="appareil-hide"></div>
   
-      <div class="ustensiles"><p>Ustensiles <i class="fas fa-angle-down"></i></p></div>
+      <button class="ustensiles" id="ustensilesbtn"><p>Ustensiles <i class="fas fa-angle-down"></i></p></button>
       <div class="ustensiles-hide" id="ustensiles-hide"></div>
   
       `;
@@ -123,12 +130,12 @@ console.log(ingredientBtn);
 
 function ingredient(recipe) {
   return `
-        <div class="ingredient-list">
-        <p>  ${ingredientsFun(recipe.ingredients)} </p>
-        </div>
+         <li>${ingredientsFun(recipe.ingredients)} </li>
     `;
 }
 ingredientBtn.innerHTML = `${recipes.map(ingredient).join("")}`;
+
+
 
 
 // Appareil button
@@ -144,8 +151,6 @@ function appliance(recipe) {
 }
 applianceBtn.innerHTML = `${recipes.map(appliance).join("")}`;
 
-
-
 // Ustensiles button
 let ustensilsBtn = document.getElementById("ustensiles-hide");
 console.log(ustensilsBtn);
@@ -159,6 +164,92 @@ function ustensils(recipe) {
 }
 ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
 
+// // Search Input BUTTON
+let inputSearchIng = document.getElementById("searchBarIng");
+console.log(inputSearchIng);
+
+// Search Input  by input
+inputSearchIng.addEventListener("keyup", function (e) {
+  //   console.log(e.target.value);
+  let searchItemI = e.target.value.toLowerCase();
+  let items = document.querySelectorAll(".recipeinput");
+  console.log(items);
+  // select whole div
+
+  // let recepiescar = document.getElementById("recepiesBox");;
+  // console.log(recepiescar);
+
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      item.closest("li").style.display = "block";
+      console.log(item.closest("li"));
+    } else {
+      item.closest("li").style.display = "none";
+    }
+  });
+
+  console.log(searchItemI);
+});
+
+
+// dropdownBTN show div with list
+// btn Ingredients
+let btnIng = document.getElementById("ingredientbtn");
+console.log(btnIng);
+let btnIngList = document.getElementById("ingredient-hide");
+console.log(btnIngList);
+
+btnIng.addEventListener("click", () => {
+  if(btnIngList.style.display === "none"){
+    btnIngList.style.display = "flex";
+  } else {
+    btnIngList.style.display = "none"
+  }
+
+});
+
+
+// btn Appareil
+let btnApp = document.getElementById("appareilbtn");
+console.log(btnApp);
+let btnAppList = document.getElementById("appareil-hide");
+console.log(btnAppList);
+
+btnApp.addEventListener("click", () => {
+  if(btnAppList.style.display === "none"){
+    btnAppList.style.display = "flex";
+  } else {
+    btnAppList.style.display = "none"
+  }
+
+});
 
 
 
+// btn Ustensiles
+let btnUst = document.getElementById("ustensilesbtn");
+console.log(btnUst);
+let btnUstList = document.getElementById("ustensiles-hide");
+console.log(btnUstList);
+
+btnUst.addEventListener("click", () => {
+  if(btnUstList.style.display === "none"){
+    btnUstList.style.display = "flex";
+  } else {
+    btnUstList.style.display = "none"
+  }
+
+});
+
+// hide div if clicked outside 
+// window.onload = function(){
+//   let divToHide = document.getElementById('ustensiles-hide');
+//   console.log(divToHide);
+//   document.onclick = function(e){
+//     if(e.target.id !== 'divToHide'){
+//       //element clicked wasn't the div; hide the div
+//       divToHide.style.display = 'none';
+//     }
+//   };
+// };
