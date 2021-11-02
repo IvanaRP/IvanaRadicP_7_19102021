@@ -77,17 +77,10 @@ function recipiesBox(recipe) {
                     <div class="recepiesinfo">
                       <div class="nameTime">
                         <h3 class="name" id="name">${recipe.name}</h3>
-                        <h3 class="time"><i class="far fa-clock"></i>${
-                          recipe.time
-                        } min</h3>
+                        <h3 class="time"><i class="far fa-clock"></i>${recipe.time} min</h3>
                       </div>
-
-                   
                         <div class="ingDes">
-
                         ${ingredientsFun(recipe.ingredients)}  
-                      
-                       
                         <p class="description">${recipe.description}</p>
                         </div>
                     </div>
@@ -188,7 +181,6 @@ inputSearchIng.addEventListener("keyup", function (e) {
       item.closest("li").style.display = "none";
     }
   });
-
   console.log(searchItemI);
 });
 
@@ -208,6 +200,13 @@ btnIng.addEventListener("click", () => {
   }
 
 });
+
+// click outside hide dropdown
+// window.onclick = function(event) {
+//   if (event.target == btnIngList) {
+//     btnIngList.style.display = "none";
+//    }
+// };
 
 
 // btn Appareil
