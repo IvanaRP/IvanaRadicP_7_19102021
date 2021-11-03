@@ -2,11 +2,7 @@
 import { recipes } from "./recipes.js";
 console.log(recipes);
 
-// make variables
-let recipesNames;
-let ingredients;
-let appareil;
-// let ustensiles;
+
 
 // // Search Input
 let inputSearch = document.getElementById("searchBar");
@@ -91,21 +87,29 @@ function recipiesBox(recipe) {
 recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
 // <div class="ingredient-hide" id="ingredient-hide"></div>
+//<button class="ingredient" id="ingredientbtn"><p>Ingredient <i class="fas fa-angle-down"></i></p></button>
+
+
 //BUTTONS
 function buttonsSelect() {
   return `
  
-  <div class="searchIg">
-      <input class="searchBarIng" id="searchBarIng" type="text" placeholder="ingredient"/>
-  </div>
-  
+ 
 
-
-
-
-      <button class="ingredient" id="ingredientbtn"><p>Ingredient <i class="fas fa-angle-down"></i></p></button>
-      <div class="ingredient-hide" id="ingredient-hide">
+<div class=ingrBTN">
+      <div class="ingredientClosedDiv" id="ingredientClosedDiv">
+      <input class="ingredientClosed" id="ingredientbtnClosed" type="text" placeholder="Ingredient"/>
+      <i class="fas fa-chevron-down" id="ingredients-down"></i>
       </div>
+
+      <div class="ingredientOpenListDiv" id="ingredientOpenListDiv">
+      <input class="ingredientOpenList" id="ingredientbtn" type="text" placeholder="Rechercher un ingrédient..."/>
+      <div class="ingredient-hideDRUGI" id="ingredient-hideDRUGI"></div>
+      </div>
+</div>
+
+
+
 
       <button class="appareil" id="appareilbtn"><p>Appareil <i class="fas fa-angle-down"></i></p></button>
       <div class="appareil-hide" id="appareil-hide"></div>
@@ -117,17 +121,29 @@ function buttonsSelect() {
 }
 document.getElementById("buttons-select").innerHTML = buttonsSelect();
 
-// Ingredient button
-let ingredientBtn = document.getElementById("ingredient-hide");
-console.log(ingredientBtn);
+// // Ingredient button
+// let ingredientBtn = document.getElementById("ingredient-hide");
+// console.log(ingredientBtn);
+
+// function ingredient(recipe) {
+//   return `
+//          <a href="#" <li>${ingredientsFun(recipe.ingredients)} </li> 
+//     `;
+// }
+// ingredientBtn.innerHTML = `${recipes.map(ingredient).join("")}`;
+
+
+
+// Ingredient button list DRUGIPOKUSAJ
+let ingredientBtnDrugi = document.getElementById("ingredient-hideDRUGI");
+console.log(ingredientBtnDrugi);
 
 function ingredient(recipe) {
   return `
-         <li>${ingredientsFun(recipe.ingredients)} </li>
+         <a href="#" <li>${ingredientsFun(recipe.ingredients)} </li> 
     `;
 }
-ingredientBtn.innerHTML = `${recipes.map(ingredient).join("")}`;
-
+ingredientBtnDrugi.innerHTML = `${recipes.map(ingredient).join("")}`;
 
 
 
@@ -136,6 +152,7 @@ let applianceBtn = document.getElementById("appareil-hide");
 console.log(applianceBtn);
 
 function appliance(recipe) {
+  
   return `
     <div class="appliance-list">
     <p>${recipe.appliance} </p>
@@ -158,7 +175,7 @@ function ustensils(recipe) {
 ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
 
 // // Search Input BUTTON
-let inputSearchIng = document.getElementById("searchBarIng");
+let inputSearchIng = document.getElementById("ingredientbtn");
 console.log(inputSearchIng);
 
 // Search Input  by input
@@ -185,11 +202,36 @@ inputSearchIng.addEventListener("keyup", function (e) {
 });
 
 
+// // dropdownBTN show div with list
+// // btn Ingredients
+// let btnIng = document.getElementById("ingredientbtn");
+// console.log(btnIng);
+// let btnIngList = document.getElementById("ingredient-hide");
+// console.log(btnIngList);
+
+// btnIng.addEventListener("click", () => {
+//   if(btnIngList.style.display === "none"){
+//     btnIngList.style.display = "flex";
+//   } else {
+//     btnIngList.style.display = "none"
+//   }
+
+// });
+
+// // click outside hide dropdown Ingredient
+// window.addEventListener('mouseup', function(event){
+// 	let ingredientMenu = document.getElementById('ingredient-hide');
+// 	if (event.target != ingredientMenu && event.target.parentNode != ingredientMenu){
+//     ingredientMenu.style.display = 'none';
+//     }
+// });
+
+// NOVI
 // dropdownBTN show div with list
 // btn Ingredients
-let btnIng = document.getElementById("ingredientbtn");
+let btnIng = document.getElementById("ingredientClosedDiv");
 console.log(btnIng);
-let btnIngList = document.getElementById("ingredient-hide");
+let btnIngList = document.getElementById("ingredientOpenListDiv");
 console.log(btnIngList);
 
 btnIng.addEventListener("click", () => {
@@ -201,12 +243,15 @@ btnIng.addEventListener("click", () => {
 
 });
 
-// click outside hide dropdown
-// window.onclick = function(event) {
-//   if (event.target == btnIngList) {
-//     btnIngList.style.display = "none";
-//    }
-// };
+// click outside hide dropdown Ingredient
+window.addEventListener('mouseup', function(event){
+	let ingredientMenu = document.getElementById('ingredientOpenListDiv');
+	if (event.target != ingredientMenu && event.target.parentNode != ingredientMenu){
+    ingredientMenu.style.display = 'none';
+    }
+});
+
+
 
 
 // btn Appareil
@@ -222,6 +267,14 @@ btnApp.addEventListener("click", () => {
     btnAppList.style.display = "none"
   }
 
+});
+
+// click outside hide dropdown Appareil
+window.addEventListener('mouseup', function(event){
+	let appareilMenu = document.getElementById('appareil-hide');
+	if (event.target != appareilMenu && event.target.parentNode != appareilMenu){
+    appareilMenu.style.display = 'none';
+    }
 });
 
 
@@ -241,14 +294,11 @@ btnUst.addEventListener("click", () => {
 
 });
 
-// hide div if clicked outside 
-// window.onload = function(){
-//   let divToHide = document.getElementById('ustensiles-hide');
-//   console.log(divToHide);
-//   document.onclick = function(e){
-//     if(e.target.id !== 'divToHide'){
-//       //element clicked wasn't the div; hide the div
-//       divToHide.style.display = 'none';
-//     }
-//   };
-// };
+
+// click outside hide dropdown Ustensiles
+window.addEventListener('mouseup', function(event){
+	let ustensilesMenu = document.getElementById('ustensiles-hide');
+	if (event.target != ustensilesMenu && event.target.parentNode != ustensilesMenu){
+    ustensilesMenu.style.display = 'none';
+    }
+});

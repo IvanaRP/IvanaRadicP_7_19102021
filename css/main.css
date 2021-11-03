@@ -42,12 +42,19 @@ p {
   margin: 0%;
 }
 
-
-
 .header {
   display: flex;
   justify-content: center;
   padding: 10px;
+}
+
+
+
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
 
 /* SEARCH BAR */
@@ -83,6 +90,46 @@ input::placeholder {
   padding: 10px;
 }
 
+/* TAGS FROM DROPDOWN */
+
+.tags-select {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  margin: 5%;
+}
+
+.tagsIng {
+  height: 15px;
+  width: fit-content;
+  background: #3282f7;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.tagsApp {
+  height: 15px;
+  width: fit-content;
+  background: #68d9a4;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.tagsUts {
+  height: 15px;
+  width: fit-content;
+  background: #ed6454;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
 /* Buttons */
 .buttons-select {
   display: flex;
@@ -91,9 +138,6 @@ input::placeholder {
   position: relative;
   margin: 5%;
 }
-
-
-
 
 /* appareil button */
 
@@ -123,15 +167,15 @@ input::placeholder {
   flex-wrap: wrap;
   background: #68d9a4;
   color: white;
-  width:40%;
+  width: 40%;
   height: 250px;
-  overflow:hidden;
+  overflow: hidden;
   border-radius: 5px;
   padding: 10px;
-  z-index:1;
+  z-index: 1;
   position: absolute;
-  top:50px;
-  left:263px;
+  top: 50px;
+  left: 263px;
   cursor: pointer;
 }
 /* .appareil:hover + .appareil-hide {
@@ -163,7 +207,7 @@ input::placeholder {
   width: 100px;
   height: 50px;
   overflow: hidden;
-  background:  #ed6454;
+  background: #ed6454;
   color: white;
   border-radius: 5px;
   padding: 10px;
@@ -175,17 +219,17 @@ input::placeholder {
   display: none;
   flex-direction: column;
   flex-wrap: wrap;
-  background:  #ed6454;
+  background: #ed6454;
   color: white;
-  width:40%;
+  width: 40%;
   height: 250px;
-  overflow:hidden;
+  overflow: hidden;
   border-radius: 5px;
   padding: 10px;
-  z-index:1;
+  z-index: 1;
   position: absolute;
-  top:50px;
-  left:373px;
+  top: 50px;
+  left: 373px;
   cursor: pointer;
 }
 /* .ustensiles:hover + .ustensiles-hide {
@@ -215,7 +259,7 @@ input::placeholder {
   align-content: center;
   align-items: center;
   width: 100px;
-  height: 50px;
+  /* height: 50px; */
   overflow: hidden;
   background: #3282f7;
   color: white;
@@ -231,17 +275,16 @@ input::placeholder {
   flex-wrap: wrap;
   background: #3282f7;
   color: white;
-  width:40%;
+  width: 40%;
   height: 250px;
-  overflow:hidden;
+  overflow: hidden;
   border-radius: 5px;
   padding: 10px;
-  z-index:1;
+  z-index: 1;
   position: absolute;
-  top:50px;
-  left:150px;
+  top: 50px;
+  left: 150px;
   cursor: pointer;
- 
 }
 /* .ingredient:hover + .ingredient-hide {
   display: flex;
@@ -251,22 +294,13 @@ input::placeholder {
   color: white;
   width:30%;
   /* height: 250px; */
-  /* overflow: scroll;
+/* overflow: scroll;
   border-radius: 5px;
   padding: 10px;
   z-index:1;
   position: absolute;
 
-} */ 
-
-
-
-
-
-
-
-
-
+} */
 
 /* RECEPIES BOX */
 
@@ -352,32 +386,30 @@ input::placeholder {
   margin: 0;
 }
 
-
 /* new BTN */
 
-.newBtn{
+.newBtn {
   position: relative;
 }
 
-.ingredientplaceholder{
+.ingredientplaceholder {
   transition-property: width;
 }
 
-.absolute{
+.absolute {
   position: absolute;
   left: 0;
 }
 
-.ulList{
+.ulList {
   display: none;
   z-index: 10;
   height: auto;
   width: 100%;
-  overflow: hidden
+  overflow: hidden;
 }
 
-
-.ingredientlist{
+.ingredientlist {
   display: flex;
   flex-direction: row;
   width: 100px;
@@ -390,13 +422,9 @@ input::placeholder {
   margin-right: 10px;
 }
 
-
-
-
-
 /* show hide btn */
 
-.clickbtn{
+.clickbtn {
   display: flex;
   width: 200px;
   height: 40px;
@@ -405,10 +433,79 @@ input::placeholder {
   cursor: pointer;
 }
 
-.showbtn{
+.showbtn {
   display: none;
   width: 200px;
   height: 40px;
   background: #f7328e;
   color: white;
+}
+
+/* NEW DROPDOWN */
+
+
+
+.ingredientClosedDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  margin-right: 10px;
+}
+.ingredientClosed {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  background: #3282f7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.ingredientClosed::placeholder{
+  opacity: 1;
+  color: white;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  left: 100px;
+}
+
+.ingredientOpenListDiv {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background: #3282f7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 30;
+}
+
+.ingredientOpenList {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  background: #3282f7;
+  color: white;
+  border: none;
+  border-radius: 5 px;
+}
+
+.ingredient-hideDRUGI{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 300px;
+  width: 600px;
+  overflow: scroll;
 }
