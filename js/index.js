@@ -54,10 +54,10 @@ function ingredientsFun(ingredients) {
   return `<ul class="ingredients-list"> ${ingredients
     .map((ingredient) => {
       return `
-             <li>${ingredient.ingredient ? ingredient.ingredient : ""}
-             ${ingredient.quantity ? ingredient.quantity : ""}
-             ${ingredient.unit ? ingredient.unit : ""}</li>
-          
+      <div class="ingredientAll">
+             <li class="ingredientName">${ingredient.ingredient ? ingredient.ingredient : ""} : </li>
+             <li class="ingredientQuantity"> ${ingredient.quantity ? ingredient.quantity : ""} ${ingredient.unit ? ingredient.unit : ""}</li>
+     </div>
              `;
     })
     .join("")}
@@ -78,6 +78,7 @@ function recipiesBox(recipe) {
                         <div class="ingDes">
                         ${ingredientsFun(recipe.ingredients)}  
                         <p class="description">${recipe.description}</p>
+                        <p class="ustensils">${recipe.ustensils}}</p>
                         </div>
                     </div>
                 </div>
@@ -93,13 +94,12 @@ recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 //BUTTONS
 function buttonsSelect() {
   return `
- 
- 
+
+
 
 <div class=ingrBTN">
       <div class="ingredientClosedDiv" id="ingredientClosedDiv">
-      <input class="ingredientClosed" id="ingredientbtnClosed" type="text" placeholder="Ingredient"/>
-      <i class="fas fa-chevron-down" id="ingredients-down"></i>
+      <button class="ingredientClosed" id="ingredientbtnClosed"><p>Ingredient <i class="fas fa-angle-down"></i></p></button>
       </div>
 
       <div class="ingredientOpenListDiv" id="ingredientOpenListDiv">
@@ -108,15 +108,40 @@ function buttonsSelect() {
       </div>
 </div>
 
+<div class=appBTN">
+      <div class="appareilClosedDiv" id="appareilClosedDiv">
+      <button class="appareilClosed" id="appareilbtnClosed"> <p>Appareil <i class="fas fa-angle-down"></i></p></button>
+      </div>
+
+      <div class="appareilOpenListDiv" id="appareilOpenListDiv">
+      <input class="appareilOpenList" id="appareilbtn" type="text" placeholder="Rechercher un appareil..."/>
+      <div class="appareil-hideDRUGI" id="appareil-hideDRUGI"></div>
+      </div>
+</div>
+
+<div class=ustBTN">
+      <div class="ustensilesClosedDiv" id="ustensilesClosedDiv">
+      <button  class="ustensilesClosed" id="ustensilesbtnClosed"><p>Ustensiles <i class="fas fa-angle-down"></i></p></button>
+      </div>
+
+      <div class="ustensilesOpenListDiv" id="ustensilesOpenListDiv">
+      <input class="ustensilesOpenList" id="ustensilesbtn" type="text" placeholder="Rechercher un ustensiles..."/>
+      <div class="ustensiles-hideDRUGI" id="ustensiles-hideDRUGI"></div>
+      </div>
+</div>
 
 
 
-      <button class="appareil" id="appareilbtn"><p>Appareil <i class="fas fa-angle-down"></i></p></button>
-      <div class="appareil-hide" id="appareil-hide"></div>
-  
-      <button class="ustensiles" id="ustensilesbtn"><p>Ustensiles <i class="fas fa-angle-down"></i></p></button>
-      <div class="ustensiles-hide" id="ustensiles-hide"></div>
-  
+        <select>
+            <option disabled hidden selected>Select</option>
+            <option>Javascript</option>
+            <option>Angular</option>
+            <option>React</option>
+            <option>C#</option>
+        </select>
+
+
+
       `;
 }
 document.getElementById("buttons-select").innerHTML = buttonsSelect();
@@ -140,29 +165,29 @@ console.log(ingredientBtnDrugi);
 
 function ingredient(recipe) {
   return `
-         <a href="#" <li>${ingredientsFun(recipe.ingredients)} </li> 
+         <li class=listIng>${ingredientsFun(recipe.ingredients)} </li>
     `;
 }
 ingredientBtnDrugi.innerHTML = `${recipes.map(ingredient).join("")}`;
 
-
-
 // Appareil button
-let applianceBtn = document.getElementById("appareil-hide");
+let applianceBtn = document.getElementById("appareil-hideDRUGI");
 console.log(applianceBtn);
 
 function appliance(recipe) {
   
   return `
-    <div class="appliance-list">
-    <p>${recipe.appliance} </p>
+
+    <div class="appliance-list" id="appliance-list">
+    <p class="appOption" id="appOption">${recipe.appliance} </p>
     </div>
+  
   `;
 }
 applianceBtn.innerHTML = `${recipes.map(appliance).join("")}`;
 
 // Ustensiles button
-let ustensilsBtn = document.getElementById("ustensiles-hide");
+let ustensilsBtn = document.getElementById("ustensiles-hideDRUGI");
 console.log(ustensilsBtn);
 
 function ustensils(recipe) {
@@ -174,6 +199,37 @@ function ustensils(recipe) {
 }
 ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
 
+
+// // Appareil button
+// let applianceBtn = document.getElementById("appareil-hide");
+// console.log(applianceBtn);
+
+// function appliance(recipe) {
+  
+//   return `
+//     <div class="appliance-list" id="appliance-list">
+//     <p class="appOption" id="appOption">${recipe.appliance} </p>
+//     </div>
+//   `;
+// }
+// applianceBtn.innerHTML = `${recipes.map(appliance).join("")}`;
+
+// // Ustensiles button
+// let ustensilsBtn = document.getElementById("ustensiles-hide");
+// console.log(ustensilsBtn);
+
+// function ustensils(recipe) {
+//   return `
+//     <div class="ustensiles-list">
+//     <p> ${ustensilesFun(recipe.ustensils)} </p>
+//     </div>
+//   `;
+// }
+// ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
+
+
+
+// search Input BUTTON
 // // Search Input BUTTON
 let inputSearchIng = document.getElementById("ingredientbtn");
 console.log(inputSearchIng);
@@ -184,6 +240,8 @@ inputSearchIng.addEventListener("keyup", function (e) {
   let searchItemI = e.target.value.toLowerCase();
   let items = document.querySelectorAll(".recipeinput");
   console.log(items);
+  // let itemsLists = document.querySelectorAll(".ingredients-list");
+  // console.log(itemsLists);
   // select whole div
 
   // let recepiescar = document.getElementById("recepiesBox");;
@@ -199,6 +257,73 @@ inputSearchIng.addEventListener("keyup", function (e) {
     }
   });
   console.log(searchItemI);
+
+  // itemsLists.forEach(function (itemsList) {
+  //   console.log(itemsList.textContent);
+  //   if (itemsList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+  //     itemsList.closest("li").style.display ="flex";
+  //     console.log(itemsList.closest("li"));
+  //   } else {
+  //     itemsList.closest("li").style.display = "none";
+  //   }
+  // });
+  // console.log(searchItemI);
+});
+
+
+
+// search APPAREIL BUTTON
+// // Search APPAREIL  BUTTON
+let inputSearchApp = document.getElementById("appareilbtn");
+console.log(inputSearchApp);
+
+// Search Input  by input
+inputSearchApp.addEventListener("keyup", function (e) {
+  //   console.log(e.target.value);
+  let searchItemI = e.target.value.toLowerCase();
+  let items = document.querySelectorAll(".recipeinput");
+  console.log(items);
+ 
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      item.closest("li").style.display = "block";
+      console.log(item.closest("li"));
+    } else {
+      item.closest("li").style.display = "none";
+    }
+  });
+  console.log(searchItemI);
+
+ 
+});
+
+
+
+
+// search USTENSILES BUTTON
+// // Search USTENSILES  BUTTON
+let inputSearchUst = document.getElementById("ustensilesbtn");
+console.log(inputSearchUst);
+
+// Search Input  by input
+inputSearchUst.addEventListener("keyup", function (e) {
+  //   console.log(e.target.value);
+  let searchItemI = e.target.value.toLowerCase();
+  let items = document.querySelectorAll(".recipeinput");
+  console.log(items);
+ 
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      item.closest("li").style.display = "block";
+      console.log(item.closest("li"));
+    } else {
+      item.closest("li").style.display = "none";
+    }
+  });
+  console.log(searchItemI);
+
 });
 
 
@@ -255,9 +380,9 @@ window.addEventListener('mouseup', function(event){
 
 
 // btn Appareil
-let btnApp = document.getElementById("appareilbtn");
+let btnApp = document.getElementById("appareilClosedDiv");
 console.log(btnApp);
-let btnAppList = document.getElementById("appareil-hide");
+let btnAppList = document.getElementById("appareilOpenListDiv");
 console.log(btnAppList);
 
 btnApp.addEventListener("click", () => {
@@ -271,7 +396,7 @@ btnApp.addEventListener("click", () => {
 
 // click outside hide dropdown Appareil
 window.addEventListener('mouseup', function(event){
-	let appareilMenu = document.getElementById('appareil-hide');
+	let appareilMenu = document.getElementById('appareilOpenListDiv');
 	if (event.target != appareilMenu && event.target.parentNode != appareilMenu){
     appareilMenu.style.display = 'none';
     }
@@ -280,9 +405,9 @@ window.addEventListener('mouseup', function(event){
 
 
 // btn Ustensiles
-let btnUst = document.getElementById("ustensilesbtn");
+let btnUst = document.getElementById("ustensilesClosedDiv");
 console.log(btnUst);
-let btnUstList = document.getElementById("ustensiles-hide");
+let btnUstList = document.getElementById("ustensilesOpenListDiv");
 console.log(btnUstList);
 
 btnUst.addEventListener("click", () => {
@@ -297,8 +422,42 @@ btnUst.addEventListener("click", () => {
 
 // click outside hide dropdown Ustensiles
 window.addEventListener('mouseup', function(event){
-	let ustensilesMenu = document.getElementById('ustensiles-hide');
+	let ustensilesMenu = document.getElementById('ustensilesOpenListDiv');
 	if (event.target != ustensilesMenu && event.target.parentNode != ustensilesMenu){
     ustensilesMenu.style.display = 'none';
     }
+});
+
+
+
+
+
+// get value of dropdown
+// let selection = document.querySelector('select');
+// let result = document.getElementById('test');
+
+
+// selection.addEventListener('change', () => {
+//   result.innerHTML = selection.options[selection.selectedIndex].text;
+// });
+
+
+// get value of dropdown APPLIANCE
+// let selectionApp = document.getElementById('appliance-list');
+// console.log(selectionApp);
+// let resultApp = document.getElementById('tagsApp');
+// console.log(resultApp);
+
+
+// selectionApp.addEventListener('change', () => {
+//   resultApp.innerHTML = selectionApp.options[selectionApp.selectedIndex].text;
+// });
+
+
+// GET VALUE FROM DROPDOWN TO DIV
+let selection = document.querySelector('select');
+let result = document.getElementById('tagsIng');
+selection.addEventListener('change', () => {
+    result.innerText = selection.options[selection.selectedIndex].value;
+    console.log(selection.selectedIndex);
 });

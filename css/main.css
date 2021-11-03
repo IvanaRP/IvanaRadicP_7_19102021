@@ -48,8 +48,6 @@ p {
   padding: 10px;
 }
 
-
-
 textarea {
   border: none;
   background-color: transparent;
@@ -92,15 +90,9 @@ input::placeholder {
 
 /* TAGS FROM DROPDOWN */
 
-.tags-select {
+.IngIcon {
   display: flex;
   flex-direction: row;
-  align-content: center;
-  justify-content: flex-start;
-  margin: 5%;
-}
-
-.tagsIng {
   height: 15px;
   width: fit-content;
   background: #3282f7;
@@ -109,14 +101,48 @@ input::placeholder {
   padding: 10px;
   margin-right: 10px;
 }
+.tags-All {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  margin: 5%;
+}
 
-.tagsApp {
+.tagsIng {
+  display: flex;
+  align-items: center;
+justify-content: center;
+  /* height: 15px; */
+  width: fit-content;
+  /* background: #3282f7; */
+  color: white;
+  border-radius: 5px;
+  /* padding: 10px; */
+  margin-right: 10px;
+}
+
+.AppIcon {
+  display: flex;
+  flex-direction: row;
   height: 15px;
   width: fit-content;
   background: #68d9a4;
   color: white;
   border-radius: 5px;
   padding: 10px;
+  margin-right: 10px;
+}
+.tagsApp {
+  display: flex;
+  align-items: center;
+justify-content: center;
+  /* height: 15px; */
+  width: fit-content;
+  /* background: #68d9a4; */
+  color: white;
+  border-radius: 5px;
+  /* padding: 10px; */
   margin-right: 10px;
 }
 
@@ -376,6 +402,23 @@ input::placeholder {
   font-size: 0.8em;
   padding-right: 10px;
 }
+
+.ingredientAll {
+  display: flex;
+  flex-direction: row;
+}
+.ingredientName {
+  display: flex;
+  margin-right: 2px;
+}
+.ingredientQuantity {
+  display: flex;
+}
+
+.listIng:hover {
+  background: #2059ad;
+  cursor: pointer;
+}
 .description {
   text-overflow: ellipsis;
   /* white-space: nowrap; */
@@ -384,6 +427,10 @@ input::placeholder {
   height: 50px;
   font-size: 0.8em;
   margin: 0;
+}
+
+.ustensils {
+  display: none;
 }
 
 /* new BTN */
@@ -443,8 +490,7 @@ input::placeholder {
 
 /* NEW DROPDOWN */
 
-
-
+/* ingredient BTN */
 .ingredientClosedDiv {
   display: flex;
   flex-direction: row;
@@ -455,6 +501,7 @@ input::placeholder {
 .ingredientClosed {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 50px;
   background: #3282f7;
   color: white;
@@ -462,7 +509,7 @@ input::placeholder {
   border-radius: 5px;
 }
 
-.ingredientClosed::placeholder{
+.ingredientClosed::placeholder {
   opacity: 1;
   color: white;
 }
@@ -500,7 +547,151 @@ input::placeholder {
   border-radius: 5 px;
 }
 
-.ingredient-hideDRUGI{
+.ingredient-hideDRUGI {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 300px;
+  width: 600px;
+  overflow: scroll;
+}
+
+/* appareil BTN */
+.appareilClosedDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  margin-right: 10px;
+}
+.appareilClosed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background: #68d9a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.appareilClosed::placeholder {
+  opacity: 1;
+  color: white;
+}
+
+.fa-chevron-down app {
+  position: absolute;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  left: 100px;
+}
+.appIcon {
+  color: rgb(139, 43, 43);
+  cursor: pointer;
+  left: 264 px;
+}
+
+.appareilOpenListDiv {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background: #68d9a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 30;
+}
+
+.appareilOpenList {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  background: #68d9a4;
+  color: white;
+  border: none;
+  border-radius: 5 px;
+}
+
+.appareil-hideDRUGI {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 300px;
+  width: 600px;
+  overflow: scroll;
+}
+
+/* ustensiles BTN */
+.ustensilesClosedDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  margin-right: 10px;
+}
+.ustensilesClosed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background: #ed6454;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.ustensilesClosed::placeholder {
+  opacity: 1;
+  color: white;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  left: 100px;
+}
+.appIcon {
+  color: rgb(139, 43, 43);
+  cursor: pointer;
+  left: 264 px;
+}
+
+.ustensilesOpenListDiv {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  background: #ed6454;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 30;
+}
+
+.ustensilesOpenList {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  background: #ed6454;
+  color: white;
+  border: none;
+  border-radius: 5 px;
+}
+
+.ustensiles-hideDRUGI {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
