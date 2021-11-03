@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script src="https://kit.fontawesome.com/f9349f7e63.js" crossorigin="anonymous" ></script>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-
+    <script
+      src="https://kit.fontawesome.com/f9349f7e63.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
 
     <title>Les Petits Plats</title>
   </head>
@@ -17,58 +23,54 @@
     <header class="header__info">
       <div class="header">
         <a href="index.html"
-          ><img class="header__logo" src="./img/Logo.svg" alt="Les Petits Plats"
+          ><img
+            class="header__logo"
+            src="./img/Logo.svg"
+            alt="Les Petits Plats"
         /></a>
       </div>
     </header>
 
     <!--MAIN-->
     <main>
-
       <div class="search">
         <div class="search-every">
-          <input class="searchBar" id="searchBar" type="text" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"/>
+          <input
+            class="searchBar"
+            id="searchBar"
+            type="text"
+            placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+          />
           <i class="fas fa-search"></i>
         </div>
       </div>
 
-         <!-- SELECTED  TAG FROM DROPDOWN -->
-         <div class="tags-All"> 
-         
-              <div class="IngIcon">
-                <div class="tagsIng" id="tagsIng"></div>
-                <i class="far fa-times-circle"></i></div>
-              </div>
-
-              <div class="AppIcon">
-                <div class="tagsApp" id="tagsApp"></div>
-                <i class="far fa-times-circle"></i></div>
-              </div>
-
-              <div class="UtsIcon">
-                <div class="tagsUts" id="tagsUts"></div>
-                <i class="far fa-times-circle"></i></div>
-              </div>
-          </div>
+      <!-- SELECTED  TAG FROM DROPDOWN -->
+      <div class="tags-All">
+        <div class="IngIcon">
+          <div class="tagsIng" id="tagsIng"></div>
+          <div class="tagsIng"><i class="far fa-times-circle"></i></div>
         </div>
-       
+        <div class="AppIcon">
+          <div class="tagsApp" id="tagsApp"></div>
+          <div class="tagsApp"><i class="far fa-times-circle"></i></div>
+        </div>
+        <div class="UtsIcon">
+          <div class="tagsUts" id="tagsUts"></div>
+          <div class="tagsUts"><i class="far fa-times-circle"></i></div>
+        </div>
+      </div>
 
+      <!-- BUTTONS -->
+      <div class="buttons-select" id="buttons-select"></div>
 
-        <!-- BUTTONS -->
-        <div class="buttons-select" id="buttons-select"></div>
+      <!-- RECEPIES -->
+      <div class="recepies-main" id="recepies"></div>
 
-
-        <!-- RECEPIES -->
-        <div class="recepies-main" id="recepies"></div>
-
-       
- 
       <!--JAVASCRIPT -->
       <!-- <script type="module" src="./js/main.js"></script> -->
       <script type="module" src="./js/index.js"></script>
       <script type="module" src="./js/dropdown.js"></script>
-    
     </main>
   </body>
-
 </html>

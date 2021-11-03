@@ -145,14 +145,27 @@ justify-content: center;
   /* padding: 10px; */
   margin-right: 10px;
 }
-
-.tagsUts {
+.UtsIcon {
+  display: flex;
+  flex-direction: row;
   height: 15px;
   width: fit-content;
   background: #ed6454;
   color: white;
   border-radius: 5px;
   padding: 10px;
+  margin-right: 10px;
+}
+.tagsUts {
+  display: flex;
+  align-items: center;
+justify-content: center;
+  /* height: 15px; */
+  width: fit-content;
+  /* background: #ed6454; */
+  color: white;
+  border-radius: 5px;
+  /* padding: 10px; */
   margin-right: 10px;
 }
 
