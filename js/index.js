@@ -192,9 +192,11 @@ console.log(ustensilsBtn);
 
 function ustensils(recipe) {
   return `
+  <li>
     <div class="ustensiles-list">
     <p> ${ustensilesFun(recipe.ustensils)} </p>
     </div>
+    </li>
   `;
 }
 ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
@@ -310,9 +312,12 @@ console.log(inputSearchUst);
 inputSearchUst.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
+
+  // search in recipe cards
   let items = document.querySelectorAll(".recipeinput");
   console.log(items);
- 
+
+
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
@@ -320,6 +325,21 @@ inputSearchUst.addEventListener("keyup", function (e) {
       console.log(item.closest("li"));
     } else {
       item.closest("li").style.display = "none";
+    }
+  });
+
+
+// search for list Items
+let itemsLists = document.querySelectorAll(".ustensiles-list");
+console.log(itemsLists);
+
+  itemsLists.forEach(function (itemsList) {
+    console.log(itemsList.textContent);
+    if (itemsList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      itemsList.closest("li").style.display = "block";
+      console.log(itemsList.closest("li"));
+    } else {
+      itemsList.closest("li").style.display = "none";
     }
   });
   console.log(searchItemI);
