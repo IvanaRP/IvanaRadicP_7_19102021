@@ -639,7 +639,7 @@ input::placeholder {
   justify-content: center;
   height: 300px;
   width: 600px;
-  overflow: scroll;
+ 
 }
 
 /* ustensiles BTN */
@@ -726,4 +726,18 @@ input::placeholder {
   border-radius: 5px;
   padding: 10px;
   margin-right: 10px;
+  margin: 5px;
 }
+
+
+.buttonInput{
+  display: flex;
+  height: 25px;
+  width: fit-content;
+  background: #ed6454;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+

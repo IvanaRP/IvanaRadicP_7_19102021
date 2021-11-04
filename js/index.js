@@ -441,7 +441,7 @@ console.log(applianceBtnNovo);
 function appliancenovo(recipe) {
   return `
 
-              <option>${recipe.appliance}</option>
+              <option class="dropdownApp">${recipe.appliance}</option>
        
  
   `;
@@ -486,7 +486,7 @@ console.log(tagsClose);
 
 tagsClose.addEventListener('click' , () => {
   if (tagBox.style.display === "none") {
-    tagBox.style.display = "block";
+    tagBox.style.display = "flex";
   } else {
     tagBox.style.display = "none";
   }
