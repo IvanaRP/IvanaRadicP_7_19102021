@@ -112,7 +112,7 @@ input::placeholder {
 .tagsIng {
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
   /* height: 15px; */
   width: fit-content;
   /* background: #3282f7; */
@@ -136,7 +136,7 @@ justify-content: center;
 .tagsApp {
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
   /* height: 15px; */
   width: fit-content;
   /* background: #68d9a4; */
@@ -159,7 +159,7 @@ justify-content: center;
 .tagsUts {
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
   /* height: 15px; */
   width: fit-content;
   /* background: #ed6454; */
@@ -712,4 +712,18 @@ justify-content: center;
   height: 300px;
   width: 600px;
   overflow: scroll;
+}
+
+/* dropdown input button */
+
+.inputSelected {
+  display: none;
+  flex-direction: row;
+  height: 15px;
+  width: fit-content;
+  background: #ed6454;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
 }

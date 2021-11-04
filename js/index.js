@@ -2,8 +2,6 @@
 import { recipes } from "./recipes.js";
 console.log(recipes);
 
-
-
 // // Search Input
 let inputSearch = document.getElementById("searchBar");
 console.log(inputSearch);
@@ -55,8 +53,12 @@ function ingredientsFun(ingredients) {
     .map((ingredient) => {
       return `
       <div class="ingredientAll">
-             <li class="ingredientName">${ingredient.ingredient ? ingredient.ingredient : ""} : </li>
-             <li class="ingredientQuantity"> ${ingredient.quantity ? ingredient.quantity : ""} ${ingredient.unit ? ingredient.unit : ""}</li>
+             <li class="ingredientName">${
+               ingredient.ingredient ? ingredient.ingredient : ""
+             } : </li>
+             <li class="ingredientQuantity"> ${
+               ingredient.quantity ? ingredient.quantity : ""
+             } ${ingredient.unit ? ingredient.unit : ""}</li>
      </div>
              `;
     })
@@ -73,7 +75,9 @@ function recipiesBox(recipe) {
                     <div class="recepiesinfo">
                       <div class="nameTime">
                         <h3 class="name" id="name">${recipe.name}</h3>
-                        <h3 class="time"><i class="far fa-clock"></i>${recipe.time} min</h3>
+                        <h3 class="time"><i class="far fa-clock"></i>${
+                          recipe.time
+                        } min</h3>
                       </div>
                         <div class="ingDes">
                         ${ingredientsFun(recipe.ingredients)}  
@@ -89,7 +93,6 @@ recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
 // <div class="ingredient-hide" id="ingredient-hide"></div>
 //<button class="ingredient" id="ingredientbtn"><p>Ingredient <i class="fas fa-angle-down"></i></p></button>
-
 
 //BUTTONS
 function buttonsSelect() {
@@ -131,17 +134,6 @@ function buttonsSelect() {
 </div>
 
 
-
-        <select>
-            <option disabled hidden selected>Select</option>
-            <option>Javascript</option>
-            <option>Angular</option>
-            <option>React</option>
-            <option>C#</option>
-        </select>
-
-
-
       `;
 }
 document.getElementById("buttons-select").innerHTML = buttonsSelect();
@@ -152,12 +144,10 @@ document.getElementById("buttons-select").innerHTML = buttonsSelect();
 
 // function ingredient(recipe) {
 //   return `
-//          <a href="#" <li>${ingredientsFun(recipe.ingredients)} </li> 
+//          <a href="#" <li>${ingredientsFun(recipe.ingredients)} </li>
 //     `;
 // }
 // ingredientBtn.innerHTML = `${recipes.map(ingredient).join("")}`;
-
-
 
 // Ingredient button list DRUGIPOKUSAJ
 let ingredientBtnDrugi = document.getElementById("ingredient-hideDRUGI");
@@ -175,13 +165,12 @@ let applianceBtn = document.getElementById("appareil-hideDRUGI");
 console.log(applianceBtn);
 
 function appliance(recipe) {
-  
   return `
-
+  <li>
     <div class="appliance-list" id="appliance-list">
     <p class="appOption" id="appOption">${recipe.appliance} </p>
     </div>
-  
+  </li>
   `;
 }
 applianceBtn.innerHTML = `${recipes.map(appliance).join("")}`;
@@ -196,18 +185,17 @@ function ustensils(recipe) {
     <div class="ustensiles-list">
     <p> ${ustensilesFun(recipe.ustensils)} </p>
     </div>
-    </li>
+  </li>
   `;
 }
 ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
-
 
 // // Appareil button
 // let applianceBtn = document.getElementById("appareil-hide");
 // console.log(applianceBtn);
 
 // function appliance(recipe) {
-  
+
 //   return `
 //     <div class="appliance-list" id="appliance-list">
 //     <p class="appOption" id="appOption">${recipe.appliance} </p>
@@ -229,8 +217,6 @@ ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
 // }
 // ustensilsBtn.innerHTML = `${recipes.map(ustensils).join("")}`;
 
-
-
 // search Input BUTTON
 // // Search Input BUTTON
 let inputSearchIng = document.getElementById("ingredientbtn");
@@ -240,14 +226,9 @@ console.log(inputSearchIng);
 inputSearchIng.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
+
   let items = document.querySelectorAll(".recipeinput");
   console.log(items);
-  // let itemsLists = document.querySelectorAll(".ingredients-list");
-  // console.log(itemsLists);
-  // select whole div
-
-  // let recepiescar = document.getElementById("recepiesBox");;
-  // console.log(recepiescar);
 
   items.forEach(function (item) {
     console.log(item.textContent);
@@ -258,21 +239,22 @@ inputSearchIng.addEventListener("keyup", function (e) {
       item.closest("li").style.display = "none";
     }
   });
+
+  let ingLists = document.querySelectorAll(".ingredients-list");
+  console.log(ingLists);
+
+  ingLists.forEach(function (ingList) {
+    console.log(ingList.textContent);
+    if (ingList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      ingList.closest("li").style.display = "block";
+      console.log(ingList.closest("li"));
+    } else {
+      ingList.closest("li").style.display = "none";
+    }
+  });
+
   console.log(searchItemI);
-
-  // itemsLists.forEach(function (itemsList) {
-  //   console.log(itemsList.textContent);
-  //   if (itemsList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-  //     itemsList.closest("li").style.display ="flex";
-  //     console.log(itemsList.closest("li"));
-  //   } else {
-  //     itemsList.closest("li").style.display = "none";
-  //   }
-  // });
-  // console.log(searchItemI);
 });
-
-
 
 // search APPAREIL BUTTON
 // // Search APPAREIL  BUTTON
@@ -283,9 +265,10 @@ console.log(inputSearchApp);
 inputSearchApp.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
+
   let items = document.querySelectorAll(".recipeinput");
   console.log(items);
- 
+
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
@@ -295,13 +278,22 @@ inputSearchApp.addEventListener("keyup", function (e) {
       item.closest("li").style.display = "none";
     }
   });
+
+  let appLists = document.querySelectorAll(".appliance-list");
+  console.log(appLists);
+
+  appLists.forEach(function (appList) {
+    console.log(appList.textContent);
+    if (appList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      appList.closest("li").style.display = "block";
+      console.log(appList.closest("li"));
+    } else {
+      appList.closest("li").style.display = "none";
+    }
+  });
+
   console.log(searchItemI);
-
- 
 });
-
-
-
 
 // search USTENSILES BUTTON
 // // Search USTENSILES  BUTTON
@@ -317,7 +309,6 @@ inputSearchUst.addEventListener("keyup", function (e) {
   let items = document.querySelectorAll(".recipeinput");
   console.log(items);
 
-
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
@@ -328,24 +319,21 @@ inputSearchUst.addEventListener("keyup", function (e) {
     }
   });
 
+  // search for list Items
+  let ustLists = document.querySelectorAll(".ustensiles-list");
+  console.log(ustLists);
 
-// search for list Items
-let itemsLists = document.querySelectorAll(".ustensiles-list");
-console.log(itemsLists);
-
-  itemsLists.forEach(function (itemsList) {
-    console.log(itemsList.textContent);
-    if (itemsList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      itemsList.closest("li").style.display = "block";
-      console.log(itemsList.closest("li"));
+  ustLists.forEach(function (ustList) {
+    console.log(ustList.textContent);
+    if (ustList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      ustList.closest("li").style.display = "block";
+      console.log(ustList.closest("li"));
     } else {
-      itemsList.closest("li").style.display = "none";
+      ustList.closest("li").style.display = "none";
     }
   });
   console.log(searchItemI);
-
 });
-
 
 // // dropdownBTN show div with list
 // // btn Ingredients
@@ -380,24 +368,23 @@ let btnIngList = document.getElementById("ingredientOpenListDiv");
 console.log(btnIngList);
 
 btnIng.addEventListener("click", () => {
-  if(btnIngList.style.display === "none"){
+  if (btnIngList.style.display === "none") {
     btnIngList.style.display = "flex";
   } else {
-    btnIngList.style.display = "none"
+    btnIngList.style.display = "none";
   }
-
 });
 
 // click outside hide dropdown Ingredient
-window.addEventListener('mouseup', function(event){
-	let ingredientMenu = document.getElementById('ingredientOpenListDiv');
-	if (event.target != ingredientMenu && event.target.parentNode != ingredientMenu){
-    ingredientMenu.style.display = 'none';
-    }
+window.addEventListener("mouseup", function (event) {
+  let ingredientMenu = document.getElementById("ingredientOpenListDiv");
+  if (
+    event.target != ingredientMenu &&
+    event.target.parentNode != ingredientMenu
+  ) {
+    ingredientMenu.style.display = "none";
+  }
 });
-
-
-
 
 // btn Appareil
 let btnApp = document.getElementById("appareilClosedDiv");
@@ -406,23 +393,20 @@ let btnAppList = document.getElementById("appareilOpenListDiv");
 console.log(btnAppList);
 
 btnApp.addEventListener("click", () => {
-  if(btnAppList.style.display === "none"){
+  if (btnAppList.style.display === "none") {
     btnAppList.style.display = "flex";
   } else {
-    btnAppList.style.display = "none"
+    btnAppList.style.display = "none";
   }
-
 });
 
 // click outside hide dropdown Appareil
-window.addEventListener('mouseup', function(event){
-	let appareilMenu = document.getElementById('appareilOpenListDiv');
-	if (event.target != appareilMenu && event.target.parentNode != appareilMenu){
-    appareilMenu.style.display = 'none';
-    }
+window.addEventListener("mouseup", function (event) {
+  let appareilMenu = document.getElementById("appareilOpenListDiv");
+  if (event.target != appareilMenu && event.target.parentNode != appareilMenu) {
+    appareilMenu.style.display = "none";
+  }
 });
-
-
 
 // btn Ustensiles
 let btnUst = document.getElementById("ustensilesClosedDiv");
@@ -431,53 +415,79 @@ let btnUstList = document.getElementById("ustensilesOpenListDiv");
 console.log(btnUstList);
 
 btnUst.addEventListener("click", () => {
-  if(btnUstList.style.display === "none"){
+  if (btnUstList.style.display === "none") {
     btnUstList.style.display = "flex";
   } else {
-    btnUstList.style.display = "none"
+    btnUstList.style.display = "none";
   }
-
 });
-
 
 // click outside hide dropdown Ustensiles
-window.addEventListener('mouseup', function(event){
-	let ustensilesMenu = document.getElementById('ustensilesOpenListDiv');
-	if (event.target != ustensilesMenu && event.target.parentNode != ustensilesMenu){
-    ustensilesMenu.style.display = 'none';
-    }
+window.addEventListener("mouseup", function (event) {
+  let ustensilesMenu = document.getElementById("ustensilesOpenListDiv");
+  if (
+    event.target != ustensilesMenu &&
+    event.target.parentNode != ustensilesMenu
+  ) {
+    ustensilesMenu.style.display = "none";
+  }
 });
 
 
+// Appareil button
+let applianceBtnNovo = document.getElementById("buttonInput");
+console.log(applianceBtnNovo);
 
+function appliancenovo(recipe) {
+  return `
 
+              <option>${recipe.appliance}</option>
+       
+ 
+  `;
+}
+applianceBtnNovo.innerHTML = `${recipes.map(appliancenovo).join("")}`;
 
-// get value of dropdown
-// let selection = document.querySelector('select');
-// let result = document.getElementById('test');
-
-
-// selection.addEventListener('change', () => {
-//   result.innerHTML = selection.options[selection.selectedIndex].text;
-// });
-
-
-// get value of dropdown APPLIANCE
-// let selectionApp = document.getElementById('appliance-list');
-// console.log(selectionApp);
-// let resultApp = document.getElementById('tagsApp');
-// console.log(resultApp);
-
-
-// selectionApp.addEventListener('change', () => {
-//   resultApp.innerHTML = selectionApp.options[selectionApp.selectedIndex].text;
-// });
+// // // GET VALUE FROM DROPDOWN TO DIV
+// function buttonInput() {
+//   return `<select>
+//               <option>Blender</option>
+//               <option>Saladier</option>
+//               <option>Four</option>
+//               <option>Mixer</option>
+//           </select>
+//     `;
+// }
+// document.getElementById("buttonInput").innerHTML = buttonInput();
 
 
 // GET VALUE FROM DROPDOWN TO DIV
-let selection = document.querySelector('select');
-let result = document.getElementById('tagsIng');
-selection.addEventListener('change', () => {
-    result.innerText = selection.options[selection.selectedIndex].value;
-    console.log(selection.selectedIndex);
+let selection = document.querySelector("select");
+console.log(selection);
+let result = document.getElementById("inputSelectedTags");
+console.log(result);
+
+let tagBox = document.getElementById("inputSelected");
+console.log(tagBox);
+
+
+selection.addEventListener("change", () => {
+  tagBox.style.display = 'flex';
+  result.innerText = selection.options[selection.selectedIndex].value;
+  console.log(selection.selectedIndex);
+});
+
+
+
+// close TAG on X
+let tagsClose = document.getElementById('tagsClose');
+console.log(tagsClose);
+
+
+tagsClose.addEventListener('click' , () => {
+  if (tagBox.style.display === "none") {
+    tagBox.style.display = "block";
+  } else {
+    tagBox.style.display = "none";
+  }
 });
