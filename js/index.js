@@ -2,6 +2,50 @@
 import { recipes } from "./recipes.js";
 console.log(recipes);
 
+// remove duplicate  value from an array
+// let recipes1 = recipes;
+// console.log(recipes1);
+
+// display Photographers
+// function drawPhotographersHtmlBox() {
+//   let filteredUserhtml = filteredUsers
+//     .map((user) => {
+//       let tagsHtml = user.tags
+//         .map((tag) => {
+//           return `<a href="index.html?tags=${tag}"><p onClick=filterByTag("${tag}") id="tags" class="tags" >#${tag}</p></a>`;
+//         })
+//         .join("");
+//       return `
+//              <div class = "filteredUser__infoButton"> 
+//                             <p class="id">${filteredUser.id}</p>
+//                   </div> 
+           
+//       `;
+//     }).join("");
+//   document.querySelector("#photographer").innerHTML = filteredUserhtml;
+// }
+// let appliance1 
+// let filteredApp 
+
+// function drawAppliance() {
+//   let filteredApphtml = filteredApp
+//     .map((recipes1) => {
+//       return `
+//              <div class = "filteredUser__infoButton"> 
+//                             <p class="id">${recipes1.appliance}</p>
+//                   </div> 
+           
+//       `;
+//     }).join("");
+//   document.querySelector("#photographer").innerHTML = filteredApphtml;
+// };
+
+// drawAppliance();
+
+
+// appliance1 = filteredApp;
+// console.log(appliance1);
+
 // // Search Input
 let inputSearch = document.getElementById("searchBar");
 console.log(inputSearch);
@@ -31,7 +75,7 @@ inputSearch.addEventListener("keyup", function (e) {
 });
 
 // recepiesCards
-let recepiesCard = document.getElementById("recepies");
+let recepiesCard = document.getElementById("recepies-card");
 console.log(recepiesCard);
 
 //display all Ustensiles
@@ -39,13 +83,15 @@ function ustensilesFun(ustensils) {
   return `<ul class="ustensils-list"> ${ustensils
     .map((ustensil) => {
       return `
-               <li>${ustensil}</li>
+               <li id="ustDropList">${ustensil}</li>
                `;
     })
     .join("")}
               </ul>
         `;
 }
+
+
 
 //display all Ingredents
 function ingredientsFun(ingredients) {
@@ -66,6 +112,8 @@ function ingredientsFun(ingredients) {
             </ul>
       `;
 }
+
+
 
 // draw recepiesCard
 function recipiesBox(recipe) {
@@ -159,21 +207,50 @@ function ingredient(recipe) {
     `;
 }
 ingredientBtnDrugi.innerHTML = `${recipes.map(ingredient).join("")}`;
+console.log(ingredientBtnDrugi);
+
+// unique 
+// let app = recipes.map(appliance);
+// console.log(app);
+
+// let uniqueApp = [... new Set(app)];
+// console.log(uniqueApp);
+
+
+// let ing = recipes.map(ingredient);
+// console.log(app);
+
+// let uniqueIng = [... new Set(ing)];
+// console.log(uniqueIng);
+
+
+
 
 // Appareil button
 let applianceBtn = document.getElementById("appareil-hideDRUGI");
 console.log(applianceBtn);
 
+
+
 function appliance(recipe) {
   return `
   <li>
     <div class="appliance-list" id="appliance-list">
-    <p class="appOption" id="appOption">${recipe.appliance} </p>
+    <p class="appOption" id="appOption">${recipe.appliance}</p>
     </div>
   </li>
   `;
 }
 applianceBtn.innerHTML = `${recipes.map(appliance).join("")}`;
+
+
+let uniq = [...new Set(recipes.map(appliance))];
+console.log(uniq);
+
+applianceBtn.innerHTML = uniq;
+console.log(applianceBtn);
+
+
 
 // Ustensiles button
 let ustensilsBtn = document.getElementById("ustensiles-hideDRUGI");
@@ -435,18 +512,18 @@ window.addEventListener("mouseup", function (event) {
 
 
 // Appareil button
-let applianceBtnNovo = document.getElementById("buttonInput");
-console.log(applianceBtnNovo);
+// let applianceBtnNovo = document.getElementById("buttonInput");
+// console.log(applianceBtnNovo);
 
-function appliancenovo(recipe) {
-  return `
+// function appliancenovo(recipe) {
+//   return `
 
-              <option class="dropdownApp">${recipe.appliance}</option>
+//               <option class="dropdownApp">${recipe.appliance}</option>
        
  
-  `;
-}
-applianceBtnNovo.innerHTML = `${recipes.map(appliancenovo).join("")}`;
+//   `;
+// }
+// applianceBtnNovo.innerHTML = `${recipes.map(appliancenovo).join("")}`;
 
 // // // GET VALUE FROM DROPDOWN TO DIV
 // function buttonInput() {
@@ -462,32 +539,52 @@ applianceBtnNovo.innerHTML = `${recipes.map(appliancenovo).join("")}`;
 
 
 // GET VALUE FROM DROPDOWN TO DIV
-let selection = document.querySelector("select");
-console.log(selection);
-let result = document.getElementById("inputSelectedTags");
-console.log(result);
+// let selection = document.querySelector("select");
+// console.log(selection);
+// let result = document.getElementById("inputSelectedTags");
+// console.log(result);
 
-let tagBox = document.getElementById("inputSelected");
-console.log(tagBox);
-
-
-selection.addEventListener("change", () => {
-  tagBox.style.display = 'flex';
-  result.innerText = selection.options[selection.selectedIndex].value;
-  console.log(selection.selectedIndex);
-});
+// let tagBox = document.getElementById("inputSelected");
+// console.log(tagBox);
 
 
+// selection.addEventListener("change", () => {
+//   tagBox.style.display = 'flex';
+//   result.innerText = selection.options[selection.selectedIndex].value;
+//   console.log(selection.selectedIndex);
+// });
 
-// close TAG on X
-let tagsClose = document.getElementById('tagsClose');
-console.log(tagsClose);
 
 
-tagsClose.addEventListener('click' , () => {
-  if (tagBox.style.display === "none") {
-    tagBox.style.display = "flex";
-  } else {
-    tagBox.style.display = "none";
-  }
-});
+// // close TAG on X
+// let tagsClose = document.getElementById('tagsClose');
+// console.log(tagsClose);
+
+
+// tagsClose.addEventListener('click' , () => {
+//   if (tagBox.style.display === "none") {
+//     tagBox.style.display = "flex";
+//   } else {
+//     tagBox.style.display = "none";
+//   }
+// });
+
+
+
+// // add listenr to list Ust
+
+// let ustDropList = document.getElementById('ustDropList');
+// console.log(ustDropList);
+
+
+// let tagsUts = document.getElementById('tagsUts');
+// console.log(tagsUts);
+
+// ustDropList.addEventListener("change", () => {
+//   tagsUts.innerText = ustDropList.options[ustDropListselectedIndex].value;
+// //   console.log(selection.selectedIndex);
+ 
+// });
+
+
+
