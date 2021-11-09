@@ -4,7 +4,6 @@ console.log(recipes);
 
 // make variables
 
-
 let ingredientsAll = [];
 console.log(ingredientsAll);
 
@@ -113,7 +112,8 @@ function recipiesBox(recipe) {
                         <div class="ingDes">
                             ${ingredientsFun(recipe.ingredients)}
                             <p class="description">${recipe.description}</p>
-                            <p class="ustensils">${recipe.ustensils}}</p>
+                            <p class="ustensils">${recipe.ustensils}</p>
+                            <p class="appliances">${recipe.appliance}</p>
                         </div>
                     </div>
                 </div>
@@ -504,7 +504,6 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
   }
 });
 
-
 // close TAG on X
 // let tagsClose = document.getElementById("novakocka");
 // console.log(tagsClose);
@@ -516,41 +515,58 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
 //     novakocka.style.display = "none";
 //   }
 // });
-// 
+//
 
 
-// search by button
 
+
+// // search by selected List USTENSILS
+// document.getElementById("appListAll").addEventListener("click", function (e) {
+//   console.log(e.target.textContent);
+
+//   let searchItemI = e.target.textContent;
+//   let items = document.querySelectorAll(".appliances");
+//   console.log(items);
+
+//   // let noResult = document.getElementById("not-found");
+//   // console.log(noResult);
+
+//   items.forEach(function (item) {
+//     console.log(item.textContent);
+//     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+//       item.closest("recepiesBox").style.display = "block";
+//       // recetB.style.display = "block";
+//       console.log(item.closest("recepiesBox"));
+//     } else {
+//       item.closest(".recepiesinfo").style.display = "none";
+//       // recetB.style.display = "none";
+//       // noResult.style.display = "flex";
+//     }
+//   });
+// });
+
+
+// search by selected List USTENSILS
 document.getElementById("ustListAll").addEventListener("click", function (e) {
   // console.log(e.target.textContent);
-// let listClicked = e.target.textContent;
-// console.log(listClicked);
 
-let searchItemI = e.target.textContent;
-let items = document.querySelectorAll(".recepiesBox");
+  let searchItemI = e.target.textContent;
+  let items = document.querySelectorAll(".ustensils");
   console.log(items);
+
   let noResult = document.getElementById("not-found");
   console.log(noResult);
 
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      item.closest("div").style.display = "block";
-      console.log(item.closest("div"));
+      item.closest(".recepiesBox").style.display = "block";
+      // recetB.style.display = "block";
+      console.log(item.closest(".recepiesBox"));
     } else {
-      item.closest("div").style.display = "none";
+      item.closest(".recepiesBox").style.display = "none";
+      // recetB.style.display = "none";
       noResult.style.display = "flex";
     }
   });
-
-
-//   document.querySelectorAll('.row').forEach(function(row){
-//     text = row.innerText.toLowerCase();
-//     if(text.match(search)){
-//         row.style.display="block"
-//     } else {
-//         row.style.display="none"
-//     }
-// })
-
 });
