@@ -61,22 +61,16 @@ notFound.innerHTML = ` <div class="notFoundBox">
 
 document.getElementById("not-found").appendChild(notFound);
 
-
-
 // click outside hide Not Found div
 window.addEventListener("mouseup", function (event) {
-    let notfoundbox = document.getElementById("not-found");
-    // let allRecipesBox = document.getElementById("recepies-card");
-    // console.log(allRecipesBox);
-    if (
-      event.target != notfoundbox &&
-      event.target.parentNode != notfoundbox
-    ) {
-      notfoundbox.style.display = "none";
+  let notfoundbox = document.getElementById("not-found");
+  // let allRecipesBox = document.getElementById("recepies-card");
+  // console.log(allRecipesBox);
+  if (event.target != notfoundbox && event.target.parentNode != notfoundbox) {
+    notfoundbox.style.display = "none";
     //   allRecipesBox.style.display = "flex";
-
-    }
-  });
+  }
+});
 
 //display all Ingredents
 function ingredientsFun(ingredients) {
@@ -145,9 +139,10 @@ inputSearch.addEventListener("keyup", function (e) {
 
   items.forEach(function (item) {
     console.log(item.textContent);
-    if (item.textContent.toLowerCase().indexOf(searchItem) != -1 
-        // || item.length >=3
-        //&& item.textContent.length >=3
+    if (
+      item.textContent.toLowerCase().indexOf(searchItem) != -1
+      // || item.length >=3
+      //&& item.textContent.length >=3
     ) {
       item.closest("div").style.display = "block";
       console.log(item.closest("div"));
@@ -207,26 +202,30 @@ let ingredientlist = document.getElementById("ingredient-btn_closedList");
 console.log(ingredientlist);
 
 ingredientlist.innerHTML = `
-        <ul>${uniqueIngredients.map((ingredient) => `
+        <ul id="ingListAll">${uniqueIngredients
+          .map(
+            (ingredient) => `
             <li class="ingList" id="ingList">${ingredient}</li>
-            `)
-            .join("")}
+            `
+          )
+          .join("")}
         </ul>
 `;
 
 console.log(ingredientlist);
-
-
 
 // Appareil button list
 let appliancelist = document.getElementById("appliances-btn_closedList");
 console.log(appliancelist);
 
 appliancelist.innerHTML = `
-        <ul>${uniqueAppliances.map((appliance) => `
+        <ul class="appListAll" id="appListAll">${uniqueAppliances
+          .map(
+            (appliance) => `
             <li class="appList" id="appList">${appliance}</li>
-            `)
-            .join("")}
+            `
+          )
+          .join("")}
         </ul>
 `;
 
@@ -237,16 +236,17 @@ let ustensilsList = document.getElementById("ustensils-btn_closedList");
 console.log(ustensilsList);
 
 ustensilsList.innerHTML = `
-        <ul>${uniqueUstensils.map((ustensils) => `
+        <ul class="ustListAll" id="ustListAll">${uniqueUstensils
+          .map(
+            (ustensils) => `
             <li class="ustList" id="ustList">${ustensils}</li>
-            `)
-            .join("")}
+            `
+          )
+          .join("")}
         </ul>
 `;
 
 console.log(ustensilsList);
-
-
 
 // dropdownBTN show div with list
 // btn Ingredients
@@ -316,7 +316,6 @@ inputSearchIng.addEventListener("keyup", function (e) {
   console.log(searchItemI);
 });
 
-
 // dropdownBTN show div with list
 // btn Appliances
 let btnApp = document.getElementById("appliances-btn");
@@ -385,7 +384,6 @@ inputSearchApp.addEventListener("keyup", function (e) {
   console.log(searchItemI);
 });
 
-
 // dropdownBTN show div with list
 // btn Ustensils
 let btnUst = document.getElementById("ustensils-btn");
@@ -440,7 +438,7 @@ inputSearchUst.addEventListener("keyup", function (e) {
   let ustLists = document.querySelectorAll(".ustList");
   console.log(ustLists);
 
- ustLists.forEach(function (ustList) {
+  ustLists.forEach(function (ustList) {
     console.log(ustList.textContent);
     if (ustList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       ustList.closest("li").style.display = "block";
@@ -455,47 +453,64 @@ inputSearchUst.addEventListener("keyup", function (e) {
 });
 
 // GET LIST T MAKE NEW DIV TAG
-
-
-// add listner - tag for each li
-// document.getElementById("ingList").onclick = function () {
-
-//     let ingTag = document.createElement('div');
-//     ingTag.style.height = "200px";
-//     ingTag.style.backgroundColor = "black";
-//     document.getElementById("ingTag").appendChild(ingTag);
-  
-// }
-// console.log(document.getElementById("ingTag"));
-
 // GET VALUE FROM DROPDOWN TO DIV
-let selection = document.querySelectorAll("#ingList");
-console.log(selection);
 
-let result = document.getElementById("textTag");
-console.log(result);
+// locate your element and add the Click Event Listener
+document.getElementById("ingListAll").addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsIng = document.createElement("div");
+    tagsIng.setAttribute("class", "tagsIngNew");
+    console.log(tagsIng);
 
-let tagBox = document.getElementById("ingTag");
-console.log(tagBox);
+    // let tagX = document.createElement("div");
+    // tagX.setAttribute("class", "tagX");
 
-
-document.getElementById("ingList").addEventListener("click", () => {
-  tagBox.style.display = 'flex';
-  result.style.display = "flex";
-  result.innerHTML =  "blah"
-  
-});
-
-// close TAG on X
-let tagsClose = document.getElementById('tagsClose');
-console.log(tagsClose);
-
-
-tagsClose.addEventListener('click' , () => {
-  if (tagBox.style.display === "none") {
-    tagBox.style.display = "flex";
-  } else {
-    tagBox.style.display = "none";
+    document.getElementById("tagsIng").appendChild(tagsIng);
+    //  document.getElementById("novakocka").appendChild(tagX);
+    tagsIng.innerHTML = e.target.textContent;
   }
 });
 
+// locate your element and add the Click Event Listener
+document.getElementById("appListAll").addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsApp = document.createElement("div");
+    tagsApp.setAttribute("class", "tagsAppNew");
+    console.log(tagsApp);
+    document.getElementById("tagsApp").appendChild(tagsApp);
+    tagsApp.innerHTML = e.target.textContent;
+  }
+});
+
+// locate your element and add the Click Event Listener
+document.getElementById("ustListAll").addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsUst = document.createElement("div");
+    tagsUst.setAttribute("class", "tagsUstNew");
+    console.log(tagsUst);
+    document.getElementById("tagsUst").appendChild(tagsUst);
+    tagsUst.innerHTML = e.target.textContent;
+  }
+});
+
+
+// close TAG on X
+// let tagsClose = document.getElementById("novakocka");
+// console.log(tagsClose);
+
+// tagsClose.addEventListener("click", () => {
+//   if (novakocka.style.display === "none") {
+//     novakocka.style.display = "flex";
+//   } else {
+//     novakocka.style.display = "none";
+//   }
+// });
