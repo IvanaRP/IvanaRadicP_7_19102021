@@ -482,7 +482,8 @@ console.log(tagBox);
 document.getElementById("ingList").addEventListener("click", () => {
   tagBox.style.display = 'flex';
   result.style.display = "flex";
-  result.innerHTML = "blah";
+  result.innerHTML =  "blah"
+  
 });
 
 // close TAG on X
