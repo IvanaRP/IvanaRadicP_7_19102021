@@ -4,6 +4,7 @@ console.log(recipes);
 
 // make variables
 
+
 let ingredientsAll = [];
 console.log(ingredientsAll);
 
@@ -498,6 +499,7 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
     tagsUst.setAttribute("class", "tagsUstNew");
     console.log(tagsUst);
     document.getElementById("tagsUst").appendChild(tagsUst);
+
     tagsUst.innerHTML = e.target.textContent;
   }
 });
@@ -514,3 +516,41 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
 //     novakocka.style.display = "none";
 //   }
 // });
+// 
+
+
+// search by button
+
+document.getElementById("ustListAll").addEventListener("click", function (e) {
+  // console.log(e.target.textContent);
+// let listClicked = e.target.textContent;
+// console.log(listClicked);
+
+let searchItemI = e.target.textContent;
+let items = document.querySelectorAll(".recepiesBox");
+  console.log(items);
+  let noResult = document.getElementById("not-found");
+  console.log(noResult);
+
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      item.closest("div").style.display = "block";
+      console.log(item.closest("div"));
+    } else {
+      item.closest("div").style.display = "none";
+      noResult.style.display = "flex";
+    }
+  });
+
+
+//   document.querySelectorAll('.row').forEach(function(row){
+//     text = row.innerText.toLowerCase();
+//     if(text.match(search)){
+//         row.style.display="block"
+//     } else {
+//         row.style.display="none"
+//     }
+// })
+
+});

@@ -1037,6 +1037,12 @@ input::placeholder {
   margin-right: 10px;
   padding: 10px;
 }
+.tagsAppNew::after {
+  font-family: "FontAwesome";
+  font-weight: 400;
+  content: "\f057";
+  margin-left: 10px;
+}
 
 
 .tagsUst {
@@ -1058,11 +1064,12 @@ input::placeholder {
   margin-right: 10px;
   padding: 10px;
 }
-/* .nova::after {
+.tagsUstNew::after {
   font-family: "FontAwesome";
   font-weight: 400;
   content: "\f057";
-} */
+  margin-left: 10px;
+}
 
 /* 
 .tagX {
