@@ -518,32 +518,54 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
 //
 
 
+// // search by selected List INGREDIENT
+document.getElementById("ingListAll").addEventListener("click", function (e) {
+  console.log(e.target.textContent);
+
+  let searchItemI = e.target.textContent;
+  let items = document.querySelectorAll(".ingredientName");
+  console.log(items);
+
+
+
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.indexOf(searchItemI) != -1) {
+      item.closest(".recepiesBox").style.display = "block";
+      
+      console.log(item.closest(".recepiesBox"));
+    } else {
+      item.closest(".recepiesBox").style.display = "none";
+   
+    }
+  });
+});
+
+
 
 
 // // search by selected List USTENSILS
-// document.getElementById("appListAll").addEventListener("click", function (e) {
-//   console.log(e.target.textContent);
+document.getElementById("appListAll").addEventListener("click", function (e) {
+  console.log(e.target.textContent);
 
-//   let searchItemI = e.target.textContent;
-//   let items = document.querySelectorAll(".appliances");
-//   console.log(items);
+  let searchItemI = e.target.textContent;
+  let items = document.querySelectorAll(".appliances");
+  console.log(items);
 
-//   // let noResult = document.getElementById("not-found");
-//   // console.log(noResult);
+  
 
-//   items.forEach(function (item) {
-//     console.log(item.textContent);
-//     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-//       item.closest("recepiesBox").style.display = "block";
-//       // recetB.style.display = "block";
-//       console.log(item.closest("recepiesBox"));
-//     } else {
-//       item.closest(".recepiesinfo").style.display = "none";
-//       // recetB.style.display = "none";
-//       // noResult.style.display = "flex";
-//     }
-//   });
-// });
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.indexOf(searchItemI) != -1) {
+      item.closest(".recepiesBox").style.display = "block";
+    
+      console.log(item.closest(".recepiesBox"));
+    } else {
+      item.closest(".recepiesBox").style.display = "none";
+   
+    }
+  });
+});
 
 
 // search by selected List USTENSILS
@@ -554,19 +576,17 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
   let items = document.querySelectorAll(".ustensils");
   console.log(items);
 
-  let noResult = document.getElementById("not-found");
-  console.log(noResult);
+
 
   items.forEach(function (item) {
     console.log(item.textContent);
-    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+    if (item.textContent.indexOf(searchItemI) != -1) {
       item.closest(".recepiesBox").style.display = "block";
-      // recetB.style.display = "block";
+     
       console.log(item.closest(".recepiesBox"));
     } else {
       item.closest(".recepiesBox").style.display = "none";
-      // recetB.style.display = "none";
-      noResult.style.display = "flex";
+  
     }
   });
 });
