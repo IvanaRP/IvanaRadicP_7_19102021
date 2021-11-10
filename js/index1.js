@@ -78,8 +78,7 @@ function ingredientsFun(ingredients) {
     .map((ingredient) => {
       return `
         <div class="ingredientAll">
-               <li class="ingredientName">
-               ${ingredient.ingredient ? ingredient.ingredient : ""} : </li>
+               <li class="ingredientName ajdeVise">${ingredient.ingredient ? ingredient.ingredient : ""}</li>
                <li class="ingredientQuantity">
                ${ingredient.quantity ? ingredient.quantity : ""} ${
         ingredient.unit ? ingredient.unit : ""
@@ -110,10 +109,12 @@ function recipiesBox(recipe) {
                         } min</h3>
                        </div>
                         <div class="ingDes">
-                            ${ingredientsFun(recipe.ingredients)}
+                        <p >${ingredientsFun(recipe.ingredients)}</p>
                             <p class="description">${recipe.description}</p>
                             <p class="ustensils">${recipe.ustensils}</p>
                             <p class="appliances">${recipe.appliance}</p>
+                          
+                            
                         </div>
                     </div>
                 </div>
@@ -121,40 +122,64 @@ function recipiesBox(recipe) {
 }
 recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
+
+// {/* <p class="ingredients">${recipe.ingredient}</p> */}
+
 //Search Input and remove other div
 let inputSearch = document.getElementById("searchBar");
 console.log(inputSearch);
 
-// Search Input  by input
-inputSearch.addEventListener("keyup", function (e) {
-  //   console.log(e.target.value);
-  let searchItem = e.target.value.toLowerCase();
-  let items = document.querySelectorAll(".recepiesBox");
-  let noResult = document.getElementById("not-found");
-  console.log(noResult);
-  console.log(items);
-  // select whole div
 
-  // let recepiescar = document.getElementById("recepiesBox");;
-  // console.log(recepiescar);
+function searchInput(){
 
-  items.forEach(function (item) {
-    console.log(item.textContent);
-    if (
-      item.textContent.toLowerCase().indexOf(searchItem) != -1
-      // || item.length >=3
-      //&& item.textContent.length >=3
-    ) {
-      item.closest("div").style.display = "block";
-      console.log(item.closest("div"));
-    } else {
-      item.closest("div").style.display = "none";
-      noResult.style.display = "flex";
-    }
-  });
+    // Search Input  by input
+    inputSearch.addEventListener("keyup", function (e) {
+        // console.log(e.target.value);
+      let searchItem = e.target.value.toLowerCase();
+      let items = document.querySelectorAll(".recepiesBox");
+      let noResult = document.getElementById("not-found");
+      console.log(noResult);
+      console.log(items);
+      // select whole div
 
-  console.log(searchItem);
-});
+
+      // let recepiescar = document.getElementById("recepiesBox");;
+      // console.log(recepiescar);
+
+      items.forEach(function (item) {
+        console.log(item.textContent);
+        // if (inputSearch.value.length >= 3 ) {
+        //   // e.preventDefault();//stop form from submitting
+
+        //   console.log('blah vise od 3');  || item.value.length >= 3
+        // }
+        if (item.textContent.toLowerCase().indexOf(searchItem) != -1) {
+          item.closest("div").style.display = "block";
+          console.log(item.closest("div"));
+   
+        } else {
+          item.closest("div").style.display = "none";
+          noResult.style.display = "flex";
+        }
+      });
+
+      console.log(searchItem);
+    });
+}
+
+// keyevents
+// inputSearch.addEventListener("keypress", function (event) {
+//   // console.log("toto");
+//   if (event.key === "Enter"){
+//     // event.target.click()
+//     //  alert("ENTER SEARCH");
+//      searchInput();
+//      console.log("ENTER SEARCH");
+//   }
+
+// });
+// console.log(searchInput);
+searchInput();
 
 // 3 BUTTONS Search
 
@@ -291,7 +316,8 @@ inputSearchIng.addEventListener("keyup", function (e) {
 
   items.forEach(function (item) {
     console.log(item.textContent);
-    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+ 
+   if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       item.closest("div").style.display = "block";
       console.log(item.closest("div"));
     } else {
@@ -519,44 +545,45 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
 
 
 // // search by selected List INGREDIENT
-document.getElementById("ingListAll").addEventListener("click", function (e) {
-  console.log(e.target.textContent);
+// document.getElementById("ingListAll").addEventListener("click", function (e) {
+//   console.log(e.target.textContent);
+//   let searchItemI = e.target.textContent.toLowerCase();
+//   console.log(searchItemI);
+//   // let searchItemI = e.target.textContent;
+//   let items = document.querySelectorAll(".ingredients");
+//   console.log(items);
 
-  let searchItemI = e.target.textContent;
-  let items = document.querySelectorAll(".ingredientName");
-  console.log(items);
+ 
 
-
-
-  items.forEach(function (item) {
-    console.log(item.textContent);
-    if (item.textContent.indexOf(searchItemI) != -1) {
-      item.closest(".recepiesBox").style.display = "block";
-      
-      console.log(item.closest(".recepiesBox"));
-    } else {
-      item.closest(".recepiesBox").style.display = "none";
-   
-    }
-  });
-});
+//   items.forEach(function (item) {
+//     console.log(item.textContent);
+//     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+//       item.closest(".recepiesBox").style.display = "block";
+    
+//       console.log(item.closest(".recepiesBox"));
+//     } else {
+//       item.closest(".recepiesBox").style.display = "none";
+     
+//     }
+//   });
+// });
 
 
 
 
-// // search by selected List USTENSILS
+// // search by selected List appliances
 document.getElementById("appListAll").addEventListener("click", function (e) {
   console.log(e.target.textContent);
 
-  let searchItemI = e.target.textContent;
+  let searchItemI = e.target.textContent.toLowerCase();
+  console.log(searchItemI);
+
   let items = document.querySelectorAll(".appliances");
   console.log(items);
 
-  
-
   items.forEach(function (item) {
     console.log(item.textContent);
-    if (item.textContent.indexOf(searchItemI) != -1) {
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       item.closest(".recepiesBox").style.display = "block";
     
       console.log(item.closest(".recepiesBox"));
@@ -572,7 +599,9 @@ document.getElementById("appListAll").addEventListener("click", function (e) {
 document.getElementById("ustListAll").addEventListener("click", function (e) {
   // console.log(e.target.textContent);
 
-  let searchItemI = e.target.textContent;
+  let searchItemI = e.target.textContent.toLowerCase();
+  console.log(searchItemI);
+
   let items = document.querySelectorAll(".ustensils");
   console.log(items);
 
@@ -580,7 +609,35 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
 
   items.forEach(function (item) {
     console.log(item.textContent);
-    if (item.textContent.indexOf(searchItemI) != -1) {
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      item.closest(".recepiesBox").style.display = "block";
+     
+      console.log(item.closest(".recepiesBox"));
+    } else {
+      item.closest(".recepiesBox").style.display = "none";
+  
+    }
+  });
+});
+
+
+
+// // search by selected List ingredients
+document.getElementById("ingListAll").addEventListener("click", function (e) {
+  console.log(e.target.textContent);
+
+  let searchItemI = e.target.textContent.toLowerCase();
+  console.log(searchItemI);
+
+  let recBox = document.querySelectorAll(".recepiesBox");
+  console.log(recBox);
+
+  let items = document.querySelectorAll(".ingredients-list");
+  console.log(items);
+
+  items.forEach(function (item) {
+    console.log(item.textContent);
+    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       item.closest(".recepiesBox").style.display = "block";
      
       console.log(item.closest(".recepiesBox"));
