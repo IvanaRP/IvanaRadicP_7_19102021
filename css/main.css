@@ -980,9 +980,11 @@ input::placeholder {
 
 .appList {
   display: block;
+  cursor: pointer;
 }
 .ustList {
   display: block;
+  cursor: pointer;
 }
 
 /* tags  */
@@ -1092,24 +1094,3 @@ input::placeholder {
 .tagsIcon {
   margin-left: 5px;
 }
-/* .tagsUstNew::after {
-  font-family: "FontAwesome";
-  font-weight: 400;
-  content: "\f057";
-  margin-left: 10px;
-} */
-
-/* 
-.tagX {
-  position: absolute;
- 
-left: 20px;
-
-  width: 30px;
-}
-
-.tagX::after {
-  font-family: "FontAwesome";
-  font-weight: 400;
-  content: "\f057";
-} */

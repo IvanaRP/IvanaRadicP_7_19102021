@@ -132,7 +132,7 @@ console.log(inputSearch);
 
 function searchInput() {
   // Search Input  by input
-  inputSearch.addEventListener("keyup", function (e) {
+  inputSearch.addEventListener("keydown", function (e) {
     // console.log(e.target.value);
     let searchItem = e.target.value.toLowerCase();
     let items = document.querySelectorAll(".recepiesBox");
@@ -631,20 +631,6 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
   }
 });
 
-// // close TAG on X
-// let tagsClose = document.getElementById(".tagsIcon");
-// console.log(tagsClose);
-
-// let tagsUst = document.getElementById("tagsUstNew");
-// console.log("tagsUst");
-
-// tagsClose.addEventListener("click", () => {
-//   if (tagsUst.style.display === "none") {
-//     tagsUst.style.display = "flex";
-//   } else {
-//     tagsUst.style.display = "none";
-//   }
-// });
 
 // // search by selected List INGREDIENT
 // document.getElementById("ingListAll").addEventListener("click", function (e) {
