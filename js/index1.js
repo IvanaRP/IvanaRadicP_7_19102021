@@ -314,19 +314,34 @@ inputSearchIng.addEventListener("keyup", function (e) {
   let noResult = document.getElementById("not-found");
   console.log(noResult);
 
-  items.forEach(function (item) {
-    console.log(item.textContent);
- 
-   if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      // item.closest("div").style.display = "block";
-      item.closest(".recepiesBox").style.display = "block";
-      // console.log(item.closest("div"));
+  let ingItems = document.querySelectorAll(".ingredientName");
+  console.log(ingItems);
+
+  ingItems.forEach(function (ingItem) {
+    console.log(ingItem.textContent);
+    if (ingItem.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+      ingItem.closest(".recepiesBox").style.display = "block";
+     
+      console.log(ingItem.closest(".recepiesBox"));
     } else {
-      // item.closest("div").style.display = "none";
-      item.closest(".recepiesBox").style.display = "block";
-      noResult.style.display = "flex";
+      ingItem.closest(".recepiesBox").style.display = "none";
+  
     }
   });
+
+  // items.forEach(function (item) {
+  //   console.log(item.textContent);
+ 
+  //  if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
+  //     // item.closest("div").style.display = "block";
+  //     item.closest(".recepiesBox").style.display = "block";
+  //     console.log(item.closest(".recepiesBox"));
+  //   } else {
+  //     // item.closest("div").style.display = "none";
+  //     item.closest(".recepiesBox").style.display = "block";
+  //     noResult.style.display = "flex";
+  //   }
+  // });
 
   let ingLists = document.querySelectorAll(".ingList");
   console.log(ingLists);

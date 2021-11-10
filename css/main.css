@@ -986,6 +986,16 @@ input::placeholder {
 
 /* tags  */
 
+
+
+.tagSection{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ align-content: center;
+}
+
+
 .ingTag {
   display: none;
   justify-content: center;
