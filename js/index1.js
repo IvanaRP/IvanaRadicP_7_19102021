@@ -124,7 +124,7 @@ function recipiesBox(recipe) {
 }
 recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
-// {/* <p class="ingredients">${recipe.ingredient}</p> */}
+
 
 //Search Input and remove other div
 let inputSearch = document.getElementById("searchBar");
@@ -195,11 +195,11 @@ function buttonsSelect() {
 
     <div class=appliances-dropBtn">
             <div class="appliances-btn" id="appliances-btn">
-            <button class="appliances-BtnArrow" id="appliances-BtnArrow"><p>Appliances <i class="fas fa-angle-down"></i></p></button>
+            <button class="appliances-BtnArrow" id="appliances-BtnArrow"><p>Appareil <i class="fas fa-angle-down"></i></p></button>
             </div>
 
             <div class="appliances-btn_closed" id="appliances-btn_closed">
-            <input class="appliances-btn_closedSearch" id="appliances-btn_closedSearch" type="text" placeholder="Rechercher un appliances..."/>
+            <input class="appliances-btn_closedSearch" id="appliances-btn_closedSearch" type="text" placeholder="Rechercher un appareil..."/>
             <div class="appliances-btn_closedList" id="appliances-btn_closedList"></div>
             </div>
     </div>
@@ -225,7 +225,7 @@ let ingredientlist = document.getElementById("ingredient-btn_closedList");
 console.log(ingredientlist);
 
 ingredientlist.innerHTML = `
-        <ul id="ingListAll">${uniqueIngredients
+        <ul class="ingListAll" id="ingListAll">${uniqueIngredients
           .map(
             (ingredient) => `
             <li class="ingList" id="ingList">${ingredient}</li>
@@ -315,11 +315,15 @@ inputSearchIng.addEventListener("keyup", function (e) {
   let ingItems = document.querySelectorAll(".ingredientName");
   console.log(ingItems);
 
+  let appListRemove = document.querySelectorAll(".appList");
+  console.log(appListRemove);
+
   ingItems.forEach(function (ingItem) {
     console.log(ingItem.textContent);
     if (ingItem.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       ingItem.closest(".recepiesBox").style.display = "block";
-
+      // appListRemove.closest(".appList").style.display = "block";
+      // console.log(appListRemove);
       console.log(ingItem.closest(".recepiesBox"));
     } else {
       ingItem.closest(".recepiesBox").style.display = "none";

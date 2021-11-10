@@ -391,6 +391,9 @@ input::placeholder {
 
 .recepiesBox:hover {
   transform: scale(1.01);
+  border-style: solid;
+  border-color: #d04f4f;
+  border-width: 2px;
 }
 
 .recepiesimg {
@@ -808,7 +811,8 @@ input::placeholder {
   display: none;
   flex-direction: column;
   justify-content: center;
-  width: 40%;
+  width: 50%;
+  height: fit-content;
   background: #3282f7;
   color: white;
   border: none;
@@ -832,6 +836,9 @@ input::placeholder {
 
 .ingredient-btn_closedList {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 300px;
 }
 
 .ingredentList {
@@ -872,7 +879,8 @@ input::placeholder {
   display: none;
   flex-direction: column;
   justify-content: center;
-  width: 40%;
+  width: 50%;
+  height: fit-content;
   background: #68d9a4;
   color: white;
   border: none;
@@ -937,6 +945,7 @@ input::placeholder {
   flex-direction: column;
   justify-content: center;
   width: 40%;
+  height: fit-content;
   background: #ed6454;
   color: white;
   border: none;
@@ -973,18 +982,48 @@ input::placeholder {
   border: none;
 }
 
+.ustListAll {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: fit-content;
+  height: 300px;
+}
+
+.ingListAll {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow:hidden;
+  align-content: flex-start;
+  height: 300px;
+}
+
 .ingList {
   display: block;
   cursor: pointer;
+  padding-right: 20px;
+}
+.ingList:hover {
+  background-color: #2874e6;
 }
 
 .appList {
   display: block;
   cursor: pointer;
 }
+.appList:hover {
+  background: #36aa74e1;
+}
 .ustList {
   display: block;
   cursor: pointer;
+  padding-right: 20px;
+}
+
+.ustList:hover {
+  background: #db3724;
 }
 
 /* tags  */
@@ -1039,7 +1078,6 @@ input::placeholder {
   position: relative;
   margin-bottom: 10px;
 }
-
 
 .appTags {
   display: flex;
