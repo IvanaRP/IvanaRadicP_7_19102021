@@ -309,7 +309,7 @@ inputSearchIng.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
 
-  let items = document.querySelectorAll(".recepiesBox");
+  let items = document.querySelectorAll(".ingredientAll");
   console.log(items);
   let noResult = document.getElementById("not-found");
   console.log(noResult);
@@ -318,10 +318,12 @@ inputSearchIng.addEventListener("keyup", function (e) {
     console.log(item.textContent);
  
    if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      item.closest("div").style.display = "block";
-      console.log(item.closest("div"));
+      // item.closest("div").style.display = "block";
+      item.closest(".recepiesBox").style.display = "block";
+      // console.log(item.closest("div"));
     } else {
-      item.closest("div").style.display = "none";
+      // item.closest("div").style.display = "none";
+      item.closest(".recepiesBox").style.display = "block";
       noResult.style.display = "flex";
     }
   });
@@ -378,7 +380,7 @@ inputSearchApp.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
 
-  let items = document.querySelectorAll(".recepiesBox");
+  let items = document.querySelectorAll(".appliances");
   console.log(items);
   let noResult = document.getElementById("not-found");
   console.log(noResult);
@@ -386,10 +388,11 @@ inputSearchApp.addEventListener("keyup", function (e) {
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      item.closest("div").style.display = "block";
-      console.log(item.closest("div"));
+      // item.closest("div").style.display = "block";
+      item.closest(".recepiesBox").style.display = "block";
+      // console.log(item.closest("div"));
     } else {
-      item.closest("div").style.display = "none";
+      item.closest(".recepiesBox").style.display = "none";
       noResult.style.display = "flex";
     }
   });
@@ -446,7 +449,7 @@ inputSearchUst.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
 
-  let items = document.querySelectorAll(".recepiesBox");
+  let items = document.querySelectorAll(".ustensils");
   console.log(items);
   let noResult = document.getElementById("not-found");
   console.log(noResult);
@@ -454,10 +457,10 @@ inputSearchUst.addEventListener("keyup", function (e) {
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      item.closest("div").style.display = "block";
-      console.log(item.closest("div"));
+      item.closest(".recepiesBox").style.display ="block";
+      // console.log(item.closest("div"));
     } else {
-      item.closest("div").style.display = "none";
+      item.closest(".recepiesBox").style.display = "none";
       noResult.style.display = "flex";
     }
   });
@@ -629,8 +632,6 @@ document.getElementById("ingListAll").addEventListener("click", function (e) {
   let searchItemI = e.target.textContent.toLowerCase();
   console.log(searchItemI);
 
-  let recBox = document.querySelectorAll(".recepiesBox");
-  console.log(recBox);
 
   let items = document.querySelectorAll(".ingredients-list");
   console.log(items);
