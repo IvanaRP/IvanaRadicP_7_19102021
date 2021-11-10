@@ -78,7 +78,9 @@ function ingredientsFun(ingredients) {
     .map((ingredient) => {
       return `
         <div class="ingredientAll">
-               <li class="ingredientName ajdeVise">${ingredient.ingredient ? ingredient.ingredient : ""}</li>
+               <li class="ingredientName">${
+                 ingredient.ingredient ? ingredient.ingredient : ""
+               }</li>
                <li class="ingredientQuantity">
                ${ingredient.quantity ? ingredient.quantity : ""} ${
         ingredient.unit ? ingredient.unit : ""
@@ -122,49 +124,44 @@ function recipiesBox(recipe) {
 }
 recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
-
 // {/* <p class="ingredients">${recipe.ingredient}</p> */}
 
 //Search Input and remove other div
 let inputSearch = document.getElementById("searchBar");
 console.log(inputSearch);
 
+function searchInput() {
+  // Search Input  by input
+  inputSearch.addEventListener("keyup", function (e) {
+    // console.log(e.target.value);
+    let searchItem = e.target.value.toLowerCase();
+    let items = document.querySelectorAll(".recepiesBox");
+    let noResult = document.getElementById("not-found");
+    console.log(noResult);
+    console.log(items);
+    // select whole div
 
-function searchInput(){
+    // let recepiescar = document.getElementById("recepiesBox");;
+    // console.log(recepiescar);
 
-    // Search Input  by input
-    inputSearch.addEventListener("keyup", function (e) {
-        // console.log(e.target.value);
-      let searchItem = e.target.value.toLowerCase();
-      let items = document.querySelectorAll(".recepiesBox");
-      let noResult = document.getElementById("not-found");
-      console.log(noResult);
-      console.log(items);
-      // select whole div
+    items.forEach(function (item) {
+      console.log(item.textContent);
+      // if (inputSearch.value.length >= 3 ) {
+      //   // e.preventDefault();//stop form from submitting
 
-
-      // let recepiescar = document.getElementById("recepiesBox");;
-      // console.log(recepiescar);
-
-      items.forEach(function (item) {
-        console.log(item.textContent);
-        // if (inputSearch.value.length >= 3 ) {
-        //   // e.preventDefault();//stop form from submitting
-
-        //   console.log('blah vise od 3');  || item.value.length >= 3
-        // }
-        if (item.textContent.toLowerCase().indexOf(searchItem) != -1) {
-          item.closest("div").style.display = "block";
-          console.log(item.closest("div"));
-   
-        } else {
-          item.closest("div").style.display = "none";
-          noResult.style.display = "flex";
-        }
-      });
-
-      console.log(searchItem);
+      //   console.log('blah vise od 3');  || item.value.length >= 3
+      // }
+      if (item.textContent.toLowerCase().indexOf(searchItem) != -1) {
+        item.closest("div").style.display = "block";
+        console.log(item.closest("div"));
+      } else {
+        item.closest("div").style.display = "none";
+        noResult.style.display = "flex";
+      }
     });
+
+    console.log(searchItem);
+  });
 }
 
 // keyevents
@@ -322,17 +319,16 @@ inputSearchIng.addEventListener("keyup", function (e) {
     console.log(ingItem.textContent);
     if (ingItem.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       ingItem.closest(".recepiesBox").style.display = "block";
-     
+
       console.log(ingItem.closest(".recepiesBox"));
     } else {
       ingItem.closest(".recepiesBox").style.display = "none";
-  
     }
   });
 
   // items.forEach(function (item) {
   //   console.log(item.textContent);
- 
+
   //  if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
   //     // item.closest("div").style.display = "block";
   //     item.closest(".recepiesBox").style.display = "block";
@@ -473,7 +469,7 @@ inputSearchUst.addEventListener("keyup", function (e) {
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
-      item.closest(".recepiesBox").style.display ="block";
+      item.closest(".recepiesBox").style.display = "block";
       // console.log(item.closest("div"));
     } else {
       item.closest(".recepiesBox").style.display = "none";
@@ -501,39 +497,103 @@ inputSearchUst.addEventListener("keyup", function (e) {
 // GET LIST T MAKE NEW DIV TAG
 // GET VALUE FROM DROPDOWN TO DIV
 
+// // locate your element and add the Click Event Listener
+// document.getElementById("ingListAll").addEventListener("click", function (e) {
+//   // e.target is our targetted element.
+//   console.log(e.target.nodeName);
+//   if (e.target && e.target.nodeName == "LI") {
+//     // alert(e.target.textContent);
+//     let tagsIng = document.createElement("div");
+//     tagsIng.setAttribute("class", "tagsIngNew");
+//     console.log(tagsIng);
+
+//     // let tagX = document.createElement("div");
+//     // tagX.setAttribute("class", "tagX");
+
+//     document.getElementById("tagsIng").appendChild(tagsIng);
+//     //  document.getElementById("novakocka").appendChild(tagX);
+//     tagsIng.innerHTML = e.target.textContent;
+//   }
+// });
+
+
+// make TAG button from selected Appliane
 // locate your element and add the Click Event Listener
 document.getElementById("ingListAll").addEventListener("click", function (e) {
   // e.target is our targetted element.
   console.log(e.target.nodeName);
   if (e.target && e.target.nodeName == "LI") {
     // alert(e.target.textContent);
-    let tagsIng = document.createElement("div");
-    tagsIng.setAttribute("class", "tagsIngNew");
-    console.log(tagsIng);
+    let tagsUst = document.createElement("div");
+    tagsUst.setAttribute("class", "tagsIngNew");
+    tagsUst.setAttribute("id", "tagsIngNew");
+    console.log(tagsUst);
+    let newTag = document.getElementById("ingTags");
+    console.log(newTag);
+    newTag.appendChild(tagsUst);
+    tagsUst.textContent = e.target.textContent;
 
-    // let tagX = document.createElement("div");
-    // tagX.setAttribute("class", "tagX");
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
 
-    document.getElementById("tagsIng").appendChild(tagsIng);
-    //  document.getElementById("novakocka").appendChild(tagX);
-    tagsIng.innerHTML = e.target.textContent;
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsUst.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsUst.style.display === "none") {
+        tagsUst.style.display = "flex";
+      } else {
+        tagsUst.style.display = "none";
+      }
+    });
   }
 });
 
+// make TAG button from selected Appliane
 // locate your element and add the Click Event Listener
 document.getElementById("appListAll").addEventListener("click", function (e) {
   // e.target is our targetted element.
   console.log(e.target.nodeName);
   if (e.target && e.target.nodeName == "LI") {
     // alert(e.target.textContent);
-    let tagsApp = document.createElement("div");
-    tagsApp.setAttribute("class", "tagsAppNew");
-    console.log(tagsApp);
-    document.getElementById("tagsApp").appendChild(tagsApp);
-    tagsApp.innerHTML = e.target.textContent;
+    let tagsUst = document.createElement("div");
+    tagsUst.setAttribute("class", "tagsAppNew");
+    tagsUst.setAttribute("id", "tagsAppNew");
+    console.log(tagsUst);
+    let newTag = document.getElementById("appTags");
+    console.log(newTag);
+    newTag.appendChild(tagsUst);
+    tagsUst.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsUst.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsUst.style.display === "none") {
+        tagsUst.style.display = "flex";
+      } else {
+        tagsUst.style.display = "none";
+      }
+    });
   }
 });
 
+// make TAG button from selected Ustensils
 // locate your element and add the Click Event Listener
 document.getElementById("ustListAll").addEventListener("click", function (e) {
   // e.target is our targetted element.
@@ -542,26 +602,49 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
     // alert(e.target.textContent);
     let tagsUst = document.createElement("div");
     tagsUst.setAttribute("class", "tagsUstNew");
+    tagsUst.setAttribute("id", "tagsUstNew");
     console.log(tagsUst);
-    document.getElementById("tagsUst").appendChild(tagsUst);
+    let newTag = document.getElementById("ustTags");
+    console.log(newTag);
+    newTag.appendChild(tagsUst);
+    tagsUst.textContent = e.target.textContent;
 
-    tagsUst.innerHTML = e.target.textContent;
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsUst.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsUst.style.display === "none") {
+        tagsUst.style.display = "flex";
+      } else {
+        tagsUst.style.display = "none";
+      }
+    });
   }
 });
 
-// close TAG on X
-// let tagsClose = document.getElementById("novakocka");
+// // close TAG on X
+// let tagsClose = document.getElementById(".tagsIcon");
 // console.log(tagsClose);
 
+// let tagsUst = document.getElementById("tagsUstNew");
+// console.log("tagsUst");
+
 // tagsClose.addEventListener("click", () => {
-//   if (novakocka.style.display === "none") {
-//     novakocka.style.display = "flex";
+//   if (tagsUst.style.display === "none") {
+//     tagsUst.style.display = "flex";
 //   } else {
-//     novakocka.style.display = "none";
+//     tagsUst.style.display = "none";
 //   }
 // });
-//
-
 
 // // search by selected List INGREDIENT
 // document.getElementById("ingListAll").addEventListener("click", function (e) {
@@ -572,23 +655,18 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
 //   let items = document.querySelectorAll(".ingredients");
 //   console.log(items);
 
- 
-
 //   items.forEach(function (item) {
 //     console.log(item.textContent);
 //     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
 //       item.closest(".recepiesBox").style.display = "block";
-    
+
 //       console.log(item.closest(".recepiesBox"));
 //     } else {
 //       item.closest(".recepiesBox").style.display = "none";
-     
+
 //     }
 //   });
 // });
-
-
-
 
 // // search by selected List appliances
 document.getElementById("appListAll").addEventListener("click", function (e) {
@@ -604,15 +682,13 @@ document.getElementById("appListAll").addEventListener("click", function (e) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       item.closest(".recepiesBox").style.display = "block";
-    
+
       console.log(item.closest(".recepiesBox"));
     } else {
       item.closest(".recepiesBox").style.display = "none";
-   
     }
   });
 });
-
 
 // search by selected List USTENSILS
 document.getElementById("ustListAll").addEventListener("click", function (e) {
@@ -624,22 +700,17 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
   let items = document.querySelectorAll(".ustensils");
   console.log(items);
 
-
-
   items.forEach(function (item) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       item.closest(".recepiesBox").style.display = "block";
-     
+
       console.log(item.closest(".recepiesBox"));
     } else {
       item.closest(".recepiesBox").style.display = "none";
-  
     }
   });
 });
-
-
 
 // // search by selected List ingredients
 document.getElementById("ingListAll").addEventListener("click", function (e) {
@@ -648,7 +719,6 @@ document.getElementById("ingListAll").addEventListener("click", function (e) {
   let searchItemI = e.target.textContent.toLowerCase();
   console.log(searchItemI);
 
-
   let items = document.querySelectorAll(".ingredients-list");
   console.log(items);
 
@@ -656,11 +726,10 @@ document.getElementById("ingListAll").addEventListener("click", function (e) {
     console.log(item.textContent);
     if (item.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       item.closest(".recepiesBox").style.display = "block";
-     
+
       console.log(item.closest(".recepiesBox"));
     } else {
       item.closest(".recepiesBox").style.display = "none";
-  
     }
   });
 });
