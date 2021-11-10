@@ -308,6 +308,7 @@ console.log(inputSearchIng);
 inputSearchIng.addEventListener("keyup", function (e) {
   //   console.log(e.target.value);
   let searchItemI = e.target.value.toLowerCase();
+  console.log(searchItemI);
 
   let items = document.querySelectorAll(".ingredientAll");
   console.log(items);
