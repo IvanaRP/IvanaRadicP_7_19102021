@@ -589,13 +589,20 @@ document.getElementById("ingListAll").addEventListener("click", function (e) {
 
     tagsUst.appendChild(tagsicon);
     console.log(tagsicon);
+  
 
     // close TAG on X
     tagsicon.addEventListener("click", () => {
       if (tagsUst.style.display === "none") {
         tagsUst.style.display = "flex";
-      } else {
+      } else  {
         tagsUst.style.display = "none";
+  // show all 
+  // document.querySelectorAll(".recepiesBox").style.display = "flex";
+  // show all 
+
+ 
+
       }
     });
   }
@@ -634,6 +641,7 @@ document.getElementById("appListAll").addEventListener("click", function (e) {
         tagsUst.style.display = "flex";
       } else {
         tagsUst.style.display = "none";
+
       }
     });
   }
