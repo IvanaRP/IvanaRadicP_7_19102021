@@ -124,11 +124,30 @@ function recipiesBox(recipe) {
 }
 recepiesCard.innerHTML = `${recipes.map(recipiesBox).join("")}`;
 
-
-
 //Search Input and remove other div
 let inputSearch = document.getElementById("searchBar");
 console.log(inputSearch);
+
+// document.getElementById("searchBar").addEventListener ("submit" , function (e) {
+// /*conditin IF ELSE for FIRST name input*/
+// 	// Input should not be EMPTY , LESS THEN 2 CHARACTERS or an SPACE character
+// 	let inputSearch = document.getElementById("searchBar");
+// console.log(inputSearch);
+
+// 	if (inputSearch.value == "" || inputSearch.value.length < 7) {
+// 		e.preventDefault();//stop form from submitting
+
+// 		return false;
+
+// 	} else  if (/\s/.test(inputSearch.value)){ //stop form from submitting if there is space
+// 		e.preventDefault();//stop form from submitting
+
+// 		return false;
+// 	}
+// 	else {
+//     searchInput();
+// 	}
+// });
 
 function searchInput() {
   // Search Input  by input
@@ -143,17 +162,22 @@ function searchInput() {
 
     // let recepiescar = document.getElementById("recepiesBox");;
     // console.log(recepiescar);
+    // && item.textContent.length > 3
+    // if (inputSearch.length > 5){
+
+    // }
 
     items.forEach(function (item) {
       console.log(item.textContent);
-      // if (inputSearch.value.length >= 3 ) {
-      //   // e.preventDefault();//stop form from submitting
-
-      //   console.log('blah vise od 3');  || item.value.length >= 3
-      // }
       if (item.textContent.toLowerCase().indexOf(searchItem) != -1) {
         item.closest("div").style.display = "block";
         console.log(item.closest("div"));
+    
+      } else if (inputSearch.value == "" || inputSearch.value.length < 3) {
+        console.log("morethen3");
+      } else if (/\s/.test(inputSearch.value)) {
+        //stop form from submitting if there is space
+        console.log("nospace");
       } else {
         item.closest("div").style.display = "none";
         noResult.style.display = "flex";
@@ -315,16 +339,29 @@ inputSearchIng.addEventListener("keyup", function (e) {
   let ingItems = document.querySelectorAll(".ingredientName");
   console.log(ingItems);
 
-  let appListRemove = document.querySelectorAll(".appList");
-  console.log(appListRemove);
-
   ingItems.forEach(function (ingItem) {
+    let appListRemove = document.querySelectorAll(".appList");
+    console.log(appListRemove);
+
+    let pp = [];
+    console.log(pp);
+    appListRemove.forEach((p) => pp.push(p.textContent));
+
+    console.log(pp);
     console.log(ingItem.textContent);
+
     if (ingItem.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       ingItem.closest(".recepiesBox").style.display = "block";
-      // appListRemove.closest(".appList").style.display = "block";
-      // console.log(appListRemove);
+      // ingItem.closest("appList").style.display = "block";
+      //  ingItem.closest(".appListAll").style.display = "block";
+      console.log(ingItem.closest("div"));
       console.log(ingItem.closest(".recepiesBox"));
+      console.log(ingItem.closest(".appListAll"));
+
+      console.log(appListRemove);
+      console.log(pp);
+      // console.log(ingItem.closest(".recepiesBox"));
+      // console.log(ingItem.closest(".appList"));
     } else {
       ingItem.closest(".recepiesBox").style.display = "none";
     }
@@ -347,11 +384,17 @@ inputSearchIng.addEventListener("keyup", function (e) {
   let ingLists = document.querySelectorAll(".ingList");
   console.log(ingLists);
 
+  // let appListAlls = document.querySelectorAll(".appList");
+  // console.log(appListAlls);
+
   ingLists.forEach(function (ingList) {
     console.log(ingList.textContent);
     if (ingList.textContent.toLowerCase().indexOf(searchItemI) != -1) {
       ingList.closest("li").style.display = "block";
       console.log(ingList.closest("li"));
+
+      // console.log((appListAlls.style.display = "block"));
+      // console.log(appListAlls);
     } else {
       ingList.closest("li").style.display = "none";
       noResult.style.display = "flex";
@@ -520,7 +563,6 @@ inputSearchUst.addEventListener("keyup", function (e) {
 //   }
 // });
 
-
 // make TAG button from selected Appliane
 // locate your element and add the Click Event Listener
 document.getElementById("ingListAll").addEventListener("click", function (e) {
@@ -635,7 +677,6 @@ document.getElementById("ustListAll").addEventListener("click", function (e) {
   }
 });
 
-
 // // search by selected List INGREDIENT
 // document.getElementById("ingListAll").addEventListener("click", function (e) {
 //   console.log(e.target.textContent);
@@ -711,6 +752,9 @@ document.getElementById("ingListAll").addEventListener("click", function (e) {
 
   let items = document.querySelectorAll(".ingredients-list");
   console.log(items);
+
+  let itemsAppList = document.querySelectorAll(".appList");
+  console.log(itemsAppList);
 
   items.forEach(function (item) {
     console.log(item.textContent);
