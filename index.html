@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <!-- <link rel="stylesheet" href="./css/main.css" /> -->
+    <link rel="stylesheet" href="./css/main1.css" />
     <script
       src="https://kit.fontawesome.com/f9349f7e63.js"
       crossorigin="anonymous"
@@ -34,11 +35,12 @@
 
     <!--MAIN-->
     <main>
-      <div class="search">
-        <div class="search-every">
+      <!--Searchbar-->
+      <div class="searchUsers" id="searchUsers">
+        <div class="search">
           <input
-            class="searchBar"
-            id="searchBar"
+            class="search__bar"
+            id="search__bar"
             type="text"
             placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
           />
@@ -65,10 +67,70 @@
       </div>
 
       <!-- BUTTONS -->
-      <div class="buttons-select" id="buttons-select"></div>
+      <!-- <div class="buttons-select" id="buttons-select"></div> -->
 
-      <!-- RECEPIES -->
-      <div class="recepies-card" id="recepies-card"></div>
+      <!-- BUTTONS -->
+      <div class="buttons-select" id="buttons-select">
+        <div class="ingrBTN">
+          <div class="ingredientClosedDiv" id="ingredientClosedDiv">
+            <button class="ingredientClosed" id="ingredientbtnClosed">
+              <p>Ingredient <i class="fas fa-angle-down"></i></p>
+            </button>
+          </div>
+          <div class="ingredientOpenListDiv" id="ingredientOpenListDiv">
+            <input
+              class="ingredientOpenList"
+              id="search__ingredient"
+              type="text"
+              placeholder="Rechercher un ingrédient..."
+            />
+            <div class="ingredient-hideDRUGI" id="ingredient-hideDRUGI">
+              <ul class="ingredients-list" id="ingredients-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="appBTN">
+          <div class="appareilClosedDiv" id="appareilClosedDiv">
+            <button class="appareilClosed" id="appareilbtnClosed">
+              <p>Appareil <i class="fas fa-angle-down"></i></p>
+            </button>
+          </div>
+          <div class="appareilOpenListDiv" id="appareilOpenListDiv">
+            <input
+              class="appareilOpenList"
+              id="search__appareil"
+              type="text"
+              placeholder="Rechercher un appareil..."
+            />
+            <div class="appareil-hideDRUGI" id="appareil-hideDRUGI">
+              <ul class="appareil-list" id="appareil-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="ustBTN">
+          <div class="ustensilesClosedDiv" id="ustensilesClosedDiv">
+            <button class="ustensilesClosed" id="ustensilesbtnClosed">
+              <p>Ustensiles <i class="fas fa-angle-down"></i></p>
+            </button>
+          </div>
+          <div class="ustensilesOpenListDiv" id="ustensilesOpenListDiv">
+            <input
+              class="ustensilesOpenList"
+              id="search__ustensiles"
+              type="text"
+              placeholder="Rechercher un ustensiles..."
+            />
+            <div class="ustensiles-hideDRUGI" id="ustensiles-hideDRUGI">
+              <ul class="ustensiles-list" id="ustensiles-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     <!-- RECEPIES -->
+     <div class="recepies">
+      <div class="recepies-cards" id="recepies-cards"></div>
+    </div>
 
       <!-- Not Found Result -->
       <div class="not-found" id="not-found"></div>
@@ -76,7 +138,14 @@
       <!--JAVASCRIPT -->
       <!-- <script type="module" src="./js/main.js"></script> -->
       <!-- <script type="module" src="./js/index.js"></script> -->
-      <script type="module" src="./js/index1.js"></script>
+      <!-- <script type="module" src="./js/index1.js"></script> -->
+
+
+      <script type="module" src="./js/17.js"></script>
+
+      <script type="module" src="./js/buttons.js"></script>
+
+      
       <!-- <script type="module" src="./js/index2.js"></script> -->
       <!-- <script type="module" src="./js/ingr.js"></script> -->
 
