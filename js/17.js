@@ -23,9 +23,59 @@ console.log(ingredientsAll);
 let appliancesAll = [];
 console.log(appliancesAll);
 
+
 let ustensilsAll = [];
 console.log(ustensilsAll);
 
+// // loop forEach or Map
+
+recipes.forEach((recipe) => {
+  recipe.ingredients.forEach((ingredients) => {
+    ingredientsAll.push(ingredients.ingredient ? ingredients.ingredient : "");
+  });
+});
+
+
+
+recipes.map((recipe) => {
+  appliancesAll.push(recipe.appliance);
+});
+
+recipes.forEach((recipe) => {
+  recipe.ustensils.forEach((ustensils) => {
+    ustensilsAll.push(ustensils);
+  });
+});
+
+
+
+// remove duplicate tags
+
+const uniqueIngredients = [...new Set(ingredientsAll)];
+console.log(uniqueIngredients);
+
+
+const uniqueAppliances = [...new Set(appliancesAll)];
+console.log(uniqueAppliances);
+
+const uniqueUstensils = [...new Set(ustensilsAll)];
+console.log(uniqueUstensils);
+
+
+const all = ingredientsAll.concat(appliancesAll, ustensilsAll);
+console.log(all);
+
+
+// let ustensiles = [];
+// ustensiles.forEach(ustensile => {
+//   if(ustensiles.includes(ustensile)) {
+//     // fait rien
+//   } else {
+//     ustensiles.push(ustensile);
+//   }
+// })
+
+// console.log(ustensiles);
 
 /**
 *
@@ -73,6 +123,9 @@ searchBar.addEventListener("keyup", (e) => {
       recipe.ustensils.includes(searchString)
     );
   });
+
+  
+  
 
   console.log(filteredRecipes);
 
@@ -220,6 +273,17 @@ const displayIngredients = (recipes) => {
 */
 // display all Appareil
 const displayAppareil = (recipes) => {
+
+  let ustensiles = [];
+ustensiles.forEach(ustensile => {
+  if(ustensiles.includes(ustensile)) {
+    // fait rien
+  } else {
+    ustensiles.push(ustensile);
+  }
+})
+
+console.log(ustensiles);
   const htmlString = recipes
     .map((recipe) => {
       return `
