@@ -35,6 +35,9 @@ console.log(filteredIngr);
 let filteredRecipes = [];
 console.log(filteredRecipes);
 
+let uniqApp = [];
+console.log(uniqApp);
+
 let tagsIng = [];
 console.log(tagsIng);
 
@@ -115,6 +118,10 @@ console.log(searchUstensiles);
 searchBar.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
 
+  searchInputRes = filteredRecipes;
+  console.log(searchInputRes);
+
+
   filteredRecipes = recipes.filter((recipe) => {
     return (
       recipe.name.toLowerCase().includes(searchString) ||
@@ -128,36 +135,31 @@ searchBar.addEventListener("keyup", (e) => {
     );
   });
 
-  searchInputRes = filteredRecipes;
-  console.log(searchInputRes);
+//  console.log(uniqueAppliances);
 
-  // let a = recipes.filter((recipe) => {recipe});
-  // let b = [];
-  //  recipes.map((recipe) => {
-  //   b.push(recipe.appliance);
-  // });
+//   uniqApp = uniqueAppliances.filter((uniqueAppliance) => {
+//     console.log(uniqueAppliance.includes(searchString))
+//     return uniqueAppliance.toLowerCase().includes(searchString);
 
-  // const as = [...new Set(b)];
-  // console.log(as);
+//   });
 
-  // console.log(b.includes(searchString));
-  // // a.some(v => b.includes(v));
-  // console.log(b, as, b.some(v => as.includes(v)));
+//   console.log(uniqApp);
 
-  // const filtA = as.filter((as) => {
-  //   return (
-
-  //     as.includes(searchString)
-
-  //   );
-  // });
-
+ 
+  
   console.log(filteredRecipes);
+
 
   displayRecipes(filteredRecipes);
   displayIngredients(filteredRecipes);
+
   displayAppareil(filteredRecipes);
-  // displayAppareil(a);
+  // displayAppareil(uniqApp);
+  // console.log(displayAppareil(uniqApp));
+
+  // displayAppareilUnique(uniqApp);
+  // console.log(displayAppareilUnique(uniqApp));
+
   displayUstensiles(filteredRecipes);
 
   console.log(displayRecipes(filteredRecipes));
@@ -213,6 +215,15 @@ searchIngredients.addEventListener("keyup", (e) => {
 
     console.log(displayRecipes(filteredIngr));
   }
+
+  // console.log(recipes);
+
+  // displayRecipes(recipes);
+  // displayIngredients(recipes);
+  // displayAppareil(recipes);
+  // displayUstensiles(recipes);
+
+  // console.log(displayRecipes(recipes));
 });
 
 /**
@@ -346,15 +357,27 @@ searchUstensiles.addEventListener("keyup", (e) => {
 // display all Ingredients
 const displayIngredients = (recipes) => {
   const htmlString = recipes.map((recipe) => {
-    return `
+    console.log(recipe.ingredients);
+    let ingredHtml = '';
+
+    recipe.ingredients.forEach(ingredient => {
+      ingredHtml = ingredHtml + '<li class="recepies__ingredients">' + ingredient.ingredient + '</li>';
+    })
+
+    console.log(ingredHtml);
+return ingredHtml;
+
+
+    // return `
      
-      <li class="recepies__ingredients">${[
-        ...recipe.ingredients.map((ingredient) => {
-          return ingredient.ingredient;
-        }),
-      ]}</li>
+    // {recipe.ingredients}
+    //   // <li class="recepies__ingredients">${[
+    //   //   ...recipe.ingredients.map((ingredient) => {
+    //   //     return ingredient.ingredient;
+    //   //   }),
+    //   // ]}</li>
       
-              `;
+    //           `;
   });
 
   // .join("");
@@ -362,7 +385,7 @@ const displayIngredients = (recipes) => {
 };
 
 // // uniqueIngredients
-// // display all uniqueIngredients Ingredients
+// display all uniqueIngredients Ingredients
 // const displayIngredients = (recipes) => {
 //   const htmlString = uniqueIngredients
 //     .map((uniqueIngredient) => {
@@ -383,18 +406,23 @@ const displayIngredients = (recipes) => {
  *
  *  APPAREIL ARRAY
  */
+
+//  uniqueAppliances
+
+// display uniqueAppliances
+// const displayAppareilUnique = (uniqueAppliances) => {
+//   const htmlString = uniqueAppliances
+//     .map((uniqueAppliance) => {
+//       return `
+//                       <li class="recepies__appliance" id="recepiesList__appliance">${uniqueAppliance}
+//                       </li>
+//               `;
+//     })
+//     .join("");
+//   appareilList.innerHTML = htmlString;
+// };
 // display all Appareil
 const displayAppareil = (recipes) => {
-  //   let ustensiles = [];
-  // ustensiles.forEach(ustensile => {
-  //   if(ustensiles.includes(ustensile)) {
-  //     // fait rien
-  //   } else {
-  //     ustensiles.push(ustensile);
-  //   }
-  // })
-
-  // console.log(ustensiles);
   const htmlString = recipes
     .map((recipe) => {
       return `
@@ -454,8 +482,8 @@ const displayRecipes = (recipes) => {
                             ]}</li>
                             </ul>
                         </div>
+                  
                  
-                   
                         <p class="recepies__description">${
                           recipe.description
                         }</p>
@@ -732,7 +760,7 @@ document
  */
 //   funkcions
 displayRecipes(recipes);
-
-displayIngredients(recipes);
 displayAppareil(recipes);
+displayIngredients(recipes);
+// displayAppareilUnique(uniqueAppliances);
 displayUstensiles(recipes);
