@@ -255,17 +255,33 @@ const displayIngredients = (recipes) => {
     .map((recipe) => {
       return `
      
-      <li class="recepies__ingredients">${[
-        ...recipe.ingredients.map((ingredient) => {
-          return ingredient.ingredient;
-        }),
-      ]}</li>
+      <li class="recepies__ingredients">${[...recipe.ingredients.map((ingredient) => {return ingredient.ingredient;})]}</li>
       
               `;
     })
-    .join("");
+   
+    // .join("");
   ingredientsList.innerHTML = htmlString;
 };
+
+// // uniqueIngredients
+// // display all uniqueIngredients Ingredients
+// const displayIngredients = (recipes) => {
+//   const htmlString = uniqueIngredients
+//     .map((uniqueIngredient) => {
+//       return `
+
+
+//      <div>
+//       <li class="recepies__ingredients">${uniqueIngredient}
+//       </li>
+//       </div>
+      
+//               `;
+//     })
+//     .join(" ");
+//   ingredientsList.innerHTML = htmlString;
+// };
 
 /**
 *
@@ -365,6 +381,47 @@ const displayRecipes = (recipes) => {
 */
 
 // TAG
+// make TAG button from selected ingredients-list
+// locate your element and add the Click Event Listener
+document.getElementById("ingredients-list").addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsUst = document.createElement("div");
+    tagsUst.setAttribute("class", "tagsIngNew");
+    tagsUst.setAttribute("id", "tagsIngNew");
+    console.log(tagsUst);
+    let newTag = document.getElementById("ingTags");
+    console.log(newTag);
+    newTag.appendChild(tagsUst);
+    tagsUst.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsUst.appendChild(tagsicon);
+    console.log(tagsicon);
+  
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsUst.style.display === "none") {
+        tagsUst.style.display = "flex";
+      } else  {
+        tagsUst.style.display = "none";
+ 
+      }
+    });
+  }
+});
+
+// TAG
 // make TAG button from selected appareil-list
 // locate your element and add the Click Event Listener
 document
@@ -408,6 +465,45 @@ document
       });
     }
   });
+
+
+  // make TAG button from selected Ustensils
+// locate your element and add the Click Event Listener
+document.getElementById("ustensiles-list").addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsUst = document.createElement("div");
+    tagsUst.setAttribute("class", "tagsUstNew");
+    tagsUst.setAttribute("id", "tagsUstNew");
+    console.log(tagsUst);
+    let newTag = document.getElementById("ustTags");
+    console.log(newTag);
+    newTag.appendChild(tagsUst);
+    tagsUst.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsUst.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsUst.style.display === "none") {
+        tagsUst.style.display = "flex";
+      } else {
+        tagsUst.style.display = "none";
+      }
+    });
+  }
+});
 
 /**
 *
