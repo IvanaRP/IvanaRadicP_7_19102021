@@ -124,14 +124,38 @@ searchBar.addEventListener("keyup", (e) => {
     );
   });
 
-  
-  
+
+
+  // let a = recipes.filter((recipe) => {recipe});
+// let b = [];
+//  recipes.map((recipe) => {
+//   b.push(recipe.appliance);
+// });
+
+// const as = [...new Set(b)];
+// console.log(as);
+
+// console.log(b.includes(searchString));
+// // a.some(v => b.includes(v));
+// console.log(b, as, b.some(v => as.includes(v)));
+
+
+// const filtA = as.filter((as) => {
+//   return (
+   
+//     as.includes(searchString) 
+   
+//   );
+// });
+
+
 
   console.log(filteredRecipes);
 
   displayRecipes(filteredRecipes);
   displayIngredients(filteredRecipes);
   displayAppareil(filteredRecipes);
+  // displayAppareil(a);
   displayUstensiles(filteredRecipes);
 
   console.log(displayRecipes(filteredRecipes));
