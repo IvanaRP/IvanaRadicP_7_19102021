@@ -36,6 +36,13 @@ console.log(recipes);
 let filteredRecipes = [];
 console.log(filteredRecipes);
 
+
+let filteredApplianceList = [];
+console.log(filteredApplianceList);
+
+let searchInputRes2 = [];
+console.log(searchInputRes2);
+
 // let uniqApp = [];
 // console.log(uniqApp);
 
@@ -143,7 +150,108 @@ searchBar.addEventListener("keyup", (e) => {
    
 });
 
+/**
+ *
+ *   APPAREIL SEARCH BY INPUT
+ */
+// APPAREIL search by INPUT to show RECIPES
+// search bar input - if it includes name show in recipes or each list of ingredients, appareil or ustensiles
+searchAppareil.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  console.log(searchString);
 
+  filteredRecipes;
+  console.log(filteredRecipes);
+
+  // filteredApplianceList = recipes.filter((recipe) => {
+  //   console.log("show list of all appliance");
+  //   return (
+      
+  //     recipe.appliance.toLowerCase().includes(searchString) 
+      
+  //   ); 
+  // });
+
+  //   displayRecipes(filteredApplianceList);
+  //   displayIngredients(filteredApplianceList);
+  //   displayAppareil(filteredApplianceList);
+  //   displayUstensiles(filteredApplianceList);
+   
+   
+  //   console.log(filteredApplianceList);
+
+
+  //   filteredRecipes = recipes.filter((recipe) => {
+  //     return (
+  //       recipe.name.toLowerCase().includes(searchString) ||
+  //       recipe.appliance.toLowerCase().includes(searchString) ||
+  //       recipe.ingredients
+  //         .map((ingredient) => {
+  //           return ingredient.ingredient.toLowerCase();
+  //         })
+  //         .includes(searchString) ||
+  //       recipe.ustensils
+  //             .map((ustnesile) => {
+  //                 return ustnesile.toLowerCase();
+  //             })
+  //       .includes(searchString)
+  //     );
+  // });
+  
+  // console.log(filteredRecipes);
+ 
+  // displayRecipes(filteredRecipes);
+  // displayIngredients(filteredRecipes);
+  // displayAppareil(filteredRecipes);
+  // displayUstensiles(filteredRecipes);
+
+  // console.log(displayRecipes(filteredRecipes));
+
+
+  if (filteredRecipes) {
+    console.log("show only list of filtered ingredients by MAIN SEARCH");
+
+   searchInputRes2 =  filteredRecipes.filter((recipe)=> {
+    return (
+     
+      recipe.appliance.toLowerCase().includes(searchString)
+      
+    );
+
+  });
+    console.log(searchInputRes2);
+    console.log('show only list of filtered ingredients by MAIN SEARCH"');
+
+    displayAppareil(searchInputRes2);
+
+  } else {
+    filteredApplianceList = recipes.filter((recipe) => {
+      console.log("show list of all ingredients");
+      return (
+        recipe.name.toLowerCase().includes(searchString) ||
+        recipe.appliance.toLowerCase().includes(searchString) ||
+        recipe.ingredients
+          .map((ingredient) => {
+            return ingredient.ingredient.toLowerCase();
+          })
+          .includes(searchString) ||
+        recipe.ustensils.includes(searchString)
+      );
+  
+    });
+ 
+    console.log(filteredApplianceList);
+    // console.log(searchInputRes2);
+    displayRecipes(filteredApplianceList);
+    displayIngredients(filteredApplianceList);
+    displayAppareil(filteredApplianceList);
+    displayUstensiles(filteredApplianceList);
+
+   
+  }
+
+
+});
 
 
 /**
