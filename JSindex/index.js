@@ -108,7 +108,7 @@ const displayIngredients = (recipes) => {
 const displayAppareil = (recipes) => {
     const htmlString = recipes
     .map((recipe) => {
-      return `<li class="recepies__appliance" id="recepiesList__appliance">${recipe.appliance}</li>`;
+      return `<li class="recepiesList__appliance" id="recepiesList__appliance">${recipe.appliance}</li>`;
     })
     .join(""); 
   
@@ -124,7 +124,7 @@ const displayUstensiles = (recipes) => {
     //   console.log(recipe.ustensiles);
       let UstensilesHtml = '';
       recipe.ustensils.forEach(ustensil => {
-        UstensilesHtml = UstensilesHtml + '<li class="recepies__ingredients">' + ustensil + '</li>';
+        UstensilesHtml = UstensilesHtml + '<li class="recepiesList__ustensil">' + ustensil + '</li>';
       })
   return UstensilesHtml;
     })
@@ -132,7 +132,49 @@ const displayUstensiles = (recipes) => {
     ustensilesList.innerHTML = htmlString;
 };
 
+// ======================================================================================
+/**
+ *
+ *   MAIN SEARCH BY INPUT
+ */
+// // MAIN search bar input - if it includes name show in recipes or lists
+searchBar.addEventListener("keyup", (e) => {
+    const searchString = e.target.value.toLowerCase();
+    console.log(searchString);
+  
+    // searchInputRes = filteredRecipes;
+    // console.log(searchInputRes);
 
+   const filteredRecipes = recipes.filter((recipe) => {
+        return (
+          recipe.name.toLowerCase().includes(searchString) ||
+          recipe.appliance.toLowerCase().includes(searchString) ||
+          recipe.ingredients
+            .map((ingredient) => {
+              return ingredient.ingredient.toLowerCase();
+            })
+            .includes(searchString) ||
+          recipe.ustensils
+                .map((ustnesile) => {
+                    return ustnesile.toLowerCase();
+                })
+          .includes(searchString)
+        );
+    });
+    
+    console.log(filteredRecipes);
+   
+    displayRecipes(filteredRecipes);
+    displayIngredients(filteredRecipes);
+    displayAppareil(filteredRecipes);
+    displayUstensiles(filteredRecipes);
+
+    console.log(displayRecipes(filteredRecipes));
+
+   
+});
+
+  
 /**
  *
  *  CALL ALL FUNCTIONS
@@ -144,6 +186,6 @@ displayAppareil(recipes);
 
 displayIngredients(recipes);
 
-// displayUstensiles(recipes);
+displayUstensiles(recipes);
 
 
