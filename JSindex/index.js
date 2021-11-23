@@ -2,13 +2,13 @@
 import { recipes } from "../js/recipes.js";
 console.log(recipes);
 
-
 /**
  *
  *   MAKE VARIABLES
  */
 // make variable
-
+let filteredRecipes = [];
+console.log(filteredRecipes);
 // ===========================================
 /**
  *
@@ -23,8 +23,8 @@ const ingredientsList = document.getElementById("ingredients-list");
 const appareilList = document.getElementById("appareil-list");
 const ustensilesList = document.getElementById("ustensiles-list");
 
-const inglist = document.getElementById("recepies__ingredientsList");
-console.log(inglist);
+// const ingredientsListFiltered = document.getElementById("recepies__ingredientsList");
+// console.log(ingredientsListFiltered);
 
 // search by ingredient input
 const searchIngredients = document.getElementById("search__ingredient");
@@ -45,20 +45,20 @@ console.log(searchUstensiles);
  *  DISPLAY RECIPES CARDS
  */
 // display Recipes cards
-const displayRecipes  = (recipes) => {
-    const html = recipes
-      .map((recipe) => {
-        const ingredientHtml = recipe.ingredients
-          .map((ingredient) => {
-            return `<l id="recepiesIngredient__list" class="recepiesIngredient__list">${ingredient.ingredient}</l>`;
-          })
-          .join("");
-          const ustensilsHtml = recipe.ustensils
-          .map((ustensil) => {
-            return `<l id="recepiesUstensiles__list" class="recepiesUstensiles__list">${ustensil}</l>`;
-          })
-          .join("");
-        return `
+const displayRecipes = (recipes) => {
+  const html = recipes
+    .map((recipe) => {
+      const ingredientHtml = recipe.ingredients
+        .map((ingredient) => {
+          return `<l id="recepiesIngredient__list" class="recepiesIngredient__list">${ingredient.ingredient}</l>`;
+        })
+        .join("");
+      const ustensilsHtml = recipe.ustensils
+        .map((ustensil) => {
+          return `<l id="recepiesUstensiles__list" class="recepiesUstensiles__list">${ustensil}</l>`;
+        })
+        .join("");
+      return `
             <div class="recepies__card">
                   <div class="recepies__img"> <img class="recipe-img" src="../img/img/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="image"></div>
                   <div class="recepies__info">
@@ -78,9 +78,9 @@ const displayRecipes  = (recipes) => {
               </div>
        
         `;
-      })
-      .join("");
-      recipesList.innerHTML = html;
+    })
+    .join("");
+  recipesList.innerHTML = html;
 };
 
 /**
@@ -89,16 +89,21 @@ const displayRecipes  = (recipes) => {
  */
 
 const displayIngredients = (recipes) => {
-    const htmlString = recipes.map((recipe) => {
-    //   console.log(recipe.ingredients);
-      let ingredHtml = '';
-      recipe.ingredients.forEach(ingredient => {
-        ingredHtml = ingredHtml + '<li class="recepies__ingredientsList">' + ingredient.ingredient + '</li>';
-      })
-  return ingredHtml;
+  const htmlString = recipes
+    .map((recipe) => {
+      //   console.log(recipe.ingredients);
+      let ingredHtml = "";
+      recipe.ingredients.forEach((ingredient) => {
+        ingredHtml =
+          ingredHtml +
+          '<li class="recepies__ingredientsList" id="recepies__ingredientsList">' +
+          ingredient.ingredient +
+          "</li>";
+      });
+      return ingredHtml;
     })
     .join("");
-    ingredientsList.innerHTML = htmlString;
+  ingredientsList.innerHTML = htmlString;
 };
 /**
  *
@@ -106,13 +111,13 @@ const displayIngredients = (recipes) => {
  */
 // display appareil List
 const displayAppareil = (recipes) => {
-    const htmlString = recipes
+  const htmlString = recipes
     .map((recipe) => {
       return `<li class="recepiesList__appliance" id="recepiesList__appliance">${recipe.appliance}</li>`;
     })
-    .join(""); 
-  
-    appareilList.innerHTML = htmlString;
+    .join("");
+
+  appareilList.innerHTML = htmlString;
 };
 /**
  *
@@ -120,16 +125,21 @@ const displayAppareil = (recipes) => {
  */
 // display all Ustensiles List
 const displayUstensiles = (recipes) => {
-    const htmlString = recipes.map((recipe) => {
-    //   console.log(recipe.ustensiles);
-      let UstensilesHtml = '';
-      recipe.ustensils.forEach(ustensil => {
-        UstensilesHtml = UstensilesHtml + '<li class="recepiesList__ustensil">' + ustensil + '</li>';
-      })
-  return UstensilesHtml;
+  const htmlString = recipes
+    .map((recipe) => {
+      //   console.log(recipe.ustensiles);
+      let UstensilesHtml = "";
+      recipe.ustensils.forEach((ustensil) => {
+        UstensilesHtml =
+          UstensilesHtml +
+          '<li class="recepiesList__ustensil">' +
+          ustensil +
+          "</li>";
+      });
+      return UstensilesHtml;
     })
     .join("");
-    ustensilesList.innerHTML = htmlString;
+  ustensilesList.innerHTML = htmlString;
 };
 
 // ======================================================================================
@@ -139,42 +149,97 @@ const displayUstensiles = (recipes) => {
  */
 // // MAIN search bar input - if it includes name show in recipes or lists
 searchBar.addEventListener("keyup", (e) => {
-    const searchString = e.target.value.toLowerCase();
-    console.log(searchString);
-  
-    // searchInputRes = filteredRecipes;
-    // console.log(searchInputRes);
+  const search = e.target.value.toLowerCase();
+  console.log(search);
 
-   const filteredRecipes = recipes.filter((recipe) => {
-        return (
-          recipe.name.toLowerCase().includes(searchString) ||
-          recipe.appliance.toLowerCase().includes(searchString) ||
-          recipe.ingredients
-            .map((ingredient) => {
-              return ingredient.ingredient.toLowerCase();
-            })
-            .includes(searchString) ||
-          recipe.ustensils
-                .map((ustnesile) => {
-                    return ustnesile.toLowerCase();
-                })
-          .includes(searchString)
-        );
-    });
-    
-    console.log(filteredRecipes);
-   
-    displayRecipes(filteredRecipes);
-    displayIngredients(filteredRecipes);
-    displayAppareil(filteredRecipes);
-    displayUstensiles(filteredRecipes);
-
-    console.log(displayRecipes(filteredRecipes));
-
-   
+  filteredRecipes = recipes.filter((recipe) => {
+    return (
+      recipe.name.toLowerCase().includes(search) ||
+      recipe.appliance.toLowerCase().includes(search) ||
+      recipe.ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient.toLowerCase();
+        })
+        .includes(search) ||
+      recipe.ustensils
+        .map((ustnesile) => {
+          return ustnesile.toLowerCase();
+        })
+        .includes(search)
+    );
+  });
+  console.log(filteredRecipes);
+  displayRecipes(filteredRecipes);
+  displayIngredients(filteredRecipes);
+  displayAppareil(filteredRecipes);
+  displayUstensiles(filteredRecipes);
+  console.log(displayRecipes(filteredRecipes));
 });
 
-  
+/**
+ *
+ *   INGREDIENTS SEARCH BY INPUT
+ */
+// // INGREDIENTS search bar input
+
+searchIngredients.addEventListener("keyup", (e) => {
+  const search = e.target.value.toLowerCase();
+  console.log(search);
+
+  // ======================================================================================
+  // filter all list of ingredient
+//   const filteredIngredients = recipes.filter((recipe) => {
+//     return (
+//       recipe.name.toLowerCase().includes(search) ||
+//       recipe.appliance.toLowerCase().includes(search) ||
+//       recipe.ingredients
+//         .map((ingredient) => {
+//           return ingredient.ingredient.toLowerCase();
+//         })
+//         .includes(search) ||
+//       recipe.ustensils
+//         .map((ustnesile) => {
+//           return ustnesile.toLowerCase();
+//         })
+//         .includes(search)
+//     );
+//   });
+//   console.log(filteredIngredients);
+//   displayRecipes(filteredIngredients);
+//   displayIngredients(filteredIngredients);
+//   displayAppareil(filteredIngredients);
+//   displayUstensiles(filteredIngredients);
+//   console.log(displayRecipes(filteredIngredients));
+  // ======================================================================================
+  // filtrira vec filtriranu listu - koja je napravlejna od global input searcha
+
+  filteredRecipes;
+  console.log(filteredRecipes);
+
+  const filteredIngredientList = filteredRecipes.filter((recipe) => {
+    console.log("show only search by list already filtered");
+    return (
+      
+        recipe.ingredients
+                .map((ingredient) => {
+                  return ingredient.ingredient.toLowerCase();
+                })
+                .includes(search)
+      
+    ); 
+  });
+
+    displayRecipes(filteredIngredientList);
+    displayIngredients(filteredIngredientList);
+    displayAppareil(filteredIngredientList);
+    displayUstensiles(filteredIngredientList);
+   
+   
+    console.log(filteredIngredientList);
+
+
+});
+
 /**
  *
  *  CALL ALL FUNCTIONS
@@ -187,5 +252,3 @@ displayAppareil(recipes);
 displayIngredients(recipes);
 
 displayUstensiles(recipes);
-
-
