@@ -168,6 +168,7 @@ input::placeholder {
 }
 .ingredients-list {
   display: flex;
+  cursor: pointer;
 }
 .recepies__card-description {
   overflow: hidden;

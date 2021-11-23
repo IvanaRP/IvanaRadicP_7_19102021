@@ -23,8 +23,9 @@ const ingredientsList = document.getElementById("ingredients-list");
 const appareilList = document.getElementById("appareil-list");
 const ustensilesList = document.getElementById("ustensiles-list");
 
-// const ingredientsListFiltered = document.getElementById("recepies__ingredientsList");
-// console.log(ingredientsListFiltered);
+//element of  List for ingredients, appareil et ustnesiles
+// const ingredientsListTag = document.getElementById("recepies__ingredientsList");
+// console.log(ingredientsListTag);
 
 // search by ingredient input
 const searchIngredients = document.getElementById("search__ingredient");
@@ -188,28 +189,28 @@ searchIngredients.addEventListener("keyup", (e) => {
 
   // ======================================================================================
   // filter all list of ingredient
-//   const filteredIngredients = recipes.filter((recipe) => {
-//     return (
-//       recipe.name.toLowerCase().includes(search) ||
-//       recipe.appliance.toLowerCase().includes(search) ||
-//       recipe.ingredients
-//         .map((ingredient) => {
-//           return ingredient.ingredient.toLowerCase();
-//         })
-//         .includes(search) ||
-//       recipe.ustensils
-//         .map((ustnesile) => {
-//           return ustnesile.toLowerCase();
-//         })
-//         .includes(search)
-//     );
-//   });
-//   console.log(filteredIngredients);
-//   displayRecipes(filteredIngredients);
-//   displayIngredients(filteredIngredients);
-//   displayAppareil(filteredIngredients);
-//   displayUstensiles(filteredIngredients);
-//   console.log(displayRecipes(filteredIngredients));
+  //   const filteredIngredients = recipes.filter((recipe) => {
+  //     return (
+  //       recipe.name.toLowerCase().includes(search) ||
+  //       recipe.appliance.toLowerCase().includes(search) ||
+  //       recipe.ingredients
+  //         .map((ingredient) => {
+  //           return ingredient.ingredient.toLowerCase();
+  //         })
+  //         .includes(search) ||
+  //       recipe.ustensils
+  //         .map((ustnesile) => {
+  //           return ustnesile.toLowerCase();
+  //         })
+  //         .includes(search)
+  //     );
+  //   });
+  //   console.log(filteredIngredients);
+  //   displayRecipes(filteredIngredients);
+  //   displayIngredients(filteredIngredients);
+  //   displayAppareil(filteredIngredients);
+  //   displayUstensiles(filteredIngredients);
+  //   console.log(displayRecipes(filteredIngredients));
   // ======================================================================================
   // filtrira vec filtriranu listu - koja je napravlejna od global input searcha
 
@@ -218,28 +219,332 @@ searchIngredients.addEventListener("keyup", (e) => {
 
   const filteredIngredientList = filteredRecipes.filter((recipe) => {
     console.log("show only search by list already filtered");
-    return (
-      
-        recipe.ingredients
-                .map((ingredient) => {
-                  return ingredient.ingredient.toLowerCase();
-                })
-                .includes(search)
-      
-    ); 
+    return recipe.ingredients
+      .map((ingredient) => {
+        return ingredient.ingredient.toLowerCase();
+      })
+      .includes(search);
   });
 
-    displayRecipes(filteredIngredientList);
-    displayIngredients(filteredIngredientList);
-    displayAppareil(filteredIngredientList);
-    displayUstensiles(filteredIngredientList);
-   
-   
-    console.log(filteredIngredientList);
+  displayRecipes(filteredIngredientList);
+  displayIngredients(filteredIngredientList);
+  displayAppareil(filteredIngredientList);
+  displayUstensiles(filteredIngredientList);
+  console.log(filteredIngredientList);
+});
+// ======================================================================================
 
+/**
+ *
+ *   APPAREIL SEARCH BY INPUT
+ */
 
+// // APPAREIL search bar input
+
+searchAppareil.addEventListener("keyup", (e) => {
+  const search = e.target.value.toLowerCase();
+  console.log(search);
+  // ======================================================================================
+  // filter all list of appareil
+  // const filteredAppliance = recipes.filter((recipe) => {
+  //   return (
+  //     recipe.name.toLowerCase().includes(search) ||
+  //     recipe.appliance.toLowerCase().includes(search) ||
+  //     recipe.ingredients
+  //       .map((ingredient) => {
+  //         return ingredient.ingredient.toLowerCase();
+  //       })
+  //       .includes(search) ||
+  //     recipe.ustensils
+  //       .map((ustnesile) => {
+  //         return ustnesile.toLowerCase();
+  //       })
+  //       .includes(search)
+  //   );
+  // });
+  // console.log(filteredAppliance);
+  // displayRecipes(filteredAppliance);
+  // displayIngredients(filteredAppliance);
+  // displayAppareil(filteredAppliance);
+  // displayUstensiles(filteredAppliance);
+  // console.log(displayRecipes(filteredAppliance));
+  // ======================================================================================
+  // filtrira vec filtriranu listu - koja je napravlejna od global input searcha
+
+  filteredRecipes;
+  console.log(filteredRecipes);
+
+  const filteredApplianceList = filteredRecipes.filter((recipe) => {
+    console.log("show only search by list already filtered");
+    return recipe.appliance.toLowerCase().includes(search);
+  });
+
+  displayRecipes(filteredApplianceList);
+  displayIngredients(filteredApplianceList);
+  displayAppareil(filteredApplianceList);
+  displayUstensiles(filteredApplianceList);
+  console.log(filteredApplianceList);
 });
 
+// ======================================================================================
+
+/**
+ *
+ *   USTENSILS SEARCH BY INPUT
+ */
+
+// // USTENSILS search bar input
+
+searchUstensiles.addEventListener("keyup", (e) => {
+  const search = e.target.value.toLowerCase();
+  console.log(search);
+
+  // ======================================================================================
+  // filter all list of Ustensiles
+  //   const filteredUstensiles = recipes.filter((recipe) => {
+  //     return (
+  //       recipe.name.toLowerCase().includes(search) ||
+  //       recipe.appliance.toLowerCase().includes(search) ||
+  //       recipe.ingredients
+  //         .map((ingredient) => {
+  //           return ingredient.ingredient.toLowerCase();
+  //         })
+  //         .includes(search) ||
+  //       recipe.ustensils
+  //         .map((ustnesil) => {
+  //           return ustnesil.toLowerCase();
+  //         })
+  //         .includes(search)
+  //     );
+  //   });
+  //   console.log(filteredUstensiles);
+  //   displayRecipes(filteredUstensiles);
+  //   displayIngredients(filteredUstensiles);
+  //   displayAppareil(filteredUstensiles);
+  //   displayUstensiles(filteredUstensiles);
+  //   console.log(displayRecipes(filteredUstensiles));
+  // ======================================================================================
+  // filtrira vec filtriranu listu - koja je napravlejna od global input searcha
+
+  filteredRecipes;
+  console.log(filteredRecipes);
+
+  const filteredUstensilesList = filteredRecipes.filter((recipe) => {
+    console.log("show only search by list already filtered");
+    return recipe.ustensils
+      .map((ustnesile) => {
+        return ustnesile.toLowerCase();
+      })
+      .includes(search);
+  });
+
+  displayRecipes(filteredUstensilesList);
+  displayIngredients(filteredUstensilesList);
+  displayAppareil(filteredUstensilesList);
+  displayUstensiles(filteredUstensilesList);
+  console.log(filteredUstensilesList);
+});
+// ======================================================================================
+// ======================================================================================
+// ======================================================================================
+/**
+ *
+ * SELECTED  TAG FROM DROPDOWN
+ */
+
+/**
+ *
+ * SELECTED  INGREDIENT TAG FROM DROPDOWN
+ */
+
+// TAG
+// make TAG button from selected ingredients-list
+// locate your element and add the Click Event Listener
+
+ingredientsList.addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+
+  // const searchString = e.target.textContent;
+  // console.log(searchString);
+
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsIng = document.createElement("div");
+    tagsIng.setAttribute("class", "tagsIngNew");
+    tagsIng.setAttribute("id", "tagsIngNew");
+    console.log(tagsIng);
+    let newTag = document.getElementById("ingTags");
+    console.log(newTag);
+    newTag.appendChild(tagsIng);
+    tagsIng.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsIng.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsIng.style.display === "none") {
+        tagsIng.style.display = "flex";
+      } else {
+        tagsIng.style.display = "none";
+        displayRecipes(recipes);
+      }
+    });
+  }
+});
+
+/**
+ *
+ * SELECTED APPLIANCE TAG FROM DROPDOWN
+ */
+
+// make TAG button from selected appareil-list
+// locate your element and add the Click Event Listener
+appareilList.addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+
+  //   const searchString = e.target.textContent;
+  //   console.log(searchString);
+
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsApp = document.createElement("div");
+    tagsApp.setAttribute("class", "tagsAppNew");
+    tagsApp.setAttribute("id", "tagsAppNew");
+    console.log(tagsApp);
+    let newTag = document.getElementById("appTags");
+    console.log(newTag);
+    newTag.appendChild(tagsApp);
+    tagsApp.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsApp.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsApp.style.display === "none") {
+        tagsApp.style.display = "flex";
+      } else {
+        tagsApp.style.display = "none";
+        displayRecipes(recipes);
+      }
+    });
+  }
+});
+
+/**
+ *
+ * SELECTED USTENCILS TAG FROM DROPDOWN
+ */
+// make TAG button from selected Ustensils
+// locate your element and add the Click Event Listener
+ustensilesList.addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsUst = document.createElement("div");
+    tagsUst.setAttribute("class", "tagsUstNew");
+    tagsUst.setAttribute("id", "tagsUstNew");
+    console.log(tagsUst);
+    let newTag = document.getElementById("ustTags");
+    console.log(newTag);
+    newTag.appendChild(tagsUst);
+    tagsUst.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsUst.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    tagsicon.addEventListener("click", () => {
+      if (tagsUst.style.display === "none") {
+        tagsUst.style.display = "flex";
+      } else {
+        tagsUst.style.display = "none";
+        displayRecipes(recipes);
+      }
+    });
+  }
+});
+// ======================================================================================
+// ======================================================================================
+// ======================================================================================
+/**
+ *
+ *  FILTER BY SELECTED TAG
+ */
+
+/**
+ *
+ *  FILTER INGREDIENTS BY SELECTED TAG !!!NE RADI
+ */
+
+
+// dislay only recipes with selected TAG
+
+
+// ingredientsList.addEventListener("click", function (e) {
+//   // e.target is our targetted element.
+//   console.log(e.target.nodeName);
+
+//   const selectedTag = e.target.innerHTML;
+//   console.log(selectedTag);
+
+//   const filteredTag = recipes.filter((recipe) => {
+//     return (
+//       recipe.name.toLowerCase().includes(selectedTag) ||
+//       recipe.appliance.toLowerCase().includes(selectedTag) ||
+//       recipe.ingredients
+//         .map((ingredient) => {
+//           return ingredient.ingredient.toLowerCase();
+//         })
+//         .includes(selectedTag) ||
+//       recipe.ustensils
+//         .map((ustnesile) => {
+//           return ustnesile.toLowerCase();
+//         })
+//         .includes(selectedTag)
+//     );
+//   });
+//   console.log(filteredTag);
+//   displayRecipes(filteredTag);
+//   displayIngredients(filteredTag);
+//   displayAppareil(filteredTag);
+//   displayUstensiles(filteredTag);
+//   console.log(displayRecipes(filteredTag));
+  
+// });
+
+
+// ======================================================================================
+// ======================================================================================
+// ======================================================================================
 /**
  *
  *  CALL ALL FUNCTIONS
