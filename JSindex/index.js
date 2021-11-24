@@ -7,6 +7,16 @@ console.log(recipes);
  *   MAKE VARIABLES
  */
 // make variable
+
+let filteredIngList = [];
+console.log(filteredIngList);
+
+let filteredAppList = [];
+console.log(filteredAppList);
+
+let filteredUstList = [];
+console.log(filteredUstList);
+
 let filteredRecipes = [];
 console.log(filteredRecipes);
 
@@ -113,6 +123,8 @@ const displayIngredients = (recipes) => {
  *
  *  APPAREIL ARRAY
  */
+
+
 // display appareil List
 const displayAppareil = (recipes) => {
   const htmlString = recipes
@@ -193,11 +205,11 @@ searchBar.addEventListener("keyup", (e) => {
 searchIngredients.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   console.log(searchString);
-
+ 
   searchInputRes;
   console.log(searchInputRes);
 
-  if (searchInputRes.length > 0) {
+  if (searchInputRes.length > 0) { //if global search exist
     console.log(searchInputRes);
     const filteredIngredientList = searchInputRes.filter((recipe) => {
       console.log("show only search by list already filtered");
@@ -212,8 +224,36 @@ searchIngredients.addEventListener("keyup", (e) => {
     displayIngredients(filteredIngredientList);
 
 
+  } else if (filteredAppList.length > 0) { //if appliance search exist
+    console.log(filteredAppList);
+    const searchIngApp = filteredAppList.filter((recipe) => {
+      console.log("show only list of filtered appliance by Appliance SEARCH");
+      return recipe.ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient.toLowerCase();
+        })
+        .includes(searchString);
+    });
+
+    console.log(searchIngApp);
+    displayIngredients(searchIngApp);
+
+  } else if (filteredUstList.length > 0) { //if ustensil search exist
+      console.log(filteredUstList);
+      console.log("show only list of filtered appliance by Ustensil SEARCH");
+      const searchIngUst = filteredUstList.filter((recipe) => {
+        return recipe.ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient.toLowerCase();
+        })
+        .includes(searchString);
+    });
+
+      console.log(searchIngUst);
+      displayIngredients(searchIngUst);
+
   } else {
-    filteredRecipes = recipes.filter((recipe) => {
+    filteredIngList = recipes.filter((recipe) => {
       console.log("show list of all ingredients");
       return (
         recipe.name.toLowerCase().includes(searchString) ||
@@ -227,14 +267,14 @@ searchIngredients.addEventListener("keyup", (e) => {
       );
     });
 
-    console.log(filteredRecipes);
+    console.log(filteredIngList);
 
-    displayRecipes(filteredRecipes);
-    displayIngredients(filteredRecipes);
-    displayAppareil(filteredRecipes);
-    displayUstensiles(filteredRecipes);
+    displayRecipes(filteredIngList);
+    displayIngredients(filteredIngList);
+    displayAppareil(filteredIngList);
+    displayUstensiles(filteredIngList);
 
-    console.log(displayRecipes(filteredRecipes));
+    console.log(displayRecipes(filteredIngList));
   }
 
 
@@ -316,17 +356,36 @@ searchAppareil.addEventListener("keyup", (e) => {
   searchInputRes;
   console.log(searchInputRes);
 
-  if (searchInputRes.length > 0) {
+  if (searchInputRes.length > 0) { //if global search exist
     console.log(searchInputRes);
-    console.log("show only list of filtered ingredients by MAIN SEARCH");
+    console.log("show only list of filtered appliance by MAIN SEARCH");
     const searchInputRes2 = searchInputRes.filter((recipe) => {
       return recipe.appliance.toLowerCase().includes(searchString);
     });
     console.log(searchInputRes2);
     displayAppareil(searchInputRes2);
+
+  } else if (filteredIngList.length > 0) { //if ingredient search exist
+    console.log(filteredIngList);
+    console.log("show only list of filtered appliance by Ingredient SEARCH");
+    const searchAppInst = filteredIngList.filter((recipe) => {
+      return recipe.appliance.toLowerCase().includes(searchString);
+    });
+    console.log(searchAppInst);
+    displayAppareil(searchAppInst);
+
+  } else if (filteredUstList.length > 0) { //if ustensil search exist
+    console.log(filteredUstList);
+    console.log("show only list of filtered appliance by Ustensil SEARCH");
+    const searchAppUst = filteredUstList.filter((recipe) => {
+      return recipe.appliance.toLowerCase().includes(searchString);
+    });
+    console.log(searchAppUst);
+    displayAppareil(searchAppUst);
+
   } else {
-    filteredRecipes = recipes.filter((recipe) => {
-      console.log("show list of all ingredients");
+    filteredAppList = recipes.filter((recipe) => {
+      console.log("show list of all appliance");
       return (
         recipe.name.toLowerCase().includes(searchString) ||
         recipe.appliance.toLowerCase().includes(searchString) ||
@@ -339,14 +398,14 @@ searchAppareil.addEventListener("keyup", (e) => {
       );
     });
 
-    console.log(filteredRecipes);
+    console.log(filteredAppList);
 
-    displayRecipes(filteredRecipes);
-    displayIngredients(filteredRecipes);
-    displayAppareil(filteredRecipes);
-    displayUstensiles(filteredRecipes);
+    displayRecipes(filteredAppList);
+    displayIngredients(filteredAppList);
+    displayAppareil(filteredAppList);
+    displayUstensiles(filteredAppList);
 
-    console.log(displayRecipes(filteredRecipes));
+    console.log(displayRecipes(filteredAppList));
   }
   // let recipes2;
 
@@ -431,8 +490,36 @@ searchUstensiles.addEventListener("keyup", (e) => {
     console.log(searchInputRes2);
     displayUstensiles(searchInputRes2);
 
+  } else if (filteredIngList.length > 0) { //if ingredient search exist
+    console.log(filteredIngList);
+    console.log("show only list of filtered ustensile by Ingredient SEARCH");
+    const searchUstInst = filteredIngList.filter((recipe) => {
+      return recipe.ustensils
+      .map((ustnesile) => {
+        return ustnesile.toLowerCase();
+      })
+      .includes(searchString);
+    });
+    console.log(searchUstInst);
+    displayUstensiles(searchUstInst); 
+
+  } else if (filteredAppList.length > 0) { //if appliance search exist
+    console.log(filteredAppList);
+    const searchUstApp = filteredAppList.filter((recipe) => {
+      console.log("show only list of filtered ustensile by Appliance SEARCH");
+      return recipe.ustensils
+      .map((ustnesile) => {
+        return ustnesile.toLowerCase();
+      })
+      .includes(searchString);
+    });
+
+    console.log(searchUstApp);
+    displayUstensiles(searchUstApp);
+
+
   } else {
-    filteredRecipes = recipes.filter((recipe) => {
+    filteredUstList = recipes.filter((recipe) => {
       console.log("show list of all ustensils");
       return (
         recipe.name.toLowerCase().includes(searchString) ||
@@ -446,14 +533,14 @@ searchUstensiles.addEventListener("keyup", (e) => {
       );
     });
 
-    console.log(filteredRecipes);
+    console.log(filteredUstList);
 
-    displayRecipes(filteredRecipes);
-    displayIngredients(filteredRecipes);
-    displayAppareil(filteredRecipes);
-    displayUstensiles(filteredRecipes);
+    displayRecipes(filteredUstList);
+    displayIngredients(filteredUstList);
+    displayAppareil(filteredUstList);
+    displayUstensiles(filteredUstList);
 
-    console.log(displayRecipes(filteredRecipes));
+    console.log(displayRecipes(filteredUstList));
   }
 
   // let ustensilsTab = [];
@@ -762,6 +849,150 @@ ingredientsList.addEventListener('click', e => {
 //   console.log(ingredientTab);
   
 });
+// ======================================================================================
+// ======================================================================================
+// ======================================================================================
+/**
+ *
+ *   APPAREIL SEARCH BY SELECTED TAG
+ */
+
+// // APPAREIL TAG
+
+appareilList.addEventListener("click", (e) => {
+
+  // Pour le tri par tags, je conseille de créer une liste de tag
+//  qui va se remplir avec les tags qu'on a choisis. 
+//  Chaque fois que l'on clique pour en choisir un, tu refais 
+//  l'affichage des recettes en vérifiant à chaque fois qu'elle est
+//   valide pour chaque tag de la liste avant de la valider. Concrètement :
+
+// Ajouter le listener sur chaque élément de la liste
+// Quand le listener se lance, on ajoute le mot dans le tableau
+// On fait une boucle qui passe sur chaque recette (avec un forEach probablement)
+// A l'intérieur de cette boucle on fait une deuxième boucle forEach sur notre liste de tags qui va vérifier que chacun est validé dans la recette qu'on regarde (avec des includes par exemple)
+// Si c'est bon on peut la mettre dans les recettes valides et l'afficher
+
+  const targetList = e.target.textContent;
+  console.log(e.target.nodeName);
+  console.log(targetList);
+
+  let appareilTag = [];
+
+  // recipes.map((recipe) => {
+  //   if (!appareilTab.includes(recipe.appliance)) 
+  //   appareilTab.push(recipe.appliance);
+  // });
+  
+  
+recipes.forEach((recipe) => {
+  (recipe.appliance)
+  if(!appareilTag.includes(recipe.appliance))
+  appareilTag.push(recipe.appliance);
+}) ;
+
+// recipes.forEach(recipe => {  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
+//     recipe.appliance.forEach(applianc => { //là on passe sur chaque ingrédient de chaque recette
+//        if (!appareilTag.includes(applianc)) //si le tableau ne contient pas déjà l'ingrédient qu'on regarde (pour éviter les doublons)
+//        appareilTag.push(applianc); //on ajoute l'ingrédient au tableau
+//     })
+ 
+//  })
+ console.log(appareilTag);
+  
+
+// const filteredSelection = recipes.filter((recipe) =>{
+//   console.log("filter with selected list");
+//   return recipe.appliance.toLowerCase().includes(targetList);
+// });
+
+// console.log(filteredSelection);
+// displayRecipes(filteredSelection);
+
+//  const filteredAppTag = recipes.filter((recipe) => {
+//         console.log("show list of all appliance");
+//         return (
+//           recipe.name.includes(targetList) ||
+//           recipe.appliance.includes(targetList) ||
+//           recipe.ingredients
+//             .map((ingredient) => {
+//               return ingredient.ingredient;
+//             })
+//             .includes(targetList) ||
+//           recipe.ustensils.includes(targetList)
+//         );
+//       });
+  
+//       console.log(filteredAppTag);
+  
+//       displayRecipes(filteredAppTag);
+//       displayIngredients(filteredAppTag);
+//       displayAppareil(filteredAppTag);
+//       displayUstensiles(filteredAppTag);
+  
+//       console.log(displayRecipes(filteredAppTag));
+
+  // const searchString = e.target
+  // console.log(searchString);
+
+  // searchInputRes;
+  // console.log(searchInputRes);
+
+  // if (searchInputRes.length > 0) { //if global search exist
+  //   console.log(searchInputRes);
+  //   console.log("show only list of filtered appliance by MAIN SEARCH");
+  //   const searchInputRes2 = searchInputRes.filter((recipe) => {
+  //     return recipe.appliance.toLowerCase().includes(searchString);
+  //   });
+  //   console.log(searchInputRes2);
+  //   displayAppareil(searchInputRes2);
+
+  // } else if (filteredIngList.length > 0) { //if ingredient search exist
+  //   console.log(filteredIngList);
+  //   console.log("show only list of filtered appliance by Ingredient SEARCH");
+  //   const searchAppInst = filteredIngList.filter((recipe) => {
+  //     return recipe.appliance.toLowerCase().includes(searchString);
+  //   });
+  //   console.log(searchAppInst);
+  //   displayAppareil(searchAppInst);
+
+  // } else if (filteredUstList.length > 0) { //if ustensil search exist
+  //   console.log(filteredUstList);
+  //   console.log("show only list of filtered appliance by Ustensil SEARCH");
+  //   const searchAppUst = filteredUstList.filter((recipe) => {
+  //     return recipe.appliance.toLowerCase().includes(searchString);
+  //   });
+  //   console.log(searchAppUst);
+  //   displayAppareil(searchAppUst);
+
+  // } else {
+  //   filteredAppList = recipes.filter((recipe) => {
+  //     console.log("show list of all appliance");
+  //     return (
+  //       recipe.name.toLowerCase().includes(searchString) ||
+  //       recipe.appliance.toLowerCase().includes(searchString) ||
+  //       recipe.ingredients
+  //         .map((ingredient) => {
+  //           return ingredient.ingredient.toLowerCase();
+  //         })
+  //         .includes(searchString) ||
+  //       recipe.ustensils.includes(searchString)
+  //     );
+  //   });
+
+  //   console.log(filteredAppList);
+
+  //   displayRecipes(filteredAppList);
+  //   displayIngredients(filteredAppList);
+  //   displayAppareil(filteredAppList);
+  //   displayUstensiles(filteredAppList);
+
+  //   console.log(displayRecipes(filteredAppList));
+  // }
+
+});
+
+
 
 
 // ======================================================================================
