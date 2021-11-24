@@ -241,7 +241,7 @@ searchAppareil.addEventListener("keyup", (e) => {
 
   
 
-  if (searchInputRes.length > 0) {
+  if (searchInputRes) {
     console.log(searchInputRes);
     console.log("show only list of filtered ingredients by MAIN SEARCH");
     const searchInputRes2 = searchInputRes.filter((recipe) => {

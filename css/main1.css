@@ -42,7 +42,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  margin: 5%;
+  margin: 2% 5% 2% 5%;
 }
 
 .search__bar {
@@ -74,6 +74,26 @@ input::placeholder {
   flex-direction: column;
   background-color: #e7e7e7;
 }
+
+.search__error {
+  display: none;
+  color: #ed6454;
+  justify-content: center;
+  position: relative;
+  margin:  2% 5% 2% 5%;
+}
+
+
+/* not-found */
+
+.not-found{
+  display: none;
+ justify-content: center;
+ align-content: center;
+  color: rebeccapurple;
+  margin: 5%;
+}
+
 
 /* recipes */
 .recepies {
@@ -397,110 +417,109 @@ input::placeholder {
   height: 300px;
   /* overflow: scroll; */
 }
-  /* tags  */
+/* tags  */
 
-  .tagSection {
-    display: flex;
-    justify-content: flex-start;
-    position: relative;
-    margin: 30px;
-  }
+.tagSection {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin: 30px;
+}
 
-  .ingTag {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    background: #3282f7;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    padding: 10px;
-  }
-  .textTag {
-    display: flex;
-  }
-  .tagsClose {
-    margin-left: 5px;
-  }
+.ingTag {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  background: #3282f7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 10px;
+}
+.textTag {
+  display: flex;
+}
+.tagsClose {
+  margin-left: 5px;
+}
 
-  .ingTags {
-    display: flex;
-    flex-direction: column;
-  }
+.ingTags {
+  display: flex;
+  flex-direction: column;
+}
 
-  .tagsIng {
-    display: flex;
-    flex-direction: row;
-  }
+.tagsIng {
+  display: flex;
+  flex-direction: row;
+}
 
-  .tagsIngNew {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    background: #3282f7;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    padding: 10px;
-    position: relative;
-    margin-bottom: 10px;
-  }
+.tagsIngNew {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  background: #3282f7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 10px;
+}
 
-  .appTags {
-    display: flex;
-    flex-direction: column;
-  }
+.appTags {
+  display: flex;
+  flex-direction: column;
+}
 
-  .tagsApp {
-    display: flex;
-    flex-direction: row;
-  }
+.tagsApp {
+  display: flex;
+  flex-direction: row;
+}
 
-  .tagsAppNew {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    background: #68d9a4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
+.tagsAppNew {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  background: #68d9a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 
-  .ustTags {
-    display: flex;
-    flex-direction: column;
-  }
-  .tagsUst {
-    display: flex;
-    flex-direction: row;
-  }
+.ustTags {
+  display: flex;
+  flex-direction: column;
+}
+.tagsUst {
+  display: flex;
+  flex-direction: row;
+}
 
-  .tagsUstNew {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    background: #ed6454;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  .tagsIcon {
-    margin-left: 5px;
-  }
-
+.tagsUstNew {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  background: #ed6454;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.tagsIcon {
+  margin-left: 5px;
+}
