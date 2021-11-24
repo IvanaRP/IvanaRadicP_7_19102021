@@ -129,7 +129,7 @@ const displayIngredients = (recipes) => {
 const displayAppareil = (recipes) => {
   const htmlString = recipes
     .map((recipe) => {
-      return `<li class="recepiesList__appliance" id="recepiesList__appliance">${recipe.appliance}</li>`;
+      return `<li class="recepiesList__appliance" id="recepiesList__appliance" value="${recipe.appliance}">${recipe.appliance}</li>`;
     })
     .join("");
 
@@ -859,140 +859,235 @@ ingredientsList.addEventListener('click', e => {
 
 // // APPAREIL TAG
 
-appareilList.addEventListener("click", (e) => {
+// appareilList.addEventListener("click", (e) => {
 
-  // Pour le tri par tags, je conseille de créer une liste de tag
-//  qui va se remplir avec les tags qu'on a choisis. 
-//  Chaque fois que l'on clique pour en choisir un, tu refais 
-//  l'affichage des recettes en vérifiant à chaque fois qu'elle est
-//   valide pour chaque tag de la liste avant de la valider. Concrètement :
+//   // Pour le tri par tags, je conseille de créer une liste de tag
+// //  qui va se remplir avec les tags qu'on a choisis. 
+// //  Chaque fois que l'on clique pour en choisir un, tu refais 
+// //  l'affichage des recettes en vérifiant à chaque fois qu'elle est
+// //   valide pour chaque tag de la liste avant de la valider. Concrètement :
 
-// Ajouter le listener sur chaque élément de la liste
-// Quand le listener se lance, on ajoute le mot dans le tableau
-// On fait une boucle qui passe sur chaque recette (avec un forEach probablement)
-// A l'intérieur de cette boucle on fait une deuxième boucle forEach sur notre liste de tags qui va vérifier que chacun est validé dans la recette qu'on regarde (avec des includes par exemple)
-// Si c'est bon on peut la mettre dans les recettes valides et l'afficher
+// // Ajouter le listener sur chaque élément de la liste
+// // Quand le listener se lance, on ajoute le mot dans le tableau
+// // On fait une boucle qui passe sur chaque recette (avec un forEach probablement)
+// // A l'intérieur de cette boucle on fait une deuxième boucle forEach sur notre liste de tags qui va vérifier que chacun est validé dans la recette qu'on regarde (avec des includes par exemple)
+// // Si c'est bon on peut la mettre dans les recettes valides et l'afficher
 
-  const targetList = e.target.textContent;
-  console.log(e.target.nodeName);
-  console.log(targetList);
+//   const targetList = e.target.textContent;
+//   console.log(e.target.nodeName);
+//   console.log(targetList);
 
-  let appareilTag = [];
+//   let appareilTag = [];
 
-  // recipes.map((recipe) => {
-  //   if (!appareilTab.includes(recipe.appliance)) 
-  //   appareilTab.push(recipe.appliance);
-  // });
+//   // recipes.map((recipe) => {
+//   //   if (!appareilTab.includes(recipe.appliance)) 
+//   //   appareilTab.push(recipe.appliance);
+//   // });
   
   
-recipes.forEach((recipe) => {
-  (recipe.appliance)
-  if(!appareilTag.includes(recipe.appliance))
-  appareilTag.push(recipe.appliance);
-}) ;
+// recipes.forEach((recipe) => {
+//   (recipe.appliance)
+//   if(!appareilTag.includes(recipe.appliance))
+//   appareilTag.push(recipe.appliance);
+// }) ;
 
-// recipes.forEach(recipe => {  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
-//     recipe.appliance.forEach(applianc => { //là on passe sur chaque ingrédient de chaque recette
-//        if (!appareilTag.includes(applianc)) //si le tableau ne contient pas déjà l'ingrédient qu'on regarde (pour éviter les doublons)
-//        appareilTag.push(applianc); //on ajoute l'ingrédient au tableau
-//     })
+// // recipes.forEach(recipe => {  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
+// //     recipe.appliance.forEach(applianc => { //là on passe sur chaque ingrédient de chaque recette
+// //        if (!appareilTag.includes(applianc)) //si le tableau ne contient pas déjà l'ingrédient qu'on regarde (pour éviter les doublons)
+// //        appareilTag.push(applianc); //on ajoute l'ingrédient au tableau
+// //     })
  
-//  })
- console.log(appareilTag);
+// //  })
+//  console.log(appareilTag);
   
 
-// const filteredSelection = recipes.filter((recipe) =>{
-//   console.log("filter with selected list");
-//   return recipe.appliance.toLowerCase().includes(targetList);
+// // const filteredSelection = recipes.filter((recipe) =>{
+// //   console.log("filter with selected list");
+// //   return recipe.appliance.toLowerCase().includes(targetList);
+// // });
+
+// // console.log(filteredSelection);
+// // displayRecipes(filteredSelection);
+
+// //  const filteredAppTag = recipes.filter((recipe) => {
+// //         console.log("show list of all appliance");
+// //         return (
+// //           recipe.name.includes(targetList) ||
+// //           recipe.appliance.includes(targetList) ||
+// //           recipe.ingredients
+// //             .map((ingredient) => {
+// //               return ingredient.ingredient;
+// //             })
+// //             .includes(targetList) ||
+// //           recipe.ustensils.includes(targetList)
+// //         );
+// //       });
+  
+// //       console.log(filteredAppTag);
+  
+// //       displayRecipes(filteredAppTag);
+// //       displayIngredients(filteredAppTag);
+// //       displayAppareil(filteredAppTag);
+// //       displayUstensiles(filteredAppTag);
+  
+// //       console.log(displayRecipes(filteredAppTag));
+
+//   // const searchString = e.target
+//   // console.log(searchString);
+
+//   // searchInputRes;
+//   // console.log(searchInputRes);
+
+//   // if (searchInputRes.length > 0) { //if global search exist
+//   //   console.log(searchInputRes);
+//   //   console.log("show only list of filtered appliance by MAIN SEARCH");
+//   //   const searchInputRes2 = searchInputRes.filter((recipe) => {
+//   //     return recipe.appliance.toLowerCase().includes(searchString);
+//   //   });
+//   //   console.log(searchInputRes2);
+//   //   displayAppareil(searchInputRes2);
+
+//   // } else if (filteredIngList.length > 0) { //if ingredient search exist
+//   //   console.log(filteredIngList);
+//   //   console.log("show only list of filtered appliance by Ingredient SEARCH");
+//   //   const searchAppInst = filteredIngList.filter((recipe) => {
+//   //     return recipe.appliance.toLowerCase().includes(searchString);
+//   //   });
+//   //   console.log(searchAppInst);
+//   //   displayAppareil(searchAppInst);
+
+//   // } else if (filteredUstList.length > 0) { //if ustensil search exist
+//   //   console.log(filteredUstList);
+//   //   console.log("show only list of filtered appliance by Ustensil SEARCH");
+//   //   const searchAppUst = filteredUstList.filter((recipe) => {
+//   //     return recipe.appliance.toLowerCase().includes(searchString);
+//   //   });
+//   //   console.log(searchAppUst);
+//   //   displayAppareil(searchAppUst);
+
+//   // } else {
+//   //   filteredAppList = recipes.filter((recipe) => {
+//   //     console.log("show list of all appliance");
+//   //     return (
+//   //       recipe.name.toLowerCase().includes(searchString) ||
+//   //       recipe.appliance.toLowerCase().includes(searchString) ||
+//   //       recipe.ingredients
+//   //         .map((ingredient) => {
+//   //           return ingredient.ingredient.toLowerCase();
+//   //         })
+//   //         .includes(searchString) ||
+//   //       recipe.ustensils.includes(searchString)
+//   //     );
+//   //   });
+
+//   //   console.log(filteredAppList);
+
+//   //   displayRecipes(filteredAppList);
+//   //   displayIngredients(filteredAppList);
+//   //   displayAppareil(filteredAppList);
+//   //   displayUstensiles(filteredAppList);
+
+//   //   console.log(displayRecipes(filteredAppList));
+//   // }
+
+// });
+// ======================================================================================
+// ======================================================================================
+// ======================================================================================
+
+// // APPLIANCE LIST TAG
+
+
+// const tags = document.querySelectorAll('#appareil-list li') //all appliance tag
+// console.log(tags);
+
+// tags.forEach(tag => {
+//     tag.addEventListener('click', (e) => {
+//       const search = e.target.value.toLowerCase();
+//       console.log(search);
+//       let selectedTag = tag.innerHTML;
+//       console.log(selectedTag);
+//     });
+// });
+// appareilList.addEventListener('click', (e) => {
+//   // const search = e.target.value.toLowerCase();
+//   // console.log(search);
+
+// const tags = document.querySelectorAll('#appareil-list li') //all appliance tag
+// console.log(tags);
+
+
+// tags.forEach(tag => {
+//       tag.addEventListener('click', (e) => {
+//         // const search = e.target.value.toLowerCase();
+//         // console.log(search);
+//         let selectedTag = tag.innerHTML;
+//         console.log(selectedTag);
+//       });
+//   });
+
+
+//   // searchInputRes = filteredRecipes;
+//   // console.log(searchInputRes);
+
+
+//   // filteredRecipes = recipes.filter((recipe) => {
+//   //   return (
+//   //     recipe.name.toLowerCase().includes(search) ||
+//   //     recipe.appliance.toLowerCase().includes(search) ||
+//   //     recipe.ingredients
+//   //       .map((ingredient) => {
+//   //         return ingredient.ingredient.toLowerCase();
+//   //       })
+//   //       .includes(search) ||
+//   //     recipe.ustensils
+//   //       .map((ustnesile) => {
+//   //         return ustnesile.toLowerCase();
+//   //       })
+//   //       .includes(search)
+//   //   );
+//   // });
+//   // console.log(filteredRecipes);
+//   // displayRecipes(filteredRecipes);
+//   // displayIngredients(filteredRecipes);
+//   // displayAppareil(filteredRecipes);
+//   // displayUstensiles(filteredRecipes);
+//   // console.log(displayRecipes(filteredRecipes));
 // });
 
-// console.log(filteredSelection);
-// displayRecipes(filteredSelection);
+appareilList.addEventListener('click', (e) => {
 
-//  const filteredAppTag = recipes.filter((recipe) => {
-//         console.log("show list of all appliance");
-//         return (
-//           recipe.name.includes(targetList) ||
-//           recipe.appliance.includes(targetList) ||
-//           recipe.ingredients
-//             .map((ingredient) => {
-//               return ingredient.ingredient;
-//             })
-//             .includes(targetList) ||
-//           recipe.ustensils.includes(targetList)
-//         );
-//       });
-  
-//       console.log(filteredAppTag);
-  
-//       displayRecipes(filteredAppTag);
-//       displayIngredients(filteredAppTag);
-//       displayAppareil(filteredAppTag);
-//       displayUstensiles(filteredAppTag);
-  
-//       console.log(displayRecipes(filteredAppTag));
+  const search = e.target.textContent.toLowerCase();
+  console.log(search);
 
-  // const searchString = e.target
-  // console.log(searchString);
+  searchInputRes = filteredRecipes;
+  console.log(searchInputRes);
 
-  // searchInputRes;
-  // console.log(searchInputRes);
 
-  // if (searchInputRes.length > 0) { //if global search exist
-  //   console.log(searchInputRes);
-  //   console.log("show only list of filtered appliance by MAIN SEARCH");
-  //   const searchInputRes2 = searchInputRes.filter((recipe) => {
-  //     return recipe.appliance.toLowerCase().includes(searchString);
-  //   });
-  //   console.log(searchInputRes2);
-  //   displayAppareil(searchInputRes2);
-
-  // } else if (filteredIngList.length > 0) { //if ingredient search exist
-  //   console.log(filteredIngList);
-  //   console.log("show only list of filtered appliance by Ingredient SEARCH");
-  //   const searchAppInst = filteredIngList.filter((recipe) => {
-  //     return recipe.appliance.toLowerCase().includes(searchString);
-  //   });
-  //   console.log(searchAppInst);
-  //   displayAppareil(searchAppInst);
-
-  // } else if (filteredUstList.length > 0) { //if ustensil search exist
-  //   console.log(filteredUstList);
-  //   console.log("show only list of filtered appliance by Ustensil SEARCH");
-  //   const searchAppUst = filteredUstList.filter((recipe) => {
-  //     return recipe.appliance.toLowerCase().includes(searchString);
-  //   });
-  //   console.log(searchAppUst);
-  //   displayAppareil(searchAppUst);
-
-  // } else {
-  //   filteredAppList = recipes.filter((recipe) => {
-  //     console.log("show list of all appliance");
-  //     return (
-  //       recipe.name.toLowerCase().includes(searchString) ||
-  //       recipe.appliance.toLowerCase().includes(searchString) ||
-  //       recipe.ingredients
-  //         .map((ingredient) => {
-  //           return ingredient.ingredient.toLowerCase();
-  //         })
-  //         .includes(searchString) ||
-  //       recipe.ustensils.includes(searchString)
-  //     );
-  //   });
-
-  //   console.log(filteredAppList);
-
-  //   displayRecipes(filteredAppList);
-  //   displayIngredients(filteredAppList);
-  //   displayAppareil(filteredAppList);
-  //   displayUstensiles(filteredAppList);
-
-  //   console.log(displayRecipes(filteredAppList));
-  // }
+ const filteredAppTag = recipes.filter((recipe) => {
+    return (
+      recipe.name.toLowerCase().includes(search) ||
+      recipe.appliance.toLowerCase().includes(search) ||
+      recipe.ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient.toLowerCase();
+        })
+        .includes(search) ||
+      recipe.ustensils
+        .map((ustnesile) => {
+          return ustnesile.toLowerCase();
+        })
+        .includes(search)
+    );
+  });
+  console.log(filteredAppTag);
+  displayRecipes(filteredAppTag);
+  displayIngredients(filteredAppTag);
+  displayAppareil(filteredAppTag);
+  displayUstensiles(filteredAppTag);
+  console.log(displayRecipes(filteredAppTag));
 
 });
-
-
 
 
 // ======================================================================================
