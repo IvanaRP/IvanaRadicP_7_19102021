@@ -265,7 +265,7 @@ const displayUstensiles = (recipes) => {
 searchBar.addEventListener("keyup", (e) => {
   const search = e.target.value.toLowerCase();
   console.log(search);
-
+  // e.target.value == "" ||
   searchInputRes = filteredRecipes;
   console.log(searchInputRes);
 
@@ -277,7 +277,7 @@ if (search.length < 3) {
   console.log('stop from search');
   searchError.style.display = "inline-block";
 
-} else if (search.length > 3){
+} else if (search.length > 2 ){
   searchError.style.display = "none";
   filteredRecipes = recipes.filter((recipe) => {
     return (
@@ -305,9 +305,13 @@ if (search.length < 3) {
   displayUstensiles(filteredRecipes);
   console.log(displayRecipes(filteredRecipes));
 
+// } else if (search.value == 0 ){
+//   searchError.style.display = "none";
+//   displayRecipes(recipes);
+
 } else{
   
-    notFound.style.display = "inline-block";
+    notFound.style.display = "flex";
      console.log('not found')
 
 }
