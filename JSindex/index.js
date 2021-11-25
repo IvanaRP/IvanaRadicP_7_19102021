@@ -142,6 +142,20 @@ const displayRecipes = (recipes) => {
  *
  *   DISPLAY INGREDIENTS ARRAY
  */
+// remove duplicates
+
+let ingredientsTab = [];
+recipes.forEach(recipe => {  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
+      recipe.ingredients.forEach(ingredient => { //là on passe sur chaque ingrédient de chaque recette
+          if (!ingredientsTab .includes(ingredient.ingredient)) //si le tableau ne contient pas déjà l'ingrédient qu'on regarde (pour éviter les doublons)
+          ingredientsTab .push(ingredient.ingredient); //on ajoute l'ingrédient au tableau
+      })
+      
+      ingredientsList.innerHTML = "";
+      // console.log(ingredientsList);
+      ingredientsList.innerHTML = ingredientsTab;
+      // console.log(ingredientsTab );
+    });
 
 const displayIngredients = (recipes) => {
   const htmlString = recipes
@@ -161,25 +175,7 @@ const displayIngredients = (recipes) => {
   ingredientsList.innerHTML = htmlString;
 };
 
-// function uniqueIng(){
-//   let ingredients = [];
 
-//   recipes.forEach(recipe => {  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
-
-//      recipe.ingredients.forEach(ingredient => { //là on passe sur chaque ingrédient de chaque recette
-
-//         if (!ingredients.includes(ingredient.ingredient)) //si le tableau ne contient pas déjà l'ingrédient qu'on regarde (pour éviter les doublons)
-
-//            ingredients.push(ingredient.ingredient); //on ajoute l'ingrédient au tableau
-
-//      })
-//      ingredientsList.innerHTML = "";
-//      console.log(ingredientsList);
-//      ingredientsList.innerHTML = ingredients;
-//      console.log(ingredients);
-//   });
-// }
-// console.log(uniqueIng());
 
 /**
  *
@@ -289,17 +285,20 @@ searchBar.addEventListener("keyup", (e) => {
   if (search.length < 3) {
     console.log("stop from search");
     searchError.style.display = "inline-block";
+    
+    displayRecipes(recipes);
+
   } else if (search.length > 2) {
     searchError.style.display = "none";
     filteredRecipes = recipes.filter((recipe) => {
       return (
         recipe.name.toLowerCase().includes(search) ||
         recipe.appliance.toLowerCase().includes(search) ||
-        recipe.ingredients
-          .map((ingredient) => {
-            return ingredient.ingredient.toLowerCase();
-          })
-          .includes(search) ||
+        // recipe.ingredients
+        //   .map((ingredient) => {
+        //     return ingredient.ingredient.toLowerCase();
+        //   })
+        //   .includes(search) ||
         recipe.ustensils
           .map((ustnesile) => {
             return ustnesile.toLowerCase();
@@ -336,6 +335,20 @@ searchIngredients.addEventListener("keyup", (e) => {
 
   searchInputRes;
   console.log(searchInputRes);
+
+// ===================================
+let ingredientTab = [];
+// let search = e.target.value; //on récupère ce qui a été écrit
+filteredRecipes.forEach(recipe => {  
+   recipe.ingredients.forEach(ingredient => { 
+      if (!ingredientTab.includes(ingredient.ingredient) && ingredient.ingredient.includes(search)) //on regarde que dans le texte de l'ingrédient il y a ce qu'on a tapé, si ce n'est pas le cas on ne met pas dans le tableau 
+         ingredientTab.push(ingredient.ingredient); 
+   })
+})
+ingredientsList.innerHTML = ingredientTab;
+
+// =========================
+
 
   if (searchInputRes.length > 0) {
     //if global search exist
@@ -419,8 +432,7 @@ searchIngredients.addEventListener("keyup", (e) => {
     console.log(displayRecipes(filteredIngList));
   }
 
-  const search = e.target.value.toLowerCase();
-  console.log(search);
+ 
 });
 // ======================================================================================
 
