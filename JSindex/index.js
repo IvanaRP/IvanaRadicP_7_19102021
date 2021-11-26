@@ -324,25 +324,28 @@ searchBar.addEventListener("keyup", (e) => {
     });
  
     displayIngredients(filterIngredient);
+    // displayIngredients(recipes);
 
-    // filteredRecipes = recipes.filter((recipe) => {
-    //   return (
-    //     recipe.name.toLowerCase().includes(search) ||
-    //     recipe.appliance.toLowerCase().includes(search) ||
-    //     recipe.ustensils
-    //       .map((ustnesile) => {
-    //         return ustnesile.toLowerCase();
-    //       })
-    //       .includes(search)
-    //   );
-    // });
+    filteredRecipes = recipes.filter((recipe) => {
+      return (
+        recipe.name.toLowerCase().includes(search) ||
+        recipe.appliance.toLowerCase().includes(search) ||
+        recipe.ustensils
+          .map((ustnesile) => {
+            return ustnesile.toLowerCase();
+          })
+          .includes(search)
+      );
+    });
 
-    // console.log(filteredRecipes);
-    // displayRecipes(filteredRecipes);
-    // // displayIngredients(filteredRecipes);
-    // displayAppareil(filteredRecipes);
-    // displayUstensiles(filteredRecipes);
-    // console.log(displayRecipes(filteredRecipes));
+    console.log(filteredRecipes);
+    displayRecipes(filteredRecipes);
+    // displayIngredients(filteredRecipes);
+    displayAppareil(filteredRecipes);
+    displayUstensiles(filteredRecipes);
+    console.log(displayRecipes(filteredRecipes));
+
+    
   } else {
     notFound.style.display = "flex";
     console.log("not found");

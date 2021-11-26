@@ -20,6 +20,9 @@ console.log(filteredUstList);
 let filteredRecipes = [];
 console.log(filteredRecipes);
 
+let filterIngredient = [];
+console.log(filterIngredient);
+
 let searchInputRes = [];
 console.log(searchInputRes);
 
@@ -36,6 +39,32 @@ console.log(uniqueAppliances);
 // let allRecipes = recipes
 // console.log(allRecipes);
 
+// remove duplicates
+
+let ingredientsTabs = [];
+recipes.forEach((recipe) => {
+  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
+  recipe.ingredients.forEach((ingredient) => {
+    //là on passe sur chaque ingrédient de chaque recette
+    if (!ingredientsTabs.includes(ingredient.ingredient))
+      //si le tableau ne contient pas déjà l'ingrédient qu'on regarde (pour éviter les doublons)
+      ingredientsTabs.push(ingredient.ingredient); //on ajoute l'ingrédient au tableau
+  });
+  // console.log(ingredientsTabs);
+});
+
+
+// let obj = Object.fromEntries(
+//   ingredientsTabs.map(ingredients => [ingredients, {
+//     something: "based",
+//     on: ingredients
+//   }])
+// )
+
+// console.log(obj)
+
+// Array.prototype.push.apply(recipes, obj); 
+// console.log(recipes);
 // ===========================================
 /**
  *
@@ -120,16 +149,31 @@ const displayRecipes = (recipes) => {
     recipesList.innerHTML = html;
   };
   // ========================================================
-// display appareil List
-const displayAppareil = (recipes) => {
-    const htmlString = recipes
-      .map((recipe) => {
-        return `<li class="recepiesList__appliance" id="recepiesList__appliance">${recipe.appliance}</li>`;
-      })
-      .join("");
+
+/**
+ *
+ *   DISPLAY INGREDIENTS ARRAY
+ */
+
+ const displayIngredients = (ingredientsTabs) => {
+  const htmlString = ingredientsTabs
+    .map((ingredientsTab) => {
+      return `<li class="recepiesList__appliance" id="recepiesList__appliance">${ingredientsTab}</li>`;
+    })
+    .join("");
+  ingredientsList.innerHTML = htmlString;
+};
+
+// // display appareil List
+// const displayAppareil = (recipes) => {
+//     const htmlString = recipes
+//       .map((recipe) => {
+//         return `<li class="recepiesList__appliance" id="recepiesList__appliance">${recipe.appliance}</li>`;
+//       })
+//       .join("");
   
-    appareilList.innerHTML = htmlString;
-  };
+//     appareilList.innerHTML = htmlString;
+//   };
     // ========================================================
 
     // let applianceList = [];
@@ -183,7 +227,37 @@ searchBar.addEventListener("keyup", (e) => {
 
 
 
+// if (ingredientsTabs > 0) {
+  
+  filterIngredient = ingredientsTabs.filter((ingredientsTab) => {
+    // console.log(filterIngredient);
+    // console.log(ingredientsTab.toLowerCase());
+    return (ingredientsTab.toLowerCase().includes(search)
+    );
+  });
+  
+  displayIngredients(filterIngredient);
+// } else {
+  
+  filteredRecipes = recipes.filter((recipe) => {
+    return (
+      recipe.name.toLowerCase().includes(search) ||
+      recipe.appliance.toLowerCase().includes(search) ||
+      recipe.ustensils
+        .map((ustnesile) => {
+          return ustnesile.toLowerCase();
+        })
+        .includes(search)
+    );
+  });
 
+  console.log(filteredRecipes);
+  displayRecipes(filteredRecipes);
+  // displayIngredients(filteredRecipes);
+  displayAppareil(filteredRecipes);
+  displayUstensiles(filteredRecipes);
+  console.log(displayRecipes(filteredRecipes));
+// }
  
     // let applianceList = [];
     // const filteredAp = recipes.forEach(recipe => {  //recipe ici contient donc recipe.ingredients donc on veut passer sur chacun
@@ -202,33 +276,43 @@ searchBar.addEventListener("keyup", (e) => {
 // //   displayUstensiles(filteredRecipes);
 //   console.log(displayRecipes(filteredRecipes));
 
-    filteredRecipes = recipes.filter((recipe) => {
+// filterIngredient = ingredientsTabs.filter((ingredientsTab) => {
+//   // console.log(filterIngredient);
+//   // console.log(ingredientsTab.toLowerCase());
+//   return (ingredientsTab.toLowerCase().includes(search)
+//   );
+// });
+
+// displayIngredients(filterIngredient);
+// displayIngredients(recipes);
+
+    // filteredRecipes = recipes.filter((recipe) => {
        
-        return (
-          recipe.name.toLowerCase().includes(search) ||
-          recipe.appliance.toLowerCase().includes(search) ||
+    //     return (
+    //       recipe.name.toLowerCase().includes(search) ||
+    //       recipe.appliance.toLowerCase().includes(search) ||
        
-          recipe.ingredients
-            .map((ingredient) => {
-              return ingredient.ingredient.toLowerCase();
-            })
-            .includes(search)
-             ||
-          recipe.ustensils
-            .map((ustnesile) => {
-              return ustnesile.toLowerCase();
-            })
-            .includes(search)
-        );
-      });
-    //   console.log(JSON.stringify(appliance));
+    //       // recipe.ingredients
+    //       //   .map((ingredient) => {
+    //       //     return ingredient.ingredient.toLowerCase();
+    //       //   })
+    //       //   .includes(search)
+    //         //  ||
+    //       recipe.ustensils
+    //         .map((ustnesile) => {
+    //           return ustnesile.toLowerCase();
+    //         })
+    //         .includes(search)
+    //     );
+    //   });
+    // //   console.log(JSON.stringify(appliance));
       
-      console.log(filteredRecipes);
-      displayRecipes(filteredRecipes);
-    //   displayIngredients(filteredRecipes);
-      displayAppareil(filteredRecipes);
-    //   displayUstensiles(filteredRecipes);
-      console.log(displayRecipes(filteredRecipes));
+    //   console.log(filteredRecipes);
+    //   displayRecipes(filteredRecipes);
+    // //   displayIngredients(filteredRecipes);
+    //   // displayAppareil(filteredRecipes);
+    // //   displayUstensiles(filteredRecipes);
+    //   console.log(displayRecipes(filteredRecipes));
 
 //   const uniqApp = uniqueAppliances.filter((uniqueAppliance) => {
 //       console.log(uniqueAppliances);
@@ -252,7 +336,7 @@ searchBar.addEventListener("keyup", (e) => {
 //   funcions
 displayRecipes(recipes);
 
-displayAppareil(recipes);
+// displayAppareil(recipes);
 // displayAppareil(uniqueAppliances);
 
 
