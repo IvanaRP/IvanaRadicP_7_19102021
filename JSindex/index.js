@@ -330,6 +330,11 @@ searchBar.addEventListener("keyup", (e) => {
       return (
         recipe.name.toLowerCase().includes(search) ||
         recipe.appliance.toLowerCase().includes(search) ||
+        // recipe.ingredients
+        //     .map((ingredient) => {
+        //       return ingredient.ingredient.toLowerCase();
+        //     })
+        //     .includes(search) ||
         recipe.ustensils
           .map((ustnesile) => {
             return ustnesile.toLowerCase();
