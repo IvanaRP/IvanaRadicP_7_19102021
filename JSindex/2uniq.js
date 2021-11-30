@@ -374,7 +374,26 @@ searchBar.addEventListener("keyup", (e) => {
     searchInputRes = filteredRecipes;
     console.log(searchInputRes);
 
+    // ======================================================================================
+    // FOR LOOP
+  // callback function 
+function filterProducts(){
+  let filterValue = searchBar.value.toLowerCase();
+  let item = document.querySelectorAll('.recepies__card')
+  // console.log(filterValue);
 
+  for (let i = 0; i < item.length; i++){
+      let span = item[i].querySelector('.recepies__name');
+
+      if(span.innerHTML.toLowerCase().indexOf(filterValue) > -1){
+          item[i].style.display = "initial";
+      }else{
+          item[i].style.display = "none";
+      }
+  }
+}
+
+filterProducts();
 // ======================
 // // added ingredientsTabs in recipes array alllists
 
@@ -434,41 +453,41 @@ searchBar.addEventListener("keyup", (e) => {
   // displayIngredients(filterIngredient);
 // // } else {
   
-  filteredRecipes = recipes.filter((recipe) => {
-    // console.log(recipe.ingredientsTabs);
-    return (
-      recipe.name.toLowerCase().includes(search) ||
-      // recipe.appliance.toLowerCase().includes(search) ||
-      recipe.ustensils
-        .map((ustnesile) => {
-          return ustnesile.toLowerCase();
-        })
-        .includes(search)
-    );
-  });
-  console.log(filteredRecipes);
-  displayRecipes(filteredRecipes);
+  // filteredRecipes = recipes.filter((recipe) => {
+  //   // console.log(recipe.ingredientsTabs);
+  //   return (
+  //     recipe.name.toLowerCase().includes(search) ||
+  //     // recipe.appliance.toLowerCase().includes(search) ||
+  //     recipe.ustensils
+  //       .map((ustnesile) => {
+  //         return ustnesile.toLowerCase();
+  //       })
+  //       .includes(search)
+  //   );
+  // });
+  // console.log(filteredRecipes);
+  // displayRecipes(filteredRecipes);
 
-  displayPROBA(filteredRecipes);
-  // displayAppareil(filteredRecipes);
-  // displayUstensiles(filteredRecipes);
-  console.log(displayRecipes(filteredRecipes));
+  // displayPROBA(filteredRecipes);
+  // // displayAppareil(filteredRecipes);
+  // // displayUstensiles(filteredRecipes);
+  // console.log(displayRecipes(filteredRecipes));
 
-  let ingredientTab = [];
+  // let ingredientTab = [];
 
-  filteredRecipes2 = recipes.filter((recipe) => {
+  // filteredRecipes2 = recipes.filter((recipe) => {
   
-      recipe.ingredients.forEach(ingredient => { 
-        if (!ingredientTab.includes(ingredient.ingredient) && ingredient.ingredient.includes(search)) //on regarde que dans le texte de l'ingrédient il y a ce qu'on a tapé, si ce n'est pas le cas on ne met pas dans le tableau 
-           ingredientTab.push(ingredient.ingredient); 
-     })
+  //     recipe.ingredients.forEach(ingredient => { 
+  //       if (!ingredientTab.includes(ingredient.ingredient) && ingredient.ingredient.includes(search)) //on regarde que dans le texte de l'ingrédient il y a ce qu'on a tapé, si ce n'est pas le cas on ne met pas dans le tableau 
+  //          ingredientTab.push(ingredient.ingredient); 
+  //    })
     
    
-  });
+  // });
 
-  console.log(ingredientTab);
+  // console.log(ingredientTab);
   
-  displayIngredients(filteredRecipes2);
+  // displayIngredients(filteredRecipes2);
 
 
   // filteredRecipes2 =recipes.filter((recipe) => {
@@ -477,19 +496,19 @@ searchBar.addEventListener("keyup", (e) => {
   //   applianceTabs.push(recipe.appliance);
    
   //  });
-let newApp = [];
-  filteredRecipes2 = recipes.filter((recipe) => {
-    console.log(recipe.appliance);
-    if (!newApp.includes(recipe.appliance.toLowerCase()) && recipe.appliance.toLowerCase().includes(search))
-    newApp.push(recipe.appliance);
-    return (appareilList.innerHTML = newApp);
-   });
+// let newApp = [];
+//   filteredRecipes2 = recipes.filter((recipe) => {
+//     console.log(recipe.appliance);
+//     if (!newApp.includes(recipe.appliance.toLowerCase()) && recipe.appliance.toLowerCase().includes(search))
+//     newApp.push(recipe.appliance);
+//     return (appareilList.innerHTML = newApp);
+//    });
 
-   console.log(newApp);
+//    console.log(newApp);
 
 
   
-   displayAppareil(filteredRecipes2);
+//    displayAppareil(filteredRecipes2);
 
 
 // }
