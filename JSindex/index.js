@@ -341,6 +341,10 @@ const displayUstensiles = (ustensilsTabs) => {
 //   ustensilesList.innerHTML = htmlString;
 // };
 
+
+// function filterIngTab(ingredientsTabs){ 
+//   logika neka....
+//   return filteredIngredients;}
 // ======================================================================================
 /**
  *
@@ -409,9 +413,9 @@ searchBar.addEventListener("keyup", (e) => {
 
     console.log(filteredRecipes);
     displayRecipes(filteredRecipes);
-    // displayIngredients(filteredRecipes);
-    // displayAppareil(filteredRecipes);
-    // displayUstensiles(filteredRecipes);
+    displayIngredients(filteredRecipes);
+    displayAppareil(filteredRecipes);
+    displayUstensiles(filteredRecipes);
     console.log(displayRecipes(filteredRecipes));
   } else {
     notFound.style.display = "inline-block";
