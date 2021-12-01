@@ -107,7 +107,7 @@ input::placeholder {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 20px;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 5%;
 }
 

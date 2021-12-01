@@ -88,12 +88,44 @@ console.log(applianceTabs);
 
 // concat array 
 
+let data = [];
+function pretreatData(recipes) {
+ 
+  recipes.forEach(recipe => {
+      data.push({
+          "name": recipe.name.toLowerCase(),
+          "description": recipe.description.toLowerCase(),
+          "appliance": recipe.appliance.toLowerCase(),
+          "ingredients": [...recipe.ingredients.map(ingredient => {return ingredient.ingredient.toLowerCase()})],
+          "ustensils": recipe.ustensils,
+      })
+  })
+  return data;
+}
+console.log(data);
+pretreatData(recipes);
+
+
 let alllists = recipes.concat(ingredientsTabs);
 console.log(alllists);
 
 
-let aquarium = [...recipes, ...ingredientsTabs];
-console.log(aquarium);
+let aquariums = [...recipes, ...ingredientsTabs];
+console.log(aquariums);
+
+
+let zz = data.concat(ingredientsTabs);
+console.log(zz);
+console.log(data);
+console.log(ingredientsTabs);
+
+// let zingr = [];
+// console.log(zingr);
+// zz.map((z) => {
+//   zingr.push(z.recipe);
+// });
+
+// console.log(zingr);
 
 // recipes.push(ingredientsTabs);
 // console.log(recipes);
@@ -118,23 +150,6 @@ console.log(aquarium);
 // all(recipes);
 
 
-//  let data = [];
-// function pretreatData(recipes) {
- 
-//   recipes.forEach(recipe => {
-//       data.push({
-//           "name": recipe.name.toLowerCase(),
-//           "description": recipe.description.toLowerCase(),
-//           "appliance": recipe.appliance.toLowerCase(),
-//           "ingredients": [...recipe.ingredients.map(ingredient => {return ingredient.ingredient.toLowerCase()})],
-//           "ustensils": recipe.ustensils,
-//           "raw": recipe,
-//       })
-//   })
-//   return data;
-// }
-// console.log(data);
-// pretreatData(recipes);
 
 // let obj = Object.fromEntries(
 //   ingredientsTabs.map(ingredients => [ingredients, {
@@ -184,16 +199,31 @@ console.log(searchUstensiles);
  *  DISPLAY PROBA
  */
 // ===========================================
-const displayPROBA = (ingredientsTabs) => {
-  const htmlString = ingredientsTabs
-  .map((ingredientsTabs) => {
-    return `<li class="recepiesList__appliance" id="recepiesList__appliance">${ingredientsTabs}</li>`;
+// const displayPROBA = (ingredientsTabs) => {
+//   const htmlString = ingredientsTabs
+//   .map((ingredientsTabs) => {
+//     return `<li class="recepiesList__appliance" id="recepiesList__appliance">${ingredientsTabs}</li>`;
+//   })
+//   .join("");
+//   document.getElementById("proba").innerHTML = htmlString;
+   
+// };
+
+
+/**
+ *
+ *  DISPLAY PROBA
+ */
+// ===========================================
+const displayPROBA = (zz) => {
+  const htmlString = zz
+  .map((data) => {
+    return `<li class="recepiesList__appliance" id="recepiesList__appliance">${data.name}</li>`;
   })
   .join("");
   document.getElementById("proba").innerHTML = htmlString;
    
 };
-
 // ===========================================
 // /**
 //  *
@@ -377,27 +407,59 @@ searchBar.addEventListener("keyup", (e) => {
     // ======================================================================================
     // FOR LOOP
   // callback function 
-function filterProducts(){
-  let filterValue = searchBar.value.toLowerCase();
-  let item = document.querySelectorAll('.recepies__card')
-  // console.log(filterValue);
+// function filterProducts(){
+//   let filterValue = searchBar.value.toLowerCase();
+//   let item = document.querySelectorAll('.recepies__card')
+//   // console.log(filterValue);
 
-  for (let i = 0; i < item.length; i++){
-      let span = item[i].querySelector('.recepies__name');
+//   for (let i = 0; i < item.length; i++){
+//       let span = item[i].querySelector('.recepies__name');
 
-      if(span.innerHTML.toLowerCase().indexOf(filterValue) > -1){
-          item[i].style.display = "initial";
-      }else{
-          item[i].style.display = "none";
-      }
-  }
-}
+//       if(span.innerHTML.toLowerCase().indexOf(filterValue) > -1){
+//           item[i].style.display = "initial";
+//       }else{
+//           item[i].style.display = "none";
+//       }
+//   }
+// }
 
-filterProducts();
+// filterProducts();
 // ======================
 // // added ingredientsTabs in recipes array alllists
 
 // filteredRecipes = recipes.filter((recipe) => {
+
+//   console.log(recipe.name.toLowerCase().includes(search));
+//   return (
+//     recipe.name.toLowerCase().includes(search)
+//     // alllist.name.toLowerCase().includes(search) ||
+//     // alllist.appliance.toLowerCase().includes(search) ||
+//     // alllist.ingredients
+//     //   .map((ingredient) => {
+//     //     return ingredient.ingredient.toLowerCase();
+//     //   })
+//     //   .includes(search) ||
+//     //   alllist.ustensils
+//     //   .map((ustnesile) => {
+//     //     return ustnesile.toLowerCase();
+//     //   })
+//     //   .includes(search)
+//   );
+// });
+
+// console.log(filteredRecipes);
+// displayRecipes(filteredRecipes);
+// displayPROBA(filteredRecipes);
+// displayIngredients(filteredRecipes);
+// // displayAppareil(filteredRecipes);
+// // displayUstensiles(filteredRecipes);
+// console.log(displayRecipes(filteredRecipes));
+
+
+// // =======================
+
+
+// filteredRecipes = zz.filter((recipe) => {
 
 //   console.log(recipe.name.toLowerCase().includes(search));
 //   return (
@@ -592,7 +654,7 @@ displayRecipes(recipes);
 
 displayAppareil(applianceTabs);
 // displayAppareil(uniqueAppliances);
-displayPROBA(ingredientsTabs);
+displayPROBA(zz);
 displayIngredients(ingredientsTabs);
 // displayIngredients(recipes);
 
