@@ -36,9 +36,9 @@
 // dropdownBTN show div with list
 // btn Ingredients
 let btnIng = document.getElementById("ingredientClosedDiv");
-console.log(btnIng);
+// console.log(btnIng);
 let btnIngList = document.getElementById("ingredientOpenListDiv");
-console.log(btnIngList);
+// console.log(btnIngList);
 
 btnIng.addEventListener("click", () => {
   console.log(btnIng);
@@ -64,9 +64,9 @@ window.addEventListener("mouseup", function (event) {
 
 // btn Appliance
 let btnApp = document.getElementById("appareilClosedDiv");
-console.log(btnApp);
+// console.log(btnApp);
 let btnAppList = document.getElementById("appareilOpenListDiv");
-console.log(btnAppList);
+// console.log(btnAppList);
 
 btnApp.addEventListener("click", () => {
   if (btnAppList.style.display === "none") {
@@ -86,9 +86,9 @@ window.addEventListener("mouseup", function (event) {
 
 // btn Ustensiles
 let btnUst = document.getElementById("ustensilesClosedDiv");
-console.log(btnApp);
+// console.log(btnApp);
 let btnUstList = document.getElementById("ustensilesOpenListDiv");
-console.log(btnUstList);
+
 
 btnUst.addEventListener("click", () => {
   if (btnUstList.style.display === "none") {
