@@ -177,31 +177,80 @@ searchBar.addEventListener("keyup", (e) => {
   }
 });
 
-
 // // INGREDIENTS search bar input
 
 searchIngredients.addEventListener("keyup", (e) => {
-    const search = e.target.value.toLowerCase();
+  const search = e.target.value.toLowerCase();
 
-    // 1.search ingredient list
-    // 2. search ingredient list that is already filtered by main search
-    // 3. search by click on tag
-  
+  // 1.search ingredient list
+  // 2. search ingredient list that is already filtered by main search
+  // 3. search by click on tag
 });
 
 // // Appareil search bar input
 searchAppareil.addEventListener("keyup", (e) => {
-    const search = e.target.value.toLowerCase();
+  const search = e.target.value.toLowerCase();
+});
+
+// // Appareil search CLICK TAG
+appareilList.addEventListener("click", (e) => {
+  const search = e.target.textContent.toLowerCase();
+  console.log(search);
+});
+// // Appareil search CLICK TAG make tag button
+appareilList.addEventListener("click", function (e) {
+  // e.target is our targetted element.
+  console.log(e.target.nodeName);
+
+  //   const searchString = e.target.textContent;
+  //   console.log(searchString);
+
+  if (e.target && e.target.nodeName == "LI") {
+    // alert(e.target.textContent);
+    let tagsApp = document.createElement("div");
+    tagsApp.setAttribute("class", "tagsAppNew");
+    tagsApp.setAttribute("id", "tagsAppNew");
+    console.log(tagsApp);
+    let newTag = document.getElementById("appTags");
+    console.log(newTag);
+    newTag.appendChild(tagsApp);
+    tagsApp.textContent = e.target.textContent;
+
+    // add fontawesome Icon
+    let tagsicon = document.createElement("div");
+    tagsicon.setAttribute("class", "tagsIcon");
+    tagsicon.setAttribute("id", "tagsIcon");
+
+    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+    console.log(tagsicon);
+
+    tagsApp.appendChild(tagsicon);
+    console.log(tagsicon);
+
+    // close TAG on X
+    const closeTags = document.getElementById("tagsIcon");
+    console.log(closeTags);
+
+    tagsicon.addEventListener("click", () => {
+      if (tagsApp.style.display === "none") {
+        tagsApp.style.display = "flex";
+      } else {
+        tagsApp.style.display = "none";
+        displayRecipes(recipes);
+        displayIngredients(uniqueIngredients);
+        displayUstensiles(uniqueUstensils);
+        displayAppareil(uniqueAppliances);
+      }
+    });
+  }
+
 
 });
 
 // // Ustensiles search bar input
 searchUstensiles.addEventListener("keyup", (e) => {
-    const search = e.target.value.toLowerCase();
-  
+  const search = e.target.value.toLowerCase();
 });
-
-
 
 displayRecipes(recipes);
 displayIngredients(uniqueIngredients);
