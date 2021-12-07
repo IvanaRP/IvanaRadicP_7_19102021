@@ -191,6 +191,7 @@ searchIngredients.addEventListener("keyup", (e) => {
 
 
 let ingredientString = [];
+
 if (filteredUniqueIngredients.length > 0) {
     ingredientString = filteredUniqueIngredients;
 } else {
@@ -203,7 +204,7 @@ let ingredientString2 = ingredientString.filter((ing) => {
     );
   });
 
-// console.log(ingredientString2);
+console.log(ingredientString2);
 
 displayIngredients(ingredientString2);
 
