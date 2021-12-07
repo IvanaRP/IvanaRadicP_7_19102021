@@ -20,6 +20,9 @@ let filterUstensils = [];
 
 let searchInputRes = [];
 
+
+let filteredUniqueIngredients = [];
+
 let uniqueIngredients = [];
 uniqueIngredients = findUniqueIng(recipes);
 
@@ -163,7 +166,7 @@ searchBar.addEventListener("keyup", (e) => {
       );
     });
 
-    const filteredUniqueIngredients = findUniqueIng(filteredRecipes);
+  filteredUniqueIngredients = findUniqueIng(filteredRecipes);
     const filteredUniqueAppliances = findUniqueApp(filteredRecipes);
     const filteredUniqueUstensiles = findUniqueUst(filteredRecipes);
 
@@ -185,7 +188,45 @@ searchIngredients.addEventListener("keyup", (e) => {
   // 1.search ingredient list
   // 2. search ingredient list that is already filtered by main search
   // 3. search by click on tag
+
+//   if(filteredIngr.count() > 0){ 
+//       niz = filteredIngr
+
+//     } else {
+//         // niz = uniqueNiz
+//        niz = uniqueIngredients
+//     }
+
+// uvek izvlaci samo jedan igredient
+// if ( cela ingredient lista) {
+
+// } else if (postoji main search) {
+    
+// } else if (postoji Tag search) {
+    
+// }
+
+let niz = [];
+if (filteredUniqueIngredients.length > 0) {
+ niz = filteredUniqueIngredients;
+    
+} else {
+   niz =  uniqueIngredients;
+}
+
+let niz2 = niz.filter((ing) => {
+    return (
+    ing.toLowerCase().includes(search)
+    );
+  });
+
+// console.log(niz2);
+
+displayIngredients(niz2);
+
+
 });
+
 
 // // Appareil search bar input
 searchAppareil.addEventListener("keyup", (e) => {
@@ -205,14 +246,19 @@ appareilList.addEventListener("click", function (e) {
   //   const searchString = e.target.textContent;
   //   console.log(searchString);
 
+  
+// napravi funkciju!!!
+
+
+
   if (e.target && e.target.nodeName == "LI") {
     // alert(e.target.textContent);
     let tagsApp = document.createElement("div");
     tagsApp.setAttribute("class", "tagsAppNew");
     tagsApp.setAttribute("id", "tagsAppNew");
-    console.log(tagsApp);
+    // console.log(tagsApp);
     let newTag = document.getElementById("appTags");
-    console.log(newTag);
+    // console.log(newTag);
     newTag.appendChild(tagsApp);
     tagsApp.textContent = e.target.textContent;
 
@@ -222,14 +268,14 @@ appareilList.addEventListener("click", function (e) {
     tagsicon.setAttribute("id", "tagsIcon");
 
     tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
-    console.log(tagsicon);
+    // console.log(tagsicon);
 
     tagsApp.appendChild(tagsicon);
-    console.log(tagsicon);
+    // console.log(tagsicon);
 
     // close TAG on X
-    const closeTags = document.getElementById("tagsIcon");
-    console.log(closeTags);
+    // const closeTags = document.getElementById("tagsIcon");
+    // console.log(closeTags);
 
     tagsicon.addEventListener("click", () => {
       if (tagsApp.style.display === "none") {
