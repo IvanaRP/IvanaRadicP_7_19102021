@@ -189,40 +189,26 @@ searchIngredients.addEventListener("keyup", (e) => {
   // 2. search ingredient list that is already filtered by main search
   // 3. search by click on tag
 
-//   if(filteredIngr.count() > 0){ 
-//       niz = filteredIngr
 
-//     } else {
-//         // niz = uniqueNiz
-//        niz = uniqueIngredients
-//     }
-
-// uvek izvlaci samo jedan igredient
-// if ( cela ingredient lista) {
-
-// } else if (postoji main search) {
-    
-// } else if (postoji Tag search) {
-    
-// }
-
-let niz = [];
+let ingredientString = [];
 if (filteredUniqueIngredients.length > 0) {
- niz = filteredUniqueIngredients;
-    
+    ingredientString = filteredUniqueIngredients;
 } else {
-   niz =  uniqueIngredients;
+    ingredientString =  uniqueIngredients;
 }
 
-let niz2 = niz.filter((ing) => {
+let ingredientString2 = ingredientString.filter((ing) => {
     return (
     ing.toLowerCase().includes(search)
     );
   });
 
-// console.log(niz2);
+// console.log(ingredientString2);
 
-displayIngredients(niz2);
+displayIngredients(ingredientString2);
+
+
+
 
 
 });
@@ -238,57 +224,55 @@ appareilList.addEventListener("click", (e) => {
   const search = e.target.textContent.toLowerCase();
   console.log(search);
 });
+
 // // Appareil search CLICK TAG make tag button
 appareilList.addEventListener("click", function (e) {
   // e.target is our targetted element.
   console.log(e.target.nodeName);
 
-  //   const searchString = e.target.textContent;
-  //   console.log(searchString);
-
-  
-// napravi funkciju!!!
+//   //   const searchString = e.target.textContent;
+//   //   console.log(searchString);
 
 
 
-  if (e.target && e.target.nodeName == "LI") {
-    // alert(e.target.textContent);
-    let tagsApp = document.createElement("div");
-    tagsApp.setAttribute("class", "tagsAppNew");
-    tagsApp.setAttribute("id", "tagsAppNew");
-    // console.log(tagsApp);
-    let newTag = document.getElementById("appTags");
-    // console.log(newTag);
-    newTag.appendChild(tagsApp);
-    tagsApp.textContent = e.target.textContent;
+//   if (e.target && e.target.nodeName == "LI") {
+//     // alert(e.target.textContent);
+//     let tagsApp = document.createElement("div");
+//     tagsApp.setAttribute("class", "tagsAppNew");
+//     tagsApp.setAttribute("id", "tagsAppNew");
+//     // console.log(tagsApp);
+//     let newTag = document.getElementById("appTags");
+//     // console.log(newTag);
+//     newTag.appendChild(tagsApp);
+//     tagsApp.textContent = e.target.textContent;
 
-    // add fontawesome Icon
-    let tagsicon = document.createElement("div");
-    tagsicon.setAttribute("class", "tagsIcon");
-    tagsicon.setAttribute("id", "tagsIcon");
+//     // add fontawesome Icon
+//     let tagsicon = document.createElement("div");
+//     tagsicon.setAttribute("class", "tagsIcon");
+//     tagsicon.setAttribute("id", "tagsIcon");
 
-    tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
-    // console.log(tagsicon);
+//     tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+//     // console.log(tagsicon);
 
-    tagsApp.appendChild(tagsicon);
-    // console.log(tagsicon);
+//     tagsApp.appendChild(tagsicon);
+//     // console.log(tagsicon);
 
-    // close TAG on X
-    // const closeTags = document.getElementById("tagsIcon");
-    // console.log(closeTags);
+//     // close TAG on X
+//     // const closeTags = document.getElementById("tagsIcon");
+//     // console.log(closeTags);
 
-    tagsicon.addEventListener("click", () => {
-      if (tagsApp.style.display === "none") {
-        tagsApp.style.display = "flex";
-      } else {
-        tagsApp.style.display = "none";
-        displayRecipes(recipes);
-        displayIngredients(uniqueIngredients);
-        displayUstensiles(uniqueUstensils);
-        displayAppareil(uniqueAppliances);
-      }
-    });
-  }
+//     tagsicon.addEventListener("click", () => {
+//       if (tagsApp.style.display === "none") {
+//         tagsApp.style.display = "flex";
+//       } else {
+//         tagsApp.style.display = "none";
+//         displayRecipes(recipes);
+//         displayIngredients(uniqueIngredients);
+//         displayUstensiles(uniqueUstensils);
+//         displayAppareil(uniqueAppliances);
+//       }
+//     });
+//   }
 
 
 });
@@ -302,3 +286,12 @@ displayRecipes(recipes);
 displayIngredients(uniqueIngredients);
 displayUstensiles(uniqueUstensils);
 displayAppareil(uniqueAppliances);
+
+
+
+
+// domaci
+// 0. uradi noiz za appliance i ustencil ko sto si uradila za ingredient
+// 1.napravi funkciju od selektovanih tagova!!!
+// 2. svaki tag selektovan ubaci u novi array= selectedTags//ingr//app//usten svi su prazni
+// 3. u main searchu - dodati search po selectedTags 
