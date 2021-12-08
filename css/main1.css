@@ -80,20 +80,33 @@ input::placeholder {
   color: #ed6454;
   justify-content: center;
   position: relative;
-  margin:  2% 5% 2% 5%;
+  margin: 2% 5% 2% 5%;
 }
-
 
 /* not-found */
 
-.not-found{
+.not-found {
   display: none;
- justify-content: center;
- align-content: center;
-  color: rebeccapurple;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: #d04f4f;
+  background-color: #e7e7e7;
+  border-color: #d04f4f;
+  border-radius: 20px;
+  border-style: solid;
   margin: 5%;
+  padding: 20px;
 }
-
+.not-found__logo {
+  display: flex;
+  align-content: center;
+}
+.not-found__text {
+  display: flex;
+  text-align: center;
+}
 
 /* recipes */
 .recepies {
