@@ -91,11 +91,20 @@ const displayRecipes = (recipes) => {
         })
         .join("");
 
-      const ustensilsHtml = recipe.ustensils
-        .map((ustensil) => {
-          return `<li id="recepiesUstensiles__list" class="recepiesUstensiles__list">${ustensil}</li>`;
+      const quantityHtml = recipe.ingredients
+        .map((ingredient) => {
+          return `<li id="recepiesIngredient__list" class="recepiesIngredient__list">${
+            ingredient.quantity ? ingredient.quantity : ""
+          } 
+          ${ingredient.unit ? ingredient.unit : ""}</li>`;
         })
         .join("");
+
+      // const ustensilsHtml = recipe.ustensils
+      //   .map((ustensil) => {
+      //     return `<li id="recepiesUstensiles__list" class="recepiesUstensiles__list">${ustensil}</li>`;
+      //   })
+      //   .join("");
 
       return `
             <div class="recepies__card">
@@ -109,7 +118,7 @@ const displayRecipes = (recipes) => {
   
                     <div class="recepies__ingredients-description"> 
                        <div class="recepies__ingredients">${ingredientHtml}</div>
-                       <div class="recepies__ustensil">${ustensilsHtml}</div>
+                       <div class="recepies__quantity">${quantityHtml}</div>
                         <p class="recepies__description">${recipe.description}</p>
                     </div>
                     
@@ -146,7 +155,7 @@ function mainSearch() {
 
   let notFound = document.getElementById("not-found");
   let searchError = document.getElementById("search__error");
-  
+
   filteredRecipes = recipes;
   if (search.length < 3) {
     searchError.style.display = "inline-block";
@@ -178,7 +187,7 @@ function mainSearch() {
 
   if (filteredRecipes.length == 0) {
     notFound.style.display = "flex";
-  } else{
+  } else {
     notFound.style.display = "none";
   }
 
