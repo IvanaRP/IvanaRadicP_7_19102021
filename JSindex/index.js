@@ -20,7 +20,6 @@ let filterUstensils = [];
 
 let searchInputRes = [];
 
-
 let filteredUniqueIngredients = [];
 
 let uniqueIngredients = [];
@@ -166,7 +165,7 @@ searchBar.addEventListener("keyup", (e) => {
       );
     });
 
-  filteredUniqueIngredients = findUniqueIng(filteredRecipes);
+    filteredUniqueIngredients = findUniqueIng(filteredRecipes);
     const filteredUniqueAppliances = findUniqueApp(filteredRecipes);
     const filteredUniqueUstensiles = findUniqueUst(filteredRecipes);
 
@@ -189,31 +188,50 @@ searchIngredients.addEventListener("keyup", (e) => {
   // 2. search ingredient list that is already filtered by main search
   // 3. search by click on tag
 
+  let ingredientString = [];
+  let recepiesNameString = [];
 
-let ingredientString = [];
-
-if (filteredUniqueIngredients.length > 0) {
+  if (filteredUniqueIngredients.length > 0) {
     ingredientString = filteredUniqueIngredients;
-} else {
-    ingredientString =  uniqueIngredients;
-}
 
-let ingredientString2 = ingredientString.filter((ing) => {
+    recepiesNameString = filteredRecipes;
+  } else {
+    ingredientString = uniqueIngredients;
+
+    recepiesNameString = recipes;
+  }
+
+  let ingredientString2 = ingredientString.filter((ing) => {
+    return ing.toLowerCase().includes(search);
+  });
+
+  displayIngredients(ingredientString2);
+
+  let recepiesNameString2 = recepiesNameString.filter((recipe) => {
     return (
-    ing.toLowerCase().includes(search)
+      recipe.name.toLowerCase().includes(search) ||
+      recipe.appliance.toLowerCase().includes(search) ||
+      recipe.ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient.toLowerCase();
+        })
+        .includes(search) ||
+      recipe.ustensils
+        .map((ustensil) => {
+          return ustensil.toLowerCase();
+        })
+        .includes(search)
     );
   });
 
-console.log(ingredientString2);
+  const filteredUniqueAppliancesByIng = findUniqueApp(recepiesNameString2);
+  const filteredUniqueUstensilesByIng = findUniqueUst(recepiesNameString2);
 
-displayIngredients(ingredientString2);
-
-
-
-
-
+  console.log(recepiesNameString2);
+  displayRecipes(recepiesNameString2);
+  displayAppareil(filteredUniqueAppliancesByIng);
+  displayUstensiles(filteredUniqueUstensilesByIng);
 });
-
 
 // // Appareil search bar input
 searchAppareil.addEventListener("keyup", (e) => {
@@ -231,51 +249,47 @@ appareilList.addEventListener("click", function (e) {
   // e.target is our targetted element.
   console.log(e.target.nodeName);
 
-//   //   const searchString = e.target.textContent;
-//   //   console.log(searchString);
+  //   //   const searchString = e.target.textContent;
+  //   //   console.log(searchString);
 
+  //   if (e.target && e.target.nodeName == "LI") {
+  //     // alert(e.target.textContent);
+  //     let tagsApp = document.createElement("div");
+  //     tagsApp.setAttribute("class", "tagsAppNew");
+  //     tagsApp.setAttribute("id", "tagsAppNew");
+  //     // console.log(tagsApp);
+  //     let newTag = document.getElementById("appTags");
+  //     // console.log(newTag);
+  //     newTag.appendChild(tagsApp);
+  //     tagsApp.textContent = e.target.textContent;
 
+  //     // add fontawesome Icon
+  //     let tagsicon = document.createElement("div");
+  //     tagsicon.setAttribute("class", "tagsIcon");
+  //     tagsicon.setAttribute("id", "tagsIcon");
 
-//   if (e.target && e.target.nodeName == "LI") {
-//     // alert(e.target.textContent);
-//     let tagsApp = document.createElement("div");
-//     tagsApp.setAttribute("class", "tagsAppNew");
-//     tagsApp.setAttribute("id", "tagsAppNew");
-//     // console.log(tagsApp);
-//     let newTag = document.getElementById("appTags");
-//     // console.log(newTag);
-//     newTag.appendChild(tagsApp);
-//     tagsApp.textContent = e.target.textContent;
+  //     tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
+  //     // console.log(tagsicon);
 
-//     // add fontawesome Icon
-//     let tagsicon = document.createElement("div");
-//     tagsicon.setAttribute("class", "tagsIcon");
-//     tagsicon.setAttribute("id", "tagsIcon");
+  //     tagsApp.appendChild(tagsicon);
+  //     // console.log(tagsicon);
 
-//     tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
-//     // console.log(tagsicon);
+  //     // close TAG on X
+  //     // const closeTags = document.getElementById("tagsIcon");
+  //     // console.log(closeTags);
 
-//     tagsApp.appendChild(tagsicon);
-//     // console.log(tagsicon);
-
-//     // close TAG on X
-//     // const closeTags = document.getElementById("tagsIcon");
-//     // console.log(closeTags);
-
-//     tagsicon.addEventListener("click", () => {
-//       if (tagsApp.style.display === "none") {
-//         tagsApp.style.display = "flex";
-//       } else {
-//         tagsApp.style.display = "none";
-//         displayRecipes(recipes);
-//         displayIngredients(uniqueIngredients);
-//         displayUstensiles(uniqueUstensils);
-//         displayAppareil(uniqueAppliances);
-//       }
-//     });
-//   }
-
-
+  //     tagsicon.addEventListener("click", () => {
+  //       if (tagsApp.style.display === "none") {
+  //         tagsApp.style.display = "flex";
+  //       } else {
+  //         tagsApp.style.display = "none";
+  //         displayRecipes(recipes);
+  //         displayIngredients(uniqueIngredients);
+  //         displayUstensiles(uniqueUstensils);
+  //         displayAppareil(uniqueAppliances);
+  //       }
+  //     });
+  //   }
 });
 
 // // Ustensiles search bar input
@@ -288,11 +302,8 @@ displayIngredients(uniqueIngredients);
 displayUstensiles(uniqueUstensils);
 displayAppareil(uniqueAppliances);
 
-
-
-
 // domaci
 // 0. uradi noiz za appliance i ustencil ko sto si uradila za ingredient
 // 1.napravi funkciju od selektovanih tagova!!!
 // 2. svaki tag selektovan ubaci u novi array= selectedTags//ingr//app//usten svi su prazni
-// 3. u main searchu - dodati search po selectedTags 
+// 3. u main searchu - dodati search po selectedTags
