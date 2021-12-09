@@ -7,7 +7,6 @@ const searchIngredients = document.getElementById("search__ingredient");
 const searchAppareil = document.getElementById("search__appareil");
 const searchUstensiles = document.getElementById("search__ustensiles");
 
-
 import { recipes } from "../js/recipes.js";
 
 let filteredRecipes = [];
@@ -20,21 +19,6 @@ let filteredUniqueIngredients = [];
 let filteredUniqueAppliances = [];
 let filteredUniqueUstensiles = [];
 
-// ingredient tag selected
-let ingredientString2tag = [];
-let filteredUniqueAppliancesByIng = [];
-let recepiesIngredientString2Tag = [];
-
-// appliance tag selected
-let filteredUniqueIngredientsByAppTag = [];
-let filteredUniqueUstensilesByAppTag = [];
-let appliancesString2tag = [];
-let recepiesNameString2Tag = [];
-
-// Ustensiles tag selected
-let recepiesUstensilesString2 = [];
-let ustensilesString2Tag = [];
-
 let uniqueIngredients = [];
 uniqueIngredients = findUniqueIng(recipes);
 
@@ -43,7 +27,7 @@ function findUniqueIng(recipes) {
   recipes.forEach((recipe) => {
     recipe.ingredients.forEach((ingredient) => {
       if (!uniqueIngredients.includes(ingredient.ingredient))
-        uniqueIngredients.push(ingredient.ingredient); 
+        uniqueIngredients.push(ingredient.ingredient);
     });
   });
   return uniqueIngredients;
@@ -88,21 +72,18 @@ const displayRecipes = (recipes) => {
     .map((recipe) => {
       const ingredientHtml = recipe.ingredients
         .map((ingredient) => {
-          return `<li id="recepiesIngredient__list" class="recepiesIngredient__list">${ingredient.ingredient}
-          ${ingredient.quantity ? ingredient.quantity : ""} 
-          ${ingredient.unit ? ingredient.unit : ""}
-          </li>`;
+          return `<li id="recepiesIngredient__list" class="recepiesIngredient__list">${ingredient.ingredient}</li>`;
         })
         .join("");
 
-      // const quantityHtml = recipe.ingredients
-      //   .map((ingredient) => {
-      //     return `<li id="recepiesIngredient__list" class="recepiesIngredient__list">${
-      //       ingredient.quantity ? ingredient.quantity : ""
-      //     } 
-      //     ${ingredient.unit ? ingredient.unit : ""}</li>`;
-      //   })
-      //   .join("");<div class="recepies__quantity">${quantityHtml}</div>
+      const quantityHtml = recipe.ingredients
+        .map((ingredient) => {
+          return `<li id="recepiesIngredient__list" class="recepiesIngredient__list">${
+            ingredient.quantity ? ingredient.quantity : ""
+          } 
+            ${ingredient.unit ? ingredient.unit : ""}</li>`;
+        })
+        .join("");
 
       // const ustensilsHtml = recipe.ustensils
       //   .map((ustensil) => {
@@ -111,25 +92,25 @@ const displayRecipes = (recipes) => {
       //   .join("");
 
       return `
-            <div class="recepies__card">
-                  <div class="recepies__img"> <img class="recipe-img" src="../img/img/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="image"></div>
-                  <div class="recepies__info">
-  
-                    <div class="recepies__name-time">
-                        <h3 class="recepies__name">${recipe.name}</h3>
-                        <p class="recepies__time"><i class="far fa-clock"></i> ${recipe.time}</p>
+              <div class="recepies__card">
+                    <div class="recepies__img"> <img class="recipe-img" src="../img/img/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="image"></div>
+                    <div class="recepies__info">
+    
+                      <div class="recepies__name-time">
+                          <h3 class="recepies__name">${recipe.name}</h3>
+                          <p class="recepies__time"><i class="far fa-clock"></i> ${recipe.time}</p>
+                      </div>
+    
+                      <div class="recepies__ingredients-description"> 
+                         <div class="recepies__ingredients">${ingredientHtml}</div>
+                         <div class="recepies__quantity">${quantityHtml}</div>
+                          <p class="recepies__description">${recipe.description}</p>
+                      </div>
+                      
                     </div>
-  
-                    <div class="recepies__ingredients-description"> 
-                       <div class="recepies__ingredients">${ingredientHtml}</div>
-                       
-                        <p class="recepies__description">${recipe.description}</p>
-                    </div>
-                    
-                  </div>
-              </div>
-       
-        `;
+                </div>
+         
+          `;
     })
     .join("");
   recipesList.innerHTML = html;
@@ -169,9 +150,13 @@ function mainSearch() {
     displayAppareil(uniqueAppliances);
   } else if (search.length > 2) {
     searchError.style.display = "none";
+
     // filter list Recipes
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      return (
+    for (let i = 0; i < filteredRecipes.length; i++) {
+      // const element = filteredRecipes[index];
+      let recipe = filteredRecipes[i];
+      console.log(recipe);
+      let found =
         recipe.name.toLowerCase().includes(search) ||
         recipe.appliance.toLowerCase().includes(search) ||
         recipe.description.toLowerCase().includes(search) ||
@@ -184,9 +169,12 @@ function mainSearch() {
           .map((ustensil) => {
             return ustensil.toLowerCase();
           })
-          .includes(search)
-      );
-    });
+          .includes(search);
+      if (!found) {
+        filteredRecipes.splice(i, 1);
+        console.log(filteredRecipes);
+      }
+    }
   }
 
   if (filteredRecipes.length == 0) {
@@ -199,7 +187,6 @@ function mainSearch() {
     searchError.style.display = "none";
   }
 
-
   // search by tags
   selectedIngredients.forEach((element) => {
     console.log(element);
@@ -210,7 +197,6 @@ function mainSearch() {
         })
         .includes(element);
     });
-    
   });
 
   selectedAppareil.forEach((element) => {
@@ -361,9 +347,6 @@ ingredientsList.addEventListener("click", (e) => {
   console.log(selectedIngredients);
   mainSearch();
 
-
-
-
   if (e.target && e.target.nodeName == "LI") {
     let tagsIng = document.createElement("div");
     tagsIng.setAttribute("class", "tagsIngNew");
@@ -378,25 +361,22 @@ ingredientsList.addEventListener("click", (e) => {
     tagsicon.setAttribute("id", "tagsIcon");
     tagsicon.innerHTML = '<i class="far fa-times-circle"></i>';
     tagsIng.appendChild(tagsicon);
-  
+
     tagsicon.addEventListener("click", () => {
       if (tagsIng.style.display === "none") {
         tagsIng.style.display = "flex";
       } else {
         tagsIng.style.display = "none";
-      
+        console.log("previus search");
         const index = selectedIngredients.indexOf(search);
         if (index > -1) {
           selectedIngredients.splice(index, 1);
         }
         console.log(selectedIngredients);
         mainSearch();
-        
-     
       }
     });
   }
-
 });
 
 // // Appareil search CLICK TAG
@@ -472,7 +452,6 @@ ustensilesList.addEventListener("click", (e) => {
       } else {
         tagsUst.style.display = "none";
 
-
         const index = selectedUstensiles.indexOf(search);
         if (index > -1) {
           selectedUstensiles.splice(index, 1);
@@ -483,7 +462,6 @@ ustensilesList.addEventListener("click", (e) => {
     });
   }
 });
-
 
 displayRecipes(recipes);
 displayIngredients(uniqueIngredients);
