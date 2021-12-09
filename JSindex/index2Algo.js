@@ -151,6 +151,7 @@ function mainSearch() {
   } else if (search.length > 2) {
     searchError.style.display = "none";
     // filter list Recipes
+    let resultat = [];
     for (let i = 0; i < filteredRecipes.length; i++) {
       // const element = filteredRecipes[index];
       let recipe = filteredRecipes[i];
@@ -169,66 +170,60 @@ function mainSearch() {
             return ustensil.toLowerCase();
           })
           .includes(search);
-     
+      console.log(found);
 
-      if (!found) {
-        filteredRecipes.splice(i, 1);
-        console.log("found match input");
+      if (found) {
+        resultat.push(recipe);
       }
-    
-
-        // else {
-        //   console.log("show all");
-        // }
-   
-    
     }
+    console.log(filteredRecipes);
+    filteredRecipes = resultat;
   }
 
-    if (filteredRecipes.length == 0) {
-      notFound.style.display = "flex";
-    } else {
-      notFound.style.display = "none";
-    }
+  if (filteredRecipes.length == 0) {
+    notFound.style.display = "flex";
+  } else {
+    notFound.style.display = "none";
+  }
 
-    if (search.length == 0) {
-      searchError.style.display = "none";
-    }
+  if (search.length == 0) {
+    searchError.style.display = "none";
+  }
 
-//   search by tags
-    selectedIngredients.forEach((element) => {
-      console.log(element);
-      filteredRecipes = filteredRecipes.filter((recipe) => {
-        return recipe.ingredients
-          .map((ingredient) => {
-            return ingredient.ingredient;
-          })
-          .includes(element);
-      });
+  //   search by tags
+  selectedIngredients.forEach((element) => {
+    console.log(element);
+    filteredRecipes = filteredRecipes.filter((recipe) => {
+      return recipe.ingredients
+        .map((ingredient) => {
+          return ingredient.ingredient;
+        })
+        .includes(element);
     });
+  });
 
-    selectedAppareil.forEach((element) => {
-      console.log(element);
-      filteredRecipes = filteredRecipes.filter((recipe) => {
-        return recipe.appliance.includes(element);
-      });
+  selectedAppareil.forEach((element) => {
+    console.log(element);
+    filteredRecipes = filteredRecipes.filter((recipe) => {
+      return recipe.appliance.includes(element);
     });
+  });
 
-    selectedUstensiles.forEach((element) => {
-      console.log(element);
-      filteredRecipes = filteredRecipes.filter((recipe) => {
-        return recipe.ustensils
-          .map((ustensil) => {
-            return ustensil;
-          })
-          .includes(element);
-      });
+  selectedUstensiles.forEach((element) => {
+    console.log(element);
+    filteredRecipes = filteredRecipes.filter((recipe) => {
+      return recipe.ustensils
+        .map((ustensil) => {
+          return ustensil;
+        })
+        .includes(element);
     });
+  });
 
   filteredUniqueIngredients = findUniqueIng(filteredRecipes);
   filteredUniqueAppliances = findUniqueApp(filteredRecipes);
   filteredUniqueUstensiles = findUniqueUst(filteredRecipes);
-  
+
   displayRecipes(filteredRecipes);
   displayIngredients(filteredUniqueIngredients);
   displayAppareil(filteredUniqueAppliances);
