@@ -150,83 +150,85 @@ function mainSearch() {
     displayAppareil(uniqueAppliances);
   } else if (search.length > 2) {
     searchError.style.display = "none";
-
     // filter list Recipes
     for (let i = 0; i < filteredRecipes.length; i++) {
       // const element = filteredRecipes[index];
       let recipe = filteredRecipes[i];
       console.log(recipe);
       let found =
-        recipe.name.toLowerCase().includes(search)
-         ||
+        recipe.name.toLowerCase().includes(search) ||
         recipe.appliance.toLowerCase().includes(search) ||
-        recipe.description.toLowerCase().includes(search);
-        // ||
-        // recipe.ingredients
-        //   .map((ingredient) => {
-        //     return ingredient.ingredient.toLowerCase();
-        //   })
-        //   .includes(search) ||
-        // recipe.ustensils
-        //   .map((ustensil) => {
-        //     return ustensil.toLowerCase();
-        //   })
-        //   .includes(search);
+        recipe.description.toLowerCase().includes(search) ||
+        recipe.ingredients
+          .map((ingredient) => {
+            return ingredient.ingredient.toLowerCase();
+          })
+          .includes(search) ||
+        recipe.ustensils
+          .map((ustensil) => {
+            return ustensil.toLowerCase();
+          })
+          .includes(search);
+     
 
       if (!found) {
         filteredRecipes.splice(i, 1);
-        console.log('nadjen recept');
+        console.log("found match input");
       }
-    //   else{
-    //   console.log(' nadjen match')
-    //   }
+    
+
+        // else {
+        //   console.log("show all");
+        // }
+   
+    
     }
   }
 
-  if (filteredRecipes.length == 0) {
-    notFound.style.display = "flex";
-  } else {
-    notFound.style.display = "none";
-  }
+    if (filteredRecipes.length == 0) {
+      notFound.style.display = "flex";
+    } else {
+      notFound.style.display = "none";
+    }
 
-  if (search.length == 0) {
-    searchError.style.display = "none";
-  }
+    if (search.length == 0) {
+      searchError.style.display = "none";
+    }
 
-  // search by tags
-  selectedIngredients.forEach((element) => {
-    console.log(element);
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      return recipe.ingredients
-        .map((ingredient) => {
-          return ingredient.ingredient;
-        })
-        .includes(element);
+//   search by tags
+    selectedIngredients.forEach((element) => {
+      console.log(element);
+      filteredRecipes = filteredRecipes.filter((recipe) => {
+        return recipe.ingredients
+          .map((ingredient) => {
+            return ingredient.ingredient;
+          })
+          .includes(element);
+      });
     });
-  });
 
-  selectedAppareil.forEach((element) => {
-    console.log(element);
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      return recipe.appliance.includes(element);
+    selectedAppareil.forEach((element) => {
+      console.log(element);
+      filteredRecipes = filteredRecipes.filter((recipe) => {
+        return recipe.appliance.includes(element);
+      });
     });
-  });
 
-  selectedUstensiles.forEach((element) => {
-    console.log(element);
-    filteredRecipes = filteredRecipes.filter((recipe) => {
-      return recipe.ustensils
-        .map((ustensil) => {
-          return ustensil;
-        })
-        .includes(element);
+    selectedUstensiles.forEach((element) => {
+      console.log(element);
+      filteredRecipes = filteredRecipes.filter((recipe) => {
+        return recipe.ustensils
+          .map((ustensil) => {
+            return ustensil;
+          })
+          .includes(element);
+      });
     });
-  });
 
   filteredUniqueIngredients = findUniqueIng(filteredRecipes);
   filteredUniqueAppliances = findUniqueApp(filteredRecipes);
   filteredUniqueUstensiles = findUniqueUst(filteredRecipes);
-
+  
   displayRecipes(filteredRecipes);
   displayIngredients(filteredUniqueIngredients);
   displayAppareil(filteredUniqueAppliances);
