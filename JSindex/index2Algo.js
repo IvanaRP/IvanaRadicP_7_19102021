@@ -157,23 +157,29 @@ function mainSearch() {
       let recipe = filteredRecipes[i];
       console.log(recipe);
       let found =
-        recipe.name.toLowerCase().includes(search) ||
+        recipe.name.toLowerCase().includes(search)
+         ||
         recipe.appliance.toLowerCase().includes(search) ||
-        recipe.description.toLowerCase().includes(search) ||
-        recipe.ingredients
-          .map((ingredient) => {
-            return ingredient.ingredient.toLowerCase();
-          })
-          .includes(search) ||
-        recipe.ustensils
-          .map((ustensil) => {
-            return ustensil.toLowerCase();
-          })
-          .includes(search);
+        recipe.description.toLowerCase().includes(search);
+        // ||
+        // recipe.ingredients
+        //   .map((ingredient) => {
+        //     return ingredient.ingredient.toLowerCase();
+        //   })
+        //   .includes(search) ||
+        // recipe.ustensils
+        //   .map((ustensil) => {
+        //     return ustensil.toLowerCase();
+        //   })
+        //   .includes(search);
+
       if (!found) {
         filteredRecipes.splice(i, 1);
-        console.log(filteredRecipes);
+        console.log('nadjen recept');
       }
+    //   else{
+    //   console.log(' nadjen match')
+    //   }
     }
   }
 
