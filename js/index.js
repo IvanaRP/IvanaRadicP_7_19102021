@@ -87,7 +87,7 @@ const displayRecipes = (recipes) => {
 
       return `
               <div class="recepies__card">
-                    <div class="recepies__img"> <img class="recipe-img" src="../img/img/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="image"></div>
+                    <div class="recepies__img"> <img class="recipe-img" src="./img/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" alt="image"></div>
                     <div class="recepies__info">
     
                       <div class="recepies__name-time">
