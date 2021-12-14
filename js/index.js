@@ -170,7 +170,7 @@ function mainSearch() {
         resultat.push(recipe);
       }
     }
-    console.log(filteredRecipes);
+    // console.log(filteredRecipes);
     filteredRecipes = resultat;
   }
 
