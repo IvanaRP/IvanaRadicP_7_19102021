@@ -39,7 +39,6 @@ body {
 
 /* SEARCH BAR */
 
-
 .search {
   display: flex;
   justify-content: center;
@@ -198,7 +197,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-.recepies__quantity{
+.recepies__quantity {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -260,7 +259,7 @@ input::placeholder {
   border-radius: 5px;
   padding: 10px;
   position: absolute;
-  top: 468px;
+  top: 395px;
   z-index: 30;
 }
 
@@ -281,7 +280,6 @@ input::placeholder {
   justify-content: center;
   height: 300px;
   width: 600px;
-  /* overflow: scroll; */
 }
 
 .ingredients-list {
@@ -290,7 +288,7 @@ input::placeholder {
   flex-wrap: wrap;
   justify-content: flex-start;
   height: 300px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /* appareil BTN */
@@ -337,7 +335,7 @@ input::placeholder {
   border-radius: 5px;
   padding: 10px;
   position: absolute;
-  top: 468px;
+  top: 395px;
   z-index: 30;
 }
 .appareilOpenListDiv {
@@ -359,8 +357,7 @@ input::placeholder {
   flex-wrap: wrap;
   justify-content: flex-start;
   height: 300px;
-  width: 600px;
-  /* overflow: scroll; */
+  width: 340px;
 }
 .appareil-list {
   display: flex;
@@ -369,7 +366,6 @@ input::placeholder {
   justify-content: flex-start;
   height: 300px;
   width: 100%;
-  overflow: scroll;
   cursor: pointer;
 }
 
@@ -402,7 +398,7 @@ input::placeholder {
   border-radius: 5px;
   padding: 10px;
   position: absolute;
-  top: 468px;
+  top: 395px;
   z-index: 30;
 }
 
@@ -423,7 +419,6 @@ input::placeholder {
   justify-content: center;
   height: 300px;
   width: 600px;
-  overflow: scroll;
 }
 
 .ustensilesClosed {
