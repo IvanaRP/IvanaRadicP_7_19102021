@@ -1,37 +1,3 @@
-// buttons lists
-//BUTTONS
-// function buttonsSelect() {
-//   return `
-//          <div class="ingrBTN">
-//             <div class="ingredientClosedDiv" id="ingredientClosedDiv">
-//             <button class="ingredientClosed" id="ingredientbtnClosed"><p>Ingredient <i class="fas fa-angle-down"></i></p></button>
-//             </div>
-//             <div class="ingredientOpenListDiv" id="ingredientOpenListDiv">
-//               <input class="ingredientOpenList" id="ingredientbtn" type="text" placeholder="Rechercher un ingrédient..."/>
-//               <div class="ingredient-hideDRUGI" id="ingredient-hideDRUGI">   <ul class="ingredients-list" id="ingredients-list"></ul>
-//             </div>
-//         </div>
-//         <div class="appBTN">
-//             <div class="appareilClosedDiv" id="appareilClosedDiv">
-//             <button class="appareilClosed" id="appareilbtnClosed"> <p>Appareil <i class="fas fa-angle-down"></i></p></button>
-//             </div>
-//             <div class="appareilOpenListDiv" id="appareilOpenListDiv">
-//             <input class="appareilOpenList" id="appareilbtn" type="text" placeholder="Rechercher un appareil..."/>
-//             <div class="appareil-hideDRUGI" id="appareil-hideDRUGI"> <ul class="appareil-list" id="appareil-list"></ul>
-//             </div>
-//         </div>
-//         <div class="ustBTN">
-//             <div class="ustensilesClosedDiv" id="ustensilesClosedDiv">
-//             <button  class="ustensilesClosed" id="ustensilesbtnClosed"><p>Ustensiles <i class="fas fa-angle-down"></i></p></button>
-//             </div>
-//             <div class="ustensilesOpenListDiv" id="ustensilesOpenListDiv">
-//             <input class="ustensilesOpenList" id="ustensilesbtn" type="text" placeholder="Rechercher un ustensiles..."/>
-//             <div class="ustensiles-hideDRUGI" id="ustensiles-hideDRUGI"> <ul class="ustensiles-list" id="ustensiles-list"></ul>
-//          </div>
-//       `;
-// }
-// document.getElementById("buttons-select").innerHTML = buttonsSelect();
-
 // open list ingrredient
 // dropdownBTN show div with list
 // btn Ingredients
@@ -89,7 +55,6 @@ let btnUst = document.getElementById("ustensilesClosedDiv");
 // console.log(btnApp);
 let btnUstList = document.getElementById("ustensilesOpenListDiv");
 
-
 btnUst.addEventListener("click", () => {
   if (btnUstList.style.display === "none") {
     btnUstList.style.display = "flex";
@@ -108,5 +73,3 @@ window.addEventListener("mouseup", function (event) {
     ustensilesMenu.style.display = "none";
   }
 });
-
-
